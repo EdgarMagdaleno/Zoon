@@ -10,7 +10,6 @@ class Main extends Engine {
 		HXP.console.enable();
 #end
 		HXP.fullscreen = true;
-		HXP.screen.scaleX = 5000;
 		HXP.scene = new scenes.TitleScreen();
 	}
 

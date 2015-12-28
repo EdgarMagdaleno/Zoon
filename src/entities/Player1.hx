@@ -14,14 +14,14 @@ class Player1 extends Entity {
 	public var speed:Int;
 	public var direction:Int;
 	public var ability:AbilityManager;
+	private var angle;
 
 	public override function new(x:Int, y:Int, ship:Int, n:Int, s1:Int, s2:Int, s3:Int):Void {
-		super(x, y);
-		this.centerOrigin();
+		super();
 		type = "P" + n;
 
 		speed = 10;
-		direction = 1;
+		direction = 0;
 
 		ability = new AbilityManager(n, s1, s2, s3);
 		Input.define("right", [Key.D]);
@@ -34,13 +34,14 @@ class Player1 extends Entity {
 
 		
 		shipImage = new Image("graphics/ships/ship" + ship + ".png");
+		shipImage.centerOrigin();
 		graphic = shipImage;
 	}
 
 	public override function update():Void {
 		if(Input.check("right")) {
-			x += speed;
-			direction = 1;
+			this.moveAtAngle(angle:Float, amount:Float, ?solidType:Null<com.haxepunk.SolidType>, ?sweep:Bool)
+			shipImage.angle += 1;
 		}
 
 		if(Input.check("left")) {
