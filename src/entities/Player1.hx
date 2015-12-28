@@ -17,6 +17,7 @@ class Player1 extends Entity {
 
 	public override function new(x:Int, y:Int, ship:Int, n:Int, s1:Int, s2:Int, s3:Int):Void {
 		super(x, y);
+		this.centerOrigin();
 		type = "P" + n;
 
 		speed = 10;
@@ -33,7 +34,6 @@ class Player1 extends Entity {
 
 		
 		shipImage = new Image("graphics/ships/ship" + ship + ".png");
-		shipImage.centerOrigin();
 		graphic = shipImage;
 	}
 

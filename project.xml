@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<meta title="Entity" package="com.example.app" version="1.0.0" company="" />
+	<meta title="Zoon" package="com.edgarmagdaleno.zoon" version="1.0.0" company="Edgar Magdaleno" />
 
  	<app file="Main" main="Main" path="bin" />
 
 	<window fps="60" background="0x333333" />
-	<window width="640" height="480" resizable="true" unless="mobile" />
-	<window fullscreen="true" if="mobile" />
+	<window width="640" height="360" resizable="false" />
+	<window fullscreen="true" />
 	<window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
 
 	<source path="src" />

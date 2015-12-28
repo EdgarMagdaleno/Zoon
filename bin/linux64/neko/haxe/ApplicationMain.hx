@@ -26,7 +26,7 @@ class ApplicationMain {
 	
 	public static function main () {
 		
-		flash.Lib.setPackage ("", "Main", "com.example.app", "1.0.0");
+		flash.Lib.setPackage ("Edgar Magdaleno", "Main", "com.edgarmagdaleno.zoon", "1.0.0");
 		
 		
 		#if ios
@@ -39,7 +39,7 @@ class ApplicationMain {
 		telemetryConfig = new hxtelemetry.HxTelemetry.Config ();
 		telemetryConfig.allocations = true;
 		telemetryConfig.host = "localhost";
-		telemetryConfig.app_name = "Entity";
+		telemetryConfig.app_name = "Zoon";
 		#end
 		
 		
@@ -55,7 +55,7 @@ class ApplicationMain {
 				#if mobile
 				
 				forceWidth = 640;
-				forceHeight = 480;
+				forceHeight = 360;
 				
 				container = new flash.display.Sprite ();
 				barA = new flash.display.Sprite ();
@@ -124,7 +124,7 @@ class ApplicationMain {
 				}
 				
 			},
-			640, 480, 
+			640, 360, 
 			60, 
 			3355443,
 			(true ? flash.Lib.HARDWARE : 0) |
@@ -132,13 +132,13 @@ class ApplicationMain {
 			(false ? flash.Lib.REQUIRE_SHADERS : 0) |
 			(false ? flash.Lib.DEPTH_BUFFER : 0) |
 			(false ? flash.Lib.STENCIL_BUFFER : 0) |
-			(true ? flash.Lib.RESIZABLE : 0) |
+			(false ? flash.Lib.RESIZABLE : 0) |
 			(false ? flash.Lib.BORDERLESS : 0) |
 			(false ? flash.Lib.VSYNC : 0) |
-			(false ? flash.Lib.FULLSCREEN : 0) |
+			(true ? flash.Lib.FULLSCREEN : 0) |
 			(0 == 4 ? flash.Lib.HW_AA_HIRES : 0) |
 			(0 == 2 ? flash.Lib.HW_AA : 0),
-			"Entity",
+			"Zoon",
 			null
 			#if mobile, ScaledStage #end
 		);
@@ -245,7 +245,7 @@ class ScaledStage extends flash.display.Stage {
 	
 	private override function get_stageHeight ():Int {
 		
-		return 480;
+		return 360;
 	
 	}
 	
@@ -315,18 +315,18 @@ class ApplicationMain {
 	public static function main () {
 		
 		#if openfl
-		flash.Lib.setPackage ("", "Main", "com.example.app", "1.0.0");
+		flash.Lib.setPackage ("Edgar Magdaleno", "Main", "com.edgarmagdaleno.zoon", "1.0.0");
 		
 		#end
 		
 		wx.App.boot (function () {
 			
 			
-			frame = wx.Frame.create (null, null, "Entity", null, { width: 640, height: 480 });
+			frame = wx.Frame.create (null, null, "Zoon", null, { width: 640, height: 360 });
 			
 			
 			#if openfl
-			var stage = wx.NMEStage.create (frame, null, null, { width: 640, height: 480 });
+			var stage = wx.NMEStage.create (frame, null, null, { width: 640, height: 360 });
 			#end
 			
 			var hasMain = false;
@@ -532,13 +532,13 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "196",
-			company: "",
+			build: "209",
+			company: "Edgar Magdaleno",
 			file: "Main",
 			fps: 60,
-			name: "Entity",
+			name: "Zoon",
 			orientation: "",
-			packageName: "com.example.app",
+			packageName: "com.edgarmagdaleno.zoon",
 			version: "1.0.0",
 			windows: [
 				
@@ -548,13 +548,13 @@ class ApplicationMain {
 					borderless: false,
 					depthBuffer: false,
 					display: 0,
-					fullscreen: false,
+					fullscreen: true,
 					hardware: true,
-					height: 480,
+					height: 360,
 					parameters: "{}",
-					resizable: true,
+					resizable: false,
 					stencilBuffer: false,
-					title: "Entity",
+					title: "Zoon",
 					vsync: false,
 					width: 640,
 					x: null,
@@ -566,7 +566,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 640, 480, "null");
+		openfl.Lib.embed (null, 640, 360, "null");
 		#end
 		#else
 		create ();

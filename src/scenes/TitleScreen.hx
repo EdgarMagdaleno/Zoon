@@ -13,19 +13,25 @@ class TitleScreen extends Scene {
 	private var b0:Backdrop;
 	private var b1:Backdrop;
 	private var b2:Backdrop;
+	private var background:Entity;
 
 	public override function begin() {
 		HXP.stage.color = 0x0000000;
 
-		b1 = new Backdrop("graphics/stars1.png", true, true);
+		b1 = new Backdrop("graphics/stars1.png", false, false);
 		b1.scrollX = 0.4;
 		b1.scrollY = 0.4;
 
-		b2 = new Backdrop("graphics/stars2.png", true, true);
-		b2.scrollX = 0.55;
-		b2.scrollY = 0.55;
+		b2 = new Backdrop("graphics/stars2.png", false, false);
+		b2.scrollX = 0.6;
+		b2.scrollY = 0.6;
 
-		var background:Entity = new Entity(0, 0, new Graphiclist([b1, b2]));
+		background = new Entity(0, 0, new Graphiclist([b1, b2]));
 		add(background);
+		background.followCamera = true;
+	}
+
+	public override function update() {
+		camera.x += 5;
 	}
 }
