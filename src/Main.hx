@@ -2,9 +2,7 @@ import com.haxepunk.Engine;
 import com.haxepunk.HXP;
 
 class Main extends Engine {
-	private var sX:Int;
-	private var sY:Int;
-
+	
 	override public function init() {
 #if debug
 		HXP.console.enable();

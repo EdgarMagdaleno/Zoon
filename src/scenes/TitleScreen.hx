@@ -57,7 +57,7 @@ class TitleScreen extends ScaledScene {
 		add(play);
 	}
 
-	public override function update() {
+	public override function update():Void {
 		camera.x += 2;
 		if(Input.check("play")) HXP.scene = new BattleScene();
 	}
