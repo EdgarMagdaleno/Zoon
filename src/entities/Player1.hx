@@ -1,5 +1,6 @@
 package entities;
 
+import entities.AbilityManager;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.Entity;
@@ -7,28 +8,21 @@ import com.haxepunk.Engine;
 import com.haxepunk.Scene;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
-import entities.AbilityManager;
 
 class Player1 extends Entity {
+	public var shipImage:Image;
 	public var speed:Int;
-	public var a1:Int;
-	public var a2:Int;
-	public var a3:Int;
 	public var direction:Int;
-	public var owner:Int;
 	public var ability:AbilityManager;
 
-	public function new(x:Int, y:Int, ship:Int):Void {
+	public override function new(x:Int, y:Int, ship:Int, n:Int, s1:Int, s2:Int, s3:Int):Void {
 		super(x, y);
-		type = "Player1";
-		speed = 10;
-		a1 = 1;
-		a2 = 2;
-		a3 = 3;
-		direction = 1;
-		owner = 1;
+		type = "P" + n;
 
-		abilities = new AbilityManager(x:Int, y:Int, a:Int, d:Int, o:Int);
+		speed = 10;
+		direction = 1;
+
+		ability = new AbilityManager(n, s1, s2, s3);
 		Input.define("right", [Key.D]);
 		Input.define("left", [Key.A]);
 		Input.define("up", [Key.W]);
@@ -37,7 +31,10 @@ class Player1 extends Entity {
 		Input.define("a2", [Key.U]);
 		Input.define("a3", [Key.I]);
 
-		graphic = new Image("graphics/ships/ship" + ship + ".png");
+		
+		shipImage = new Image("graphics/ships/ship" + ship + ".png");
+		shipImage.centerOrigin();
+		graphic = shipImage;
 	}
 
 	public override function update():Void {
@@ -61,8 +58,8 @@ class Player1 extends Entity {
 			direction = 4;
 		}
 
-		if(Input.check("a1")) abilities.a1
-		if(Input.check("a2")) new AbilityManager(Std.int(x), Std.int(y), a2, direction, owner);
-		if(Input.check("a3")) new AbilityManager(Std.int(x), Std.int(y), a3, direction, owner);
+		/*if(Input.check("a1")) 
+		if(Input.check("a2")) 
+		if(Input.check("a3")) */
 	}
 }
