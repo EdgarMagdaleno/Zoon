@@ -17,11 +17,11 @@ class Player1 extends Entity {
 	public var angle:Float;
 
 	public override function new(x:Int, y:Int, ship:Int, n:Int, s1:Int, s2:Int, s3:Int):Void {
-		super();
+		super(x, y);
 		angle = 0;
 		type = "P" + n;
 
-		speed = 10;
+		speed = 5;
 		direction = 0;
 
 		ability = new AbilityManager(n, s1, s2, s3);
@@ -33,15 +33,16 @@ class Player1 extends Entity {
 		Input.define("a2", [Key.U]);
 		Input.define("a3", [Key.I]);
 
-		
 		shipImage = new Image("graphics/ships/ship" + ship + ".png");
+		shipImage.scale = 50 / shipImage.width;
+
+		setHitbox(Std.int(shipImage.scaledWidth), Std.int(shipImage.scaledHeight));
 		graphic = shipImage;
-		shipImage.centerOrigin();
 	}
 
 	public override function update():Void {
 		if(Input.check("forward")) {
-			moveAtAngle(angle, 10, true);
+			moveAtAngle(angle, speed, true);
 		}
 
 		if(Input.check("right")) {

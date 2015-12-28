@@ -2,7 +2,7 @@ import com.haxepunk.Engine;
 import com.haxepunk.HXP;
 
 class Main extends Engine {
-	
+
 	override public function init() {
 #if debug
 		HXP.console.enable();
@@ -13,5 +13,7 @@ class Main extends Engine {
 
 	public static function main() { 
 		new Main(); 
+		HXP.screen.scaleX = HXP.screen.width / 640;
+		HXP.screen.scaleY = HXP.screen.height / 360;
 	}
 }

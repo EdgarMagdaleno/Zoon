@@ -10,7 +10,7 @@ import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 
-class TitleScreen extends ScaledScene {
+class TitleScreen extends Scene {
 
 	private var b1:Backdrop;
 	private var b2:Backdrop;
@@ -26,6 +26,7 @@ class TitleScreen extends ScaledScene {
 	private var quitImage:Image;
 
 	public override function begin() {
+
 		Input.define("play", [Key.ENTER]);
 		HXP.stage.color = 0x0000000;
 
