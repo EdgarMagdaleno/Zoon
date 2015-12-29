@@ -4,13 +4,17 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 
 class BasicShoot extends Ability {
-	public var cooldown:Int = 200;
 
-	public function new(x:Int, y:Int, d:Int, o:Int) {
-		super(x, y, d);
-		speed = 5;
-		direction = d;
-		graphic = new Image("graphics/bullet.png");
+	public override function new(x:Float, y:Float, a:Float, o:Int) {
+		super(x, y);
+		cooldown = 100;
+		speed = 15;
+		angle = a;
+
+		abilityImage = new Image("graphics/basic.png");
+		abilityImage.centerOrigin();
+		abilityImage.angle = a;
+
+		graphic = abilityImage;
 	}
-
 }

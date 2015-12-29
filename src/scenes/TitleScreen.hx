@@ -10,7 +10,7 @@ import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 
-class TitleScreen extends Scene {
+class TitleScreen extends ScaledScene {
 
 	private var b1:Backdrop;
 	private var b2:Backdrop;
@@ -26,9 +26,9 @@ class TitleScreen extends Scene {
 	private var quitImage:Image;
 
 	public override function begin() {
-
-		Input.define("play", [Key.ENTER]);
+		setScale();
 		HXP.stage.color = 0x0000000;
+		Input.define("play", [Key.ENTER]);
 
 		b1 = new Backdrop("graphics/stars1.png", true);
 		b1.scrollX = 0.4;

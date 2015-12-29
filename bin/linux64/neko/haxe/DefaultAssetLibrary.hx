@@ -682,6 +682,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("graphics/lockS.png", AssetType.IMAGE);
 		path.set ("graphics/entity.png", "graphics/entity.png");
 		type.set ("graphics/entity.png", AssetType.IMAGE);
+		path.set ("graphics/basic.png", "graphics/basic.png");
+		type.set ("graphics/basic.png", AssetType.IMAGE);
 		path.set ("graphics/back.png", "graphics/back.png");
 		type.set ("graphics/back.png", AssetType.IMAGE);
 		path.set ("graphics/playb.png", "graphics/playb.png");
@@ -698,8 +700,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("graphics/shipL.png", AssetType.IMAGE);
 		path.set ("graphics/shipR.png", "graphics/shipR.png");
 		type.set ("graphics/shipR.png", AssetType.IMAGE);
-		path.set ("graphics/bullet.png", "graphics/bullet.png");
-		type.set ("graphics/bullet.png", AssetType.IMAGE);
 		path.set ("graphics/ships/ship4.png", "graphics/ships/ship4.png");
 		type.set ("graphics/ships/ship4.png", AssetType.IMAGE);
 		path.set ("graphics/ships/ship5.png", "graphics/ships/ship5.png");
@@ -765,6 +765,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "graphics/entity.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "graphics/basic.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "graphics/back.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -787,9 +790,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "graphics/shipR.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "graphics/bullet.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "graphics/ships/ship4.png";

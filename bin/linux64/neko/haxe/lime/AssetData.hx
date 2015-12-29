@@ -42,6 +42,8 @@ class AssetData {
 			type.set ("graphics/lockS.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/entity.png", "graphics/entity.png");
 			type.set ("graphics/entity.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/basic.png", "graphics/basic.png");
+			type.set ("graphics/basic.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/back.png", "graphics/back.png");
 			type.set ("graphics/back.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/playb.png", "graphics/playb.png");
@@ -58,8 +60,6 @@ class AssetData {
 			type.set ("graphics/shipL.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/shipR.png", "graphics/shipR.png");
 			type.set ("graphics/shipR.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("graphics/bullet.png", "graphics/bullet.png");
-			type.set ("graphics/bullet.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship4.png", "graphics/ships/ship4.png");
 			type.set ("graphics/ships/ship4.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship5.png", "graphics/ships/ship5.png");

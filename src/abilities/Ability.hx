@@ -1,20 +1,15 @@
 package abilities;
 
 import com.haxepunk.Entity;
+import com.haxepunk.graphics.Image;
 
 class Ability extends Entity {
 	private var speed:Int;
-	private var direction:Int;
-	
-	public function new(x:Int, y:Int, dir:Int) {
-		super(x, y);
-		direction = dir;
-	}
+	private var angle:Float;
+	private var abilityImage:Image;
+	private var cooldown:Int;
 
-	public override function update():Void {
-		if(direction == 1) x += speed;
-		else if(direction == 2) x -= speed;
-		else if(direction == 3) y -= speed;
-		else if(direction == 4) y += speed;
+	public override function update() {
+		moveAtAngle(angle, speed);	
 	}
 }

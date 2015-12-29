@@ -12,8 +12,6 @@ class Main extends Engine {
 	}
 
 	public static function main() { 
-		new Main(); 
-		HXP.screen.scaleX = HXP.screen.width / 640;
-		HXP.screen.scaleY = HXP.screen.height / 360;
+		new Main();
 	}
 }
