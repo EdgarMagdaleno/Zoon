@@ -19,8 +19,8 @@ class Player1 extends Entity {
 	public override function new(x:Int, y:Int, ship:Int, n:Int, s1:Int, s2:Int, s3:Int):Void {
 		super(x, y);
 		angle = 0;
-		type = "P" + n;
-
+		type = "player";
+		set_name("hola");
 		speed = 10;
 		direction = 0;
 
@@ -29,10 +29,9 @@ class Player1 extends Entity {
 		Input.define("left", [Key.A]);
 		Input.define("right", [Key.D]);
 		Input.define("down", [Key.S]);
-		Input.define("click", [Key.SPACE]);
-		Input.define("a1", [Key.Y]);
-		Input.define("a2", [Key.U]);
-		Input.define("a3", [Key.I]);
+		Input.define("a1", [Key.Q]);
+		Input.define("a2", [Key.W]);
+		Input.define("a3", [Key.E]);
 
 
 		shipImage = new Image("graphics/ships/ship" + ship + ".png");
@@ -48,9 +47,9 @@ class Player1 extends Entity {
 		shipImage.angle = angle;
 
 		if(Input.check("forward")) moveTowards(Input.mouseX, Input.mouseY, speed);
-		if(Input.check("right")) HXP.rotateAround(this, new Entity(Input.mouseX, Input.mouseY), 1, true);
-		if(Input.check("left")) HXP.rotateAround(this, new Entity(Input.mouseX, Input.mouseY), -1, true);
-		if(Input.check("click")) ability.basic(x, y, angle);
+		if(Input.check("right")) moveAtAngle(angle + 90, speed);
+		if(Input.check("left")) moveAtAngle(angle - 90, speed);
+		if(Input.mouseDown) ability.basic(x, y, angle);
 		if(Input.check("a1")) ability.ability1(x, y, angle);
 		if(Input.check("a2")) ability.ability2(x, y, angle);
 		if(Input.check("a3")) ability.ability3(x, y, angle);

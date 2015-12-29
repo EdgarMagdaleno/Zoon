@@ -3,6 +3,7 @@ package entities;
 import com.haxepunk.Entity;
 import com.haxepunk.Scene;
 import com.haxepunk.HXP;
+import com.haxepunk.Engine;
 
 class AbilityManager {
 	private var owner:Int;
@@ -37,7 +38,10 @@ class AbilityManager {
 	}
 
 	public function ability1(x:Float, y:Float, angle:Float) {
-
+		if(canUse(flash.Lib.getTimer(), lastTime1, 400)) {
+			HXP.scene.add(new abilities.FireTackle(x, y, angle, owner));
+			lastTime1= flash.Lib.getTimer();
+		}
 	}
 
 	public function ability2(x:Float, y:Float, angle:Float) {
@@ -59,4 +63,5 @@ class AbilityManager {
 		else if(n == 3) return 300;
 		return 0;
 	}
+
 }

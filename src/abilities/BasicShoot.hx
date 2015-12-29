@@ -8,7 +8,7 @@ class BasicShoot extends Ability {
 	public override function new(x:Float, y:Float, a:Float, o:Int) {
 		super(x, y);
 		cooldown = 100;
-		speed = 15;
+		speed = 20;
 		angle = a;
 
 		abilityImage = new Image("graphics/basic.png");
