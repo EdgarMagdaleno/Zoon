@@ -5,7 +5,7 @@ import com.haxepunk.Scene;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 
-class FireTackle extends Ability {
+class FireTackle extends Projectile {
 	private var currentScene:Scene;
 	private var player:Entity;
 
@@ -14,7 +14,7 @@ class FireTackle extends Ability {
 		speed = 30;
 
 		currentScene = HXP.scene;
-		player = HXP.scene.getInstance("hola");
+		player = HXP.scene.getInstance("player");
 
 		cooldown = 200;
 		angle = a;
