@@ -8,8 +8,4 @@ class ScaledScene extends Scene {
 		HXP.screen.scaleX = HXP.screen.width / 640;
 		HXP.screen.scaleY = HXP.screen.height / 360;
 	}
-
-	public function hola() {
-		
-	}
 }

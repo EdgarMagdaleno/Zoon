@@ -7,6 +7,7 @@ import com.haxepunk.Engine;
 import com.haxepunk.Scene;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
+import com.haxepunk.graphics.Text;
 
 class PlayerMain extends Player {
 	private var shipImage:Image;
@@ -20,9 +21,9 @@ class PlayerMain extends Player {
 		angle = 0;
 		energy = 100;
 
-		a1 = 1;
-		a2 = 0;
-		a3 = 0;
+		a1 = s1;
+		a2 = s2;
+		a3 = s3;
 		setCostList();
 
 		Input.define("forward", [Key.W]);

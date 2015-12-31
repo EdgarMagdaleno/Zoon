@@ -13,8 +13,4 @@ class AreaOfEffect extends Entity {
 		if(flash.Lib.getTimer() - timeSpawn > duration)
 			HXP.scene.remove(this);
 	}
-
-	public static function que() {
-		
-	}
 }

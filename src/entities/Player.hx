@@ -7,9 +7,11 @@ import com.haxepunk.Engine;
 import com.haxepunk.Scene;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
+import com.haxepunk.graphics.Text;
 
 class Player extends Entity {
-	private var energy:Int;
+	public var energy:Int;
+
 	private var angle:Float;
 	private var a1:Int;
 	private var a2:Int;
@@ -19,16 +21,14 @@ class Player extends Entity {
 	private var cost2:Int;
 	private var cost3:Int;
 
-	private var costs:Array<Int>;
-
 	public function abilityBasic() {
 
 	}
 
 	public function ability1() {
-		if(canUse(costs[a1], energy)) {
+		if(canUse(cost1, energy)) {
 			useAbility(a1);
-			energy -= costs[a1];
+			energy -= cost1;
 		}
 	}
 
@@ -53,7 +53,7 @@ class Player extends Entity {
 	}
 
 	public function setCostList() {
-		costs = [
+		var costs = [
 			abilities.BasicShoot.getCost(),
 			abilities.Blizzard.getCost()
 		];
