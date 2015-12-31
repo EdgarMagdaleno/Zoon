@@ -8,18 +8,21 @@ import com.haxepunk.Scene;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Text;
+import haxe.Timer;
 
 class PlayerMain extends Player {
 	private var shipImage:Image;
 	private var speed:Int;
 
-	public override function new(x:Int, y:Int, ship:Int, n:Int, s1:Int, s2:Int, s3:Int) {
+	public override function new(x:Int, y:Int, ship:Int, n:Int, s1:Int, s2:Int, s3:Int, energyRegeneration:Int) {
 		super(x, y);
 		type = "player";
 		name = "player";
 		speed = 10;
 		angle = 0;
 		energy = 100;
+		regenEnergy = new Timer(energyRegeneration);
+		regenEnergy.run = function():Void { if(energy < 100) energy += 1; }; //codigo feo :(
 
 		a1 = s1;
 		a2 = s2;
@@ -45,6 +48,8 @@ class PlayerMain extends Player {
 	public override function update() {
 		angle = HXP.angle(x, y, Input.mouseX, Input.mouseY);
 		shipImage.angle = angle;
+
+
 		if(Input.check("forward")) moveTowards(Input.mouseX, Input.mouseY, speed);
 		if(Input.check("right")) moveAtAngle(angle + 90, speed);
 		if(Input.check("left")) moveAtAngle(angle - 90, speed);

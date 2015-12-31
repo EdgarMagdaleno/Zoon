@@ -10,8 +10,8 @@ class BattleScene extends ScaledScene {
 
 	public override function begin() {
 		setScale();
-		player = new entities.PlayerMain(100, 100, 1, 1, 1, 2, 3);
-		energy = new Text("Energy: ", 20, 20, 100, 50, {color:0x888800});
+		player = new entities.PlayerMain(100, 100, 1, 1, 1, 2, 3, 100);
+		energy = new Text("Energy: ", 20, 20, 200, 200, {color:0x888800});
 		add(player);
 		addGraphic(energy);
 	}

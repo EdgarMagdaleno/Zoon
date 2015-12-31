@@ -8,9 +8,11 @@ import com.haxepunk.Scene;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Text;
+import haxe.Timer;
 
 class Player extends Entity {
 	public var energy:Int;
+	private var regenEnergy:Timer;
 
 	private var angle:Float;
 	private var a1:Int;
