@@ -19,4 +19,8 @@ class BasicShoot extends Projectile {
 
 		graphic = abilityImage;
 	}
+
+	public static function getCost() {
+		return 5;
+	}
 }

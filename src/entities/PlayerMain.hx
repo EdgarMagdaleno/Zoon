@@ -18,15 +18,13 @@ class PlayerMain extends Player {
 		name = "player";
 		speed = 10;
 		angle = 0;
+		energy = 100;
 
-		a1 = 0;
+		a1 = 1;
 		a2 = 0;
 		a3 = 0;
+		setCostList();
 
-		lastTime1 = 0;
-		lastTime2 = 0;
-		lastTime3 = 0;
-		
 		Input.define("forward", [Key.W]);
 		Input.define("left", [Key.A]);
 		Input.define("right", [Key.D]);
@@ -50,7 +48,7 @@ class PlayerMain extends Player {
 		if(Input.check("right")) moveAtAngle(angle + 90, speed);
 		if(Input.check("left")) moveAtAngle(angle - 90, speed);
 
-		if(Input.mouseDown) useAbility(0);
+		if(Input.mouseDown) {}
 		if(Input.check("a1")) ability1();
 		if(Input.check("a2")) ability2();
 		if(Input.check("a3")) ability3();

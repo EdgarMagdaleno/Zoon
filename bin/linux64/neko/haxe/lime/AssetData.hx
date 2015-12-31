@@ -66,6 +66,8 @@ class AssetData {
 			type.set ("graphics/shipL.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/shipR.png", "graphics/shipR.png");
 			type.set ("graphics/shipR.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/10644524_1494181687557285_9150736328781483192_n.jpg", "graphics/10644524_1494181687557285_9150736328781483192_n.jpg");
+			type.set ("graphics/10644524_1494181687557285_9150736328781483192_n.jpg", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship4.png", "graphics/ships/ship4.png");
 			type.set ("graphics/ships/ship4.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship5.png", "graphics/ships/ship5.png");

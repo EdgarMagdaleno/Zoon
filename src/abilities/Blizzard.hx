@@ -14,4 +14,8 @@ class Blizzard extends AreaOfEffect {
 		abilityImage.centerOrigin();
 		graphic = abilityImage;
 	}
+
+	public static function getCost() {
+		return 70;
+	}
 }
