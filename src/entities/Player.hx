@@ -72,6 +72,7 @@ class Player extends Entity {
 			case 0: HXP.scene.add(new abilities.BasicShoot(x, y, angle));
 			case 1: HXP.scene.add(new abilities.Blizzard(Input.mouseX, Input.mouseY));
 			case 2: new abilities.Shotgun(x, y, angle);
+			case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
 		}
 	}
 
@@ -84,7 +85,8 @@ class Player extends Entity {
 		var costs = [
 			abilities.BasicShoot.getCost(),
 			abilities.Blizzard.getCost(),
-			abilities.Shotgun.getCost()
+			abilities.Shotgun.getCost(),
+			abilities.Reflector.getCost()
 		];
 
 		cost1 = costs[a1];

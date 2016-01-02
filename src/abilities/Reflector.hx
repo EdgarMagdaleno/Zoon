@@ -1,26 +1,27 @@
 package abilities;
 
+import com.haxepunk.HXP;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
+import com.haxepunk.graphics.Image.createRect;
 
-class BasicShoot extends Projectile {
+class Reflector extends Projectile {
 
 	public override function new(x:Float, y:Float, a:Float) {
 		super(x, y);
-		type = "Projectile";
-		name = "BasicShoot";
-		speed = 20;
+		distanceCap = 200;
+		distance = 0;
 		angle = a;
-		distanceCap = 0;
-	
-		abilityImage = new Image("graphics/basic.png");
+		speed = 20;
+
+		abilityImage = createRect(30, 100, 0xFFFFFF);
 		abilityImage.centerOrigin();
-		abilityImage.angle = a;
+		abilityImage.angle = angle;
 
 		graphic = abilityImage;
 	}
 
 	public static function getCost() {
-		return 5;
+		return 10;
 	}
 }
