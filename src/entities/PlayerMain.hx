@@ -21,15 +21,17 @@ class PlayerMain extends Player {
 		speed = 10;
 		angle = 0;
 		energy = 100;
+		delay = 200;
+		lastTime = 0;
+
 		regenEnergy = new Timer(energyRegeneration);
-		regenEnergy.run = function():Void { if(energy < 100) energy += 1; }; //codigo feo :(
+		regenEnergy.run = function():Void { if(energy < 100) energy += 1; };
 
 		a1 = s1;
 		a2 = s2;
 		a3 = s3;
 		setCostList();
 
-		Input.define("forward", [Key.W]);
 		Input.define("left", [Key.A]);
 		Input.define("right", [Key.D]);
 		Input.define("down", [Key.S]);
@@ -50,14 +52,14 @@ class PlayerMain extends Player {
 		shipImage.angle = angle;
 
 
-		if(Input.check("forward")) moveTowards(Input.mouseX, Input.mouseY, speed);
+		if(Input.rightMouseDown) moveTowards(Input.mouseX, Input.mouseY, speed);
 		if(Input.check("right")) moveAtAngle(angle + 90, speed);
 		if(Input.check("left")) moveAtAngle(angle - 90, speed);
 
-		if(Input.mouseDown) {}
-		if(Input.check("a1")) ability1();
-		if(Input.check("a2")) ability2();
-		if(Input.check("a3")) ability3();
+		if(Input.mouseDown) action(0);
+		if(Input.check("a1")) action(1);
+		if(Input.check("a2")) action(2);
+		if(Input.check("a3")) action(3);
 
 	}
 }
