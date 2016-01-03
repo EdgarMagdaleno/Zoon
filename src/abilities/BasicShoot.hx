@@ -15,8 +15,9 @@ class BasicShoot extends Projectile {
 	
 		abilityImage = new Image("graphics/basic.png");
 		abilityImage.centerOrigin();
+		
 		abilityImage.angle = a;
-
+		setHitboxTo(abilityImage);
 		graphic = abilityImage;
 	}
 
