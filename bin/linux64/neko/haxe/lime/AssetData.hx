@@ -38,6 +38,8 @@ class AssetData {
 			type.set ("font/04B_03__.ttf.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("font/04B_03__.ttf", "font/04B_03__.ttf");
 			type.set ("font/04B_03__.ttf", Reflect.field (AssetType, "font".toUpperCase ()));
+			path.set ("graphics/basicMask.png", "graphics/basicMask.png");
+			type.set ("graphics/basicMask.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/snow.png", "graphics/snow.png");
 			type.set ("graphics/snow.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/lockS.png", "graphics/lockS.png");
@@ -56,8 +58,10 @@ class AssetData {
 			type.set ("graphics/lock.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/fireTackle.png", "graphics/fireTackle.png");
 			type.set ("graphics/fireTackle.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("graphics/10154247_929622420419919_487197805496398282_n.jpg", "graphics/10154247_929622420419919_487197805496398282_n.jpg");
-			type.set ("graphics/10154247_929622420419919_487197805496398282_n.jpg", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/66649.png", "graphics/66649.png");
+			type.set ("graphics/66649.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/basica.png", "graphics/basica.png");
+			type.set ("graphics/basica.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/playl.png", "graphics/playl.png");
 			type.set ("graphics/playl.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/stars1.png", "graphics/stars1.png");
@@ -66,8 +70,8 @@ class AssetData {
 			type.set ("graphics/shipL.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/shipR.png", "graphics/shipR.png");
 			type.set ("graphics/shipR.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("graphics/10644524_1494181687557285_9150736328781483192_n.jpg", "graphics/10644524_1494181687557285_9150736328781483192_n.jpg");
-			type.set ("graphics/10644524_1494181687557285_9150736328781483192_n.jpg", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/Paralyzer.png", "graphics/Paralyzer.png");
+			type.set ("graphics/Paralyzer.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship4.png", "graphics/ships/ship4.png");
 			type.set ("graphics/ships/ship4.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship5.png", "graphics/ships/ship5.png");
@@ -78,6 +82,8 @@ class AssetData {
 			type.set ("graphics/ships/ship1.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship3.png", "graphics/ships/ship3.png");
 			type.set ("graphics/ships/ship3.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/basicb.png", "graphics/basicb.png");
+			type.set ("graphics/basicb.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			
 			
 			initialized = true;

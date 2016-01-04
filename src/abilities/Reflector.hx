@@ -12,6 +12,7 @@ class Reflector extends Projectile {
 		angle = a;
 		speed = 20;
 		type = "Reflector";
+		name = "Reflector";
 
 		abilityImage = Image.createRect(30, 100, 0xFFFFFF);
 		abilityImage.angle = angle;

@@ -11,6 +11,7 @@ import com.haxepunk.graphics.Text;
 import haxe.Timer;
 
 class Player extends Entity {
+	private var life:Int;
 	public var energy:Int;
 	private var regenEnergy:Timer;
 	private var delay:Int;
@@ -73,6 +74,7 @@ class Player extends Entity {
 			case 1: HXP.scene.add(new abilities.Blizzard(Input.mouseX, Input.mouseY));
 			case 2: new abilities.Shotgun(x, y, angle);
 			case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
+			case 4: HXP.scene.add(new abilities.Paralyzer(x, y, this));
 		}
 	}
 
@@ -86,11 +88,16 @@ class Player extends Entity {
 			abilities.BasicShoot.getCost(),
 			abilities.Blizzard.getCost(),
 			abilities.Shotgun.getCost(),
-			abilities.Reflector.getCost()
+			abilities.Reflector.getCost(),
+			0
 		];
 
 		cost1 = costs[a1];
 		cost2 = costs[a2];
 		cost3 = costs[a3];
+	}
+
+	public function takeDamage(n:Int) {
+		life -= n;
 	}
 }

@@ -9,6 +9,7 @@ import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Text;
 import haxe.Timer;
+import com.haxepunk.masks.Circle;
 
 class PlayerMain extends Player {
 	private var shipImage:Image;
@@ -18,26 +19,27 @@ class PlayerMain extends Player {
 		super(x, y);
 		speed = 10;
 		energy = 100;
+
 		delay = 200;
 
 		a1 = s1;
 		a2 = s2;
-		a3 = s3;
+		a3 = 4;
 
 		setRegen(er);
 		setCostList();
-		setGraphic(ship);
+		setGraphic(4);
 		defineInputs();
 		initialize();
 	}
 
 	public function setGraphic(ship:Int) {
+		centerOrigin();
 		shipImage = new Image("graphics/ships/ship" + ship + ".png");
-		shipImage.scale = 80 / shipImage.width;
+		shipImage.scale = 70 / shipImage.width;
 		shipImage.centerOrigin();
-
-		setHitbox(Std.int(shipImage.scaledWidth), Std.int(shipImage.scaledHeight), 0, 0);
 		graphic = shipImage;
+		mask = new Circle(40, -40, -40);
 	}
 
 	public function setRegen(er:Int) {
@@ -56,6 +58,7 @@ class PlayerMain extends Player {
 	public function initialize() {
 		type = "player";
 		name = "player";
+		centerOrigin();
 		angle = 0;
 		lastTime = 0;
 	}
