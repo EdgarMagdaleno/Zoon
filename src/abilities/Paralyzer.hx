@@ -4,9 +4,8 @@ import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Spritemap;
 
-class Paralyzer extends Entity {
+class Paralyzer extends Field {
 	private var sprites:Spritemap;
-	private var player:Entity;
 
 	public function new(x:Float, y:Float, e:Entity) {
 		super(x, y);
@@ -23,8 +22,7 @@ class Paralyzer extends Entity {
 
 	public override function update() {
 		if(sprites.complete) scene.remove(this);
-		x = player.x;
-		y = player.y;
+		super.update();
 	}
 
 }

@@ -75,6 +75,7 @@ class Player extends Entity {
 			case 2: new abilities.Shotgun(x, y, angle);
 			case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
 			case 4: HXP.scene.add(new abilities.Paralyzer(x, y, this));
+			case 5: HXP.scene.add(new abilities.Buster(x, y, angle));
 		}
 	}
 
@@ -89,6 +90,7 @@ class Player extends Entity {
 			abilities.Blizzard.getCost(),
 			abilities.Shotgun.getCost(),
 			abilities.Reflector.getCost(),
+			0,
 			0
 		];
 

@@ -2,9 +2,7 @@ package abilities;
 
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
-import com.haxepunk.masks.Pixelmask;
 import com.haxepunk.masks.Circle;
-import com.haxepunk.masks.Imagemask;
 
 class BasicShoot extends Projectile {
 
@@ -13,7 +11,7 @@ class BasicShoot extends Projectile {
 		centerOrigin();
 		type = "Projectile";
 		name = "BasicShoot";
-		speed = 20;
+		speed = 35;
 		angle = a;
 		distanceCap = 0;
 

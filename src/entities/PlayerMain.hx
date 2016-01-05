@@ -17,14 +17,14 @@ class PlayerMain extends Player {
 
 	public override function new(x:Int, y:Int, ship:Int, n:Int, s1:Int, s2:Int, s3:Int, er:Int) {
 		super(x, y);
-		speed = 10;
+		speed = 20;
 		energy = 100;
 
 		delay = 200;
 
 		a1 = s1;
 		a2 = s2;
-		a3 = 4;
+		a3 = 5;
 
 		setRegen(er);
 		setCostList();
@@ -52,7 +52,7 @@ class PlayerMain extends Player {
 	public function defineInputs() {
 		Input.define("a1", [Key.Q]);
 		Input.define("a2", [Key.W]);
-		Input.define("a3", [Key.E]);		
+		Input.define("a3", [Key.E]);
 	}
 
 	public function initialize() {
@@ -61,6 +61,7 @@ class PlayerMain extends Player {
 		centerOrigin();
 		angle = 0;
 		lastTime = 0;
+		HXP.scene.add(new entities.EnergyLevel(20, 20, this));
 	}
 
 	public override function update() {

@@ -52,6 +52,8 @@ class AssetData {
 			type.set ("graphics/back.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/playb.png", "graphics/playb.png");
 			type.set ("graphics/playb.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/buster.png", "graphics/buster.png");
+			type.set ("graphics/buster.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/stars2.png", "graphics/stars2.png");
 			type.set ("graphics/stars2.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/lock.png", "graphics/lock.png");
