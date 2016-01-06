@@ -11,12 +11,21 @@ import com.haxepunk.graphics.Text;
 import haxe.Timer;
 
 class Player extends Entity {
-	private var life:Int;
 	public var energy:Int;
+	public var life:Int;
+	public var speed:Int;
+	public var oSpeed:Int;
+
 	private var regenEnergy:Timer;
 	private var delay:Int;
 	private var lastTime:Int;
 	private var timeNow:Int;
+
+	private var paralyzed:Bool;
+	private var timerParalyze:Timer;
+
+	private var slowed:Bool;
+	private var timerSlow:Timer;
 
 	private var angle:Float;
 	private var a1:Int;
@@ -79,11 +88,6 @@ class Player extends Entity {
 		}
 	}
 
-	public function canUse(a:Int, b:Int) {
-		if(b < a) return false;
-		else return true;
-	}
-
 	public function setCostList() {
 		var costs = [
 			abilities.BasicShoot.getCost(),
@@ -101,5 +105,32 @@ class Player extends Entity {
 
 	public function takeDamage(n:Int) {
 		life -= n;
+	}
+
+	public function setRegen(er:Int) {
+		regenEnergy = new Timer(er);
+		regenEnergy.run = function():Void { 
+			if(energy < 100) energy += 1; 
+		};	
+	}
+
+	public function paralyze(n:Int) {
+		paralyzed = true;
+		timerParalyze = new Timer(n);
+		timerParalyze.run = function():Void { 
+			paralyzed = false;
+		};	
+	}
+
+	public function slow(n:Int, s:Int) {
+		if(!slowed) {
+			slowed = true;
+			speed -= s;
+			timerSlow = new Timer(n);
+			timerSlow.run = function():Void {
+				speed = oSpeed;
+				slowed = false;
+			};		
+		}
 	}
 }

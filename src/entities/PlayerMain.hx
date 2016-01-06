@@ -13,11 +13,11 @@ import com.haxepunk.masks.Circle;
 
 class PlayerMain extends Player {
 	private var shipImage:Image;
-	private var speed:Int;
 
 	public override function new(x:Int, y:Int, ship:Int, n:Int, s1:Int, s2:Int, s3:Int, er:Int) {
 		super(x, y);
 		speed = 20;
+		oSpeed = speed;
 		energy = 100;
 
 		delay = 200;
@@ -42,13 +42,6 @@ class PlayerMain extends Player {
 		mask = new Circle(40, -40, -40);
 	}
 
-	public function setRegen(er:Int) {
-		regenEnergy = new Timer(er);
-		regenEnergy.run = function():Void { 
-			if(energy < 100) energy += 1; 
-		};	
-	}
-
 	public function defineInputs() {
 		Input.define("a1", [Key.Q]);
 		Input.define("a2", [Key.W]);
@@ -61,17 +54,20 @@ class PlayerMain extends Player {
 		centerOrigin();
 		angle = 0;
 		lastTime = 0;
+		paralyzed = false;
 		HXP.scene.add(new entities.EnergyLevel(20, 20, this));
 	}
 
 	public override function update() {
 		angle = HXP.angle(x, y, Input.mouseX, Input.mouseY);
-		shipImage.angle = angle;
 
-		if(Input.rightMouseDown) moveTowards(Input.mouseX, Input.mouseY, speed);
-		if(Input.mouseDown) action(0);
-		if(Input.check("a1")) action(1);
-		if(Input.check("a2")) action(2);
-		if(Input.check("a3")) action(3);
+		if(!paralyzed) {
+			shipImage.angle = angle;
+			if(Input.rightMouseDown) moveTowards(Input.mouseX, Input.mouseY, speed);
+			if(Input.mouseDown) action(0);
+			if(Input.check("a1")) paralyze(2000);
+			if(Input.check("a2")) slow(2500, 8);
+			if(Input.check("a3")) action(3);			
+		}
 	}
 }
