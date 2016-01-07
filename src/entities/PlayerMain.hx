@@ -22,8 +22,8 @@ class PlayerMain extends Player {
 
 		delay = 200;
 
-		a1 = s1;
-		a2 = s2;
+		a1 = 1;
+		a2 = 1;
 		a3 = 5;
 
 		setRegen(er);
@@ -65,7 +65,7 @@ class PlayerMain extends Player {
 			shipImage.angle = angle;
 			if(Input.rightMouseDown) moveTowards(Input.mouseX, Input.mouseY, speed);
 			if(Input.mouseDown) action(0);
-			if(Input.check("a1")) paralyze(2000);
+			if(Input.check("a1")) action(1);
 			if(Input.check("a2")) slow(2500, 8);
 			if(Input.check("a3")) action(3);			
 		}
