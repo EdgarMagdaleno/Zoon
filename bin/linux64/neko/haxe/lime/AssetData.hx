@@ -60,8 +60,8 @@ class AssetData {
 			type.set ("graphics/lock.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/fireTackle.png", "graphics/fireTackle.png");
 			type.set ("graphics/fireTackle.png", Reflect.field (AssetType, "image".toUpperCase ()));
-			path.set ("graphics/66649.png", "graphics/66649.png");
-			type.set ("graphics/66649.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/create.png", "graphics/create.png");
+			type.set ("graphics/create.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/basica.png", "graphics/basica.png");
 			type.set ("graphics/basica.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/playl.png", "graphics/playl.png");
@@ -74,6 +74,8 @@ class AssetData {
 			type.set ("graphics/shipR.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/Paralyzer.png", "graphics/Paralyzer.png");
 			type.set ("graphics/Paralyzer.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/exit.png", "graphics/exit.png");
+			type.set ("graphics/exit.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship4.png", "graphics/ships/ship4.png");
 			type.set ("graphics/ships/ship4.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship5.png", "graphics/ships/ship5.png");
@@ -84,6 +86,8 @@ class AssetData {
 			type.set ("graphics/ships/ship1.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/ships/ship3.png", "graphics/ships/ship3.png");
 			type.set ("graphics/ships/ship3.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/join.png", "graphics/join.png");
+			type.set ("graphics/join.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/basicb.png", "graphics/basicb.png");
 			type.set ("graphics/basicb.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			

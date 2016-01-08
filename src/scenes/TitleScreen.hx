@@ -19,11 +19,14 @@ class TitleScreen extends ScaledScene {
 	private var title:Entity;
 	private var titleImage:Image;
 
-	private var play:Entity;
-	private var playImage:Image;
+	private var createb:Entity;
+	private var createImage:Image;
 
-	private var quit:Entity;
-	private var quitImage:Image;
+	private var join:Entity;
+	private var joinImage:Image;
+
+	private var exit:Entity;
+	private var exitImage:Image;
 
 	public override function begin() {
 		setScale();
@@ -40,22 +43,42 @@ class TitleScreen extends ScaledScene {
 		background.followCamera = true;
 
 		titleImage = new Image("graphics/entity.png");
-		titleImage.scale = 560 / titleImage.width;
+		titleImage.scale = 80 / titleImage.height;
 		titleImage.centerOrigin();
 
 		title = new Entity(320, 80, titleImage);
 		title.followCamera = true;
 
-		playImage = new Image("graphics/playb.png");
-		playImage.scale = 150 / playImage.width;
-		playImage.centerOrigin();
+		createImage = new Image("graphics/create.png");
+		var buttonScale = 60 / createImage.height;
+		createImage.scale = buttonScale;
+		createImage.centerOrigin();
 
-		play = new Entity(320, 180, playImage);
-		play.followCamera = true;
+		createb = new Entity(320, 170, createImage);
+		createb.followCamera = true;
+
+
+		joinImage = new Image("graphics/join.png");
+		joinImage.scale = buttonScale;
+		joinImage.centerOrigin();
+
+		join = new Entity(320, 240, joinImage);
+		join.followCamera = true;
+
+
+		exitImage = new Image("graphics/exit.png");
+		exitImage.scale = buttonScale;
+		exitImage.centerOrigin();
+
+		exit = new Entity(320, 310, exitImage);
+		exit.followCamera = true;
+
 
 		add(background);
 		add(title);
-		add(play);
+		add(createb);
+		add(join);
+		add(exit);
 	}
 
 	public override function update() {
