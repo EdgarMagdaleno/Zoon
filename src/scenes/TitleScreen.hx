@@ -30,17 +30,7 @@ class TitleScreen extends ScaledScene {
 
 	public override function begin() {
 		setScale();
-		HXP.stage.color = 0x0000000;
-		Input.define("play", [Key.ENTER]);
-
-		b1 = new Backdrop("graphics/stars1.png", true);
-		b1.scrollX = 0.4;
-
-		b2 = new Backdrop("graphics/stars2.png", true);
-		b2.scrollX = 0.6;
-
-		background = new Entity(0, 0, new Graphiclist([b1, b2]));
-		background.followCamera = true;
+		setBackground();
 
 		titleImage = new Image("graphics/entity.png");
 		titleImage.scale = 80 / titleImage.height;
@@ -73,8 +63,6 @@ class TitleScreen extends ScaledScene {
 		exit = new Entity(320, 310, exitImage);
 		exit.followCamera = true;
 
-
-		add(background);
 		add(title);
 		add(createb);
 		add(join);
@@ -83,7 +71,6 @@ class TitleScreen extends ScaledScene {
 
 	public override function update() {
 		camera.x += 2;
-		if(Input.check("play")) HXP.scene = new BattleScene();
 	}
 
 }
