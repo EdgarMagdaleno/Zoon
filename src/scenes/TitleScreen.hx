@@ -29,6 +29,7 @@ class TitleScreen extends ScaledScene {
 	private var exitImage:Image;
 
 	public override function begin() {
+		Input.define("enter", [Key.ENTER]);
 		setScale();
 		setBackground();
 
@@ -71,6 +72,7 @@ class TitleScreen extends ScaledScene {
 
 	public override function update() {
 		camera.x += 2;
+		if(Input.check("enter")) HXP.scene = new BattleScene();
 	}
 
 }

@@ -24,7 +24,7 @@ class PlayerMain extends Player {
 
 		a1 = 1;
 		a2 = 1;
-		a3 = 5;
+		a3 = 6;
 
 		setRegen(er);
 		setCostList();

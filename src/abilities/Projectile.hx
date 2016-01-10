@@ -12,6 +12,13 @@ class Projectile extends Entity {
 	private var distanceCap:Int;
 	private var damage:Int;
 
+	private var slow:Bool = false;
+	private var slowDur:Int;
+	private var slowStr:Int;
+
+	private var paralyze:Bool = false;
+	private var paralyzeDur:Int;
+
 	public override function update() {
 		distance += speed;
 		if(distance < distanceCap || distanceCap == 0) 
@@ -23,10 +30,16 @@ class Projectile extends Entity {
 			moveAtAngle(angle, speed, false);
 		}
 
+		doDamage(slow, paralyze);
+	}
+
+	public function doDamage(slow:Bool, paralyze:Bool) {
 		var e:Entity = collide("Player", x, y);
 		if(e != null) {
 			var p:entities.PlayerMain = cast(e, entities.PlayerMain);
 			p.takeDamage(damage);
-		}
+			if(slow) p.slow(slowDur, slowStr);
+			if(paralyze) p.paralyze(paralyzeDur);
+		}	
 	}
 }

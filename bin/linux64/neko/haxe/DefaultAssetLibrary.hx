@@ -95,6 +95,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
@@ -131,6 +133,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("font/04B_03__.ttf", __ASSET__font_04b_03___ttf);
 		type.set ("font/04B_03__.ttf", AssetType.FONT);
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -682,6 +686,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#end
 		
 		#if flash
@@ -728,6 +734,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("graphics/stars2.png", AssetType.IMAGE);
 		path.set ("graphics/lock.png", "graphics/lock.png");
 		type.set ("graphics/lock.png", AssetType.IMAGE);
+		path.set ("graphics/snowball.png", "graphics/snowball.png");
+		type.set ("graphics/snowball.png", AssetType.IMAGE);
 		path.set ("graphics/fireTackle.png", "graphics/fireTackle.png");
 		type.set ("graphics/fireTackle.png", AssetType.IMAGE);
 		path.set ("graphics/create.png", "graphics/create.png");
@@ -756,6 +764,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("graphics/ships/ship1.png", AssetType.IMAGE);
 		path.set ("graphics/ships/ship3.png", "graphics/ships/ship3.png");
 		type.set ("graphics/ships/ship3.png", AssetType.IMAGE);
+		path.set ("graphics/ships/ship6.png", "graphics/ships/ship6.png");
+		type.set ("graphics/ships/ship6.png", AssetType.IMAGE);
 		path.set ("graphics/join.png", "graphics/join.png");
 		type.set ("graphics/join.png", AssetType.IMAGE);
 		path.set ("graphics/basicb.png", "graphics/basicb.png");
@@ -839,6 +849,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "graphics/lock.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "graphics/snowball.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "graphics/fireTackle.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -879,6 +892,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "graphics/ships/ship3.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "graphics/ships/ship6.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "graphics/join.png";
@@ -937,6 +953,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("font/04B_03__.ttf", __ASSET__font_04b_03___ttf);
 		type.set ("font/04B_03__.ttf", AssetType.FONT);
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1720,6 +1738,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 #elseif html5
 
 
@@ -1733,6 +1753,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:keep #if display private #end class __ASSET__font_04b_03___ttf extends lime.text.Font { public function new () { super (); name = "04b03"; } } 
+
+
 
 
 
