@@ -23,7 +23,7 @@ class PlayerMain extends Player {
 		delay = 200;
 
 		a1 = 1;
-		a2 = 1;
+		a2 = 2;
 		a3 = 6;
 
 		setRegen(er);
@@ -55,6 +55,7 @@ class PlayerMain extends Player {
 		angle = 0;
 		lastTime = 0;
 		paralyzed = false;
+		slowed = false;
 		HXP.scene.add(new entities.EnergyLevel(20, 20, this));
 	}
 
@@ -65,9 +66,9 @@ class PlayerMain extends Player {
 			shipImage.angle = angle;
 			if(Input.rightMouseDown) moveTowards(Input.mouseX, Input.mouseY, speed);
 			if(Input.mouseDown) action(0);
-			if(Input.check("a1")) action(1);
-			if(Input.check("a2")) slow(2500, 8);
-			if(Input.check("a3")) action(3);			
+			if(Input.check("a1")) action(a1);
+			if(Input.check("a2")) action(a2);
+			if(Input.check("a3")) action(a3);			
 		}
 	}
 }

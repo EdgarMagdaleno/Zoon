@@ -23,7 +23,8 @@ class Projectile extends Entity {
 		distance += speed;
 		if(distance < distanceCap || distanceCap == 0) 
 			moveAtAngle(angle, speed, false);
-
+		else scene.remove(this);
+		
 		if(collide("Reflector", x, y) != null) {
 			angle += 170 + Math.random() * 40;
 			abilityImage.angle = angle;

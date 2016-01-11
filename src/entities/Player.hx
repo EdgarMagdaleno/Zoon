@@ -79,7 +79,7 @@ class Player extends Entity {
 
 	public function useAbility(n:Int) {
 		switch (n) {
-			case 0: HXP.scene.add(new abilities.BasicShoot(x, y, angle));
+			case 0: HXP.scene.add(new abilities.BasicShoot(x, y, angle, 0));
 			case 1: HXP.scene.add(new abilities.Blizzard(Input.mouseX, Input.mouseY));
 			case 2: new abilities.Shotgun(x, y, angle);
 			case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
