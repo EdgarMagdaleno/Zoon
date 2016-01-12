@@ -135,4 +135,12 @@ class Player extends Entity {
 			};		
 		}
 	}
+
+	public function speedUp(n:Int, s:Int) {
+		speed += n;
+		var speedUpTimer = new Timer(s);
+		speedUpTimer.run = function():Void {
+			speed -= n;
+		};	
+	}
 }
