@@ -143,4 +143,8 @@ class Player extends Entity {
 			speed -= n;
 		};	
 	}
+
+	public function heal(n:Int) {
+		life += 100 - life;
+	}
 }
