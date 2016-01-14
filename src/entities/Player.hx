@@ -144,6 +144,10 @@ class Player extends Entity {
 		};	
 	}
 
+	public function inmune() {
+		life = 100;
+	}
+
 	public function heal(n:Int) {
 		life += 100 - life;
 	}
