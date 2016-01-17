@@ -19,7 +19,7 @@ class BasicShoot extends Projectile {
 		abilityImage.centerOrigin();
 		abilityImage.angle = a;
 		graphic = abilityImage;
-		
+	
 		mask = new Circle(5, -5, -5);
 	}
 

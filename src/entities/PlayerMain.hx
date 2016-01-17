@@ -68,7 +68,7 @@ class PlayerMain extends Player {
 			if(Input.mouseDown) action(0);
 			if(Input.check("a1")) action(a1);
 			if(Input.check("a2")) action(a2);
-			if(Input.check("a3")) action(a3);			
+			if(Input.check("a3")) action(a3);
 		}
 	}
 }
