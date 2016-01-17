@@ -14,13 +14,8 @@ class ShipSelectScene extends ScaledScene {
 	private var ships = [];
 	private var length:Int = 6;
 	private var slider:Graphiclist;
-
 	private var sliders = [];
-	private var slider1:Entity;
-	private var slider2:Entity;
-	private var slider3:Entity;
-	private var slider4:Entity;
-	private var slider5:Entity;
+	private var buttonScale:Float;
 
 	public override function begin() {
 		setScale();
@@ -30,8 +25,9 @@ class ShipSelectScene extends ScaledScene {
 		initializeSlider();
 
 		getShips();
-		setOptions();
 		setSlider();
+		setButtons();
+		setStats();
 
 		var red:Image = new Image("graphics/red.png");
 		red.scale = 40 / red.height;
@@ -78,25 +74,47 @@ class ShipSelectScene extends ScaledScene {
 			add(sliders[i]);
 	}
 
-	public function setOptions() {
+	public function setButtons() {
 		var shipR:Image = new Image("graphics/shipR.png");
+		buttonScale = shipR.scale = 22 / shipR.height;
 		shipR.centerOrigin();
-		shipR.scale = 22 / shipR.height;
+		shipR.scale = buttonScale;
 		shipR.scrollX = 0;
 
 		var shipL:Image = new Image("graphics/shipL.png");
 		shipL.centerOrigin();
-		shipL.scale = 22 / shipL.height;
+		shipL.scale = buttonScale;
 		shipL.scrollX = 0;
 
 		var lock:Image = new Image("graphics/lock.png");
 		lock.centerOrigin();
-		lock.scale = 22 / lock.height;
+		lock.scale = buttonScale;
 		lock.scrollX = 0;
 
 		add(new Entity(200, 120, shipR));
 		add(new Entity(120, 120, shipL));
 		add(new Entity(160, 120, lock));
+	}
+
+	public function setStats() {
+		var life:Image = new Image("graphics/life.png");
+		life.centerOrigin();
+		life.scrollX = 0;
+		life.scale = buttonScale;
+
+		var energy:Image = new Image("graphics/energy.png");
+		energy.centerOrigin();
+		energy.scrollX = 0;
+		energy.scale = buttonScale;
+
+		var speed:Image = new Image("graphics/speed.png");
+		speed.centerOrigin();
+		speed.scrollX = 0;
+		speed.scale = buttonScale;
+
+		addGraphic(life, 0, 50, 150);
+		addGraphic(energy, 0, 50, 180);
+		addGraphic(speed, 0, 50, 210);
 	}
 
 	public function setSlider() {
