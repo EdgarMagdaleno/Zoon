@@ -102,6 +102,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
@@ -138,6 +140,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("font/04B_03__.ttf", __ASSET__font_04b_03___ttf);
 		type.set ("font/04B_03__.ttf", AssetType.FONT);
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -703,6 +707,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#end
 		
 		#if flash
@@ -733,6 +739,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("graphics/basicMask.png", AssetType.IMAGE);
 		path.set ("graphics/snow.png", "graphics/snow.png");
 		type.set ("graphics/snow.png", AssetType.IMAGE);
+		path.set ("graphics/point.png", "graphics/point.png");
+		type.set ("graphics/point.png", AssetType.IMAGE);
 		path.set ("graphics/lockS.png", "graphics/lockS.png");
 		type.set ("graphics/lockS.png", AssetType.IMAGE);
 		path.set ("graphics/entity.png", "graphics/entity.png");
@@ -741,6 +749,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("graphics/basic.png", AssetType.IMAGE);
 		path.set ("graphics/back.png", "graphics/back.png");
 		type.set ("graphics/back.png", AssetType.IMAGE);
+		path.set ("graphics/nopoint.png", "graphics/nopoint.png");
+		type.set ("graphics/nopoint.png", AssetType.IMAGE);
 		path.set ("graphics/playb.png", "graphics/playb.png");
 		type.set ("graphics/playb.png", AssetType.IMAGE);
 		path.set ("graphics/energy.png", "graphics/energy.png");
@@ -850,6 +860,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "graphics/snow.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "graphics/point.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "graphics/lockS.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -860,6 +873,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "graphics/back.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "graphics/nopoint.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "graphics/playb.png";
@@ -993,6 +1009,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("font/04B_03__.ttf", __ASSET__font_04b_03___ttf);
 		type.set ("font/04B_03__.ttf", AssetType.FONT);
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -1790,6 +1808,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 #elseif html5
 
 
@@ -1803,6 +1823,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:keep #if display private #end class __ASSET__font_04b_03___ttf extends lime.text.Font { public function new () { super (); name = "04b03"; } } 
+
+
 
 
 
