@@ -10,6 +10,7 @@ import com.haxepunk.utils.Key;
 import com.haxepunk.masks.Circle;
 import com.haxepunk.masks.Hitbox;
 import com.haxepunk.masks.Imagemask;
+import flash.utils.Timer;
 
 class ShipSelectScene extends ScaledScene {
 	private var p1index:Int;
@@ -32,21 +33,19 @@ class ShipSelectScene extends ScaledScene {
 	private var point:Image;
 	private var nopoint:Image;
 
-	private var elife:Entity;
-	private var eenergy:Entity;
-	private var espeed:Entity;
-
-	private var pointer:Entity;
+	private var lifeButton:Button;
+	private var energyButton:Button;
+	private var speedButton:Button;
+	private var shipRbutton:Button;
+	private var shipLbutton:Button;
+	private var lockButton:Button;
 
 	public override function begin() {
 		setScale();
 		setBackground();
 		p1index = 0;
-		p2index = 0;
 
-		initPointer();
 		initSlider();
-
 		getShips();
 		setSlider();
 		setButtons();
@@ -70,38 +69,32 @@ class ShipSelectScene extends ScaledScene {
 
 	public override function update() {
 		camera.x += 2;
-		pointer.x = Input.mouseX;
-		pointer.y = Input.mouseY;
-
-		if( Input.pressed("back") ) {
-			p1index++;
-			if(p1index == length) p1index = 0;
-			setSlider();
-		}
-
-		if( Input.pressed("next") ) {
-			p1index--;
-			if(p1index < 0) p1index = length - 1;
-			setSlider();
-		}
 
 		if( Input.mousePressed ) {
-			if( pointer.distanceFrom(elife, true) == 0 ) lifepoint++;
-			if( pointer.distanceFrom(eenergy, true) == 0 ) energypoint++;
-			if( pointer.distanceFrom(espeed, true) == 0 ) speedpoint++;
+			if( lifeButton.isPressed() ) lifepoint++;
+			if( energyButton.isPressed() ) energypoint++;
+			if( speedButton.isPressed() ) speedpoint++;
 			refreshStats();
+
+			if( shipRbutton.isPressed() ) {
+				p1index--;
+				if( p1index < 0 ) p1index = length - 1;
+				setSlider();
+			}
+
+			if( shipLbutton.isPressed() ) {
+				p1index++;
+				if( p1index == length ) p1index = 0;
+				setSlider();
+			}
 		}
 
 		if( Input.rightMousePressed ) {
-			if( pointer.distanceFrom(elife, true) == 0 ) lifepoint--;
-			if( pointer.distanceFrom(eenergy, true) == 0 ) energypoint--;
-			if( pointer.distanceFrom(espeed, true) == 0 ) speedpoint--;
-			refreshStats();		
+			if( lifeButton.isPressed() ) lifepoint--;
+			if( energyButton.isPressed() ) energypoint--;
+			if( speedButton.isPressed() ) speedpoint--;
+			refreshStats();
 		}
-	}
-
-	public function initPointer() {
-		pointer = new Entity(Input.mouseX, Input.mouseY, new Circle(1, 0, 0));
 	}
 
 	public function refreshStats() {
@@ -149,9 +142,14 @@ class ShipSelectScene extends ScaledScene {
 		lock.scale = buttonScale;
 		lock.scrollX = 0;
 
-		add(new Entity(200, 120, shipR));
-		add(new Entity(120, 120, shipL));
-		add(new Entity(160, 120, lock));
+		shipRbutton = new Button(200, 120, shipR);
+		add(shipRbutton);
+
+		shipLbutton = new Button(120, 120, shipL);
+		add(shipLbutton);
+
+		lockButton = new Button(160, 120, lock);
+		add(lockButton);
 	}
 
 	public function setStats() {
@@ -198,14 +196,14 @@ class ShipSelectScene extends ScaledScene {
 			add(speedpoints[i]);
 		}
 
-		elife = new Entity(50, 150, life, new Hitbox(38, 22, -19, -11));
-		add(elife);
+		lifeButton = new Button(50, 150, life);
+		add(lifeButton);
 
-		eenergy = new Entity(50, 180, energy, new Hitbox(38, 22, -19, -11));
-		add(eenergy);
+		energyButton = new Button(50, 180, energy);
+		add(energyButton);
 
-		espeed = new Entity(50, 210, speed, new Hitbox(38, 22, -19, -11));
-		add(espeed);
+		speedButton = new Button(50, 210, speed);
+		add(speedButton);
 	}
 
 	public function setSlider() {
