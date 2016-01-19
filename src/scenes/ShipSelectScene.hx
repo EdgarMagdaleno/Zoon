@@ -15,10 +15,8 @@ import flash.utils.Timer;
 class ShipSelectScene extends ScaledScene {
 	private var p1index:Int;
 	private var p2index:Int;
-	private var ships = [];
+	private var ships:Array<Image>;
 	private var length:Int = 6;
-	private var slider:Graphiclist;
-	private var sliders = [];
 	private var buttonScale:Float;
 
 	private var lifepoints = [];
@@ -40,17 +38,21 @@ class ShipSelectScene extends ScaledScene {
 	private var shipLbutton:Button;
 	private var lockButton:Button;
 
+	private var shipSlider:Slider;
+
 	public override function begin() {
 		setScale();
 		setBackground();
 		p1index = 0;
 
-		initSlider();
+		setTitle();
 		getShips();
 		setSlider();
 		setButtons();
 		setStats();
+	}
 
+	public function setTitle() {
 		var red:Image = new Image("graphics/red.png");
 		red.scale = 40 / red.height;
 		red.scrollX = 0;
@@ -62,9 +64,7 @@ class ShipSelectScene extends ScaledScene {
 		green.centerOrigin();
 
 		addGraphic(red, 0, 160, 30);
-		addGraphic(green, 0, 480, 30);
-		Input.define("next", [Key.RIGHT]);
-		Input.define("back", [Key.LEFT]);
+		addGraphic(green, 0, 480, 30);	
 	}
 
 	public override function update() {
@@ -76,17 +76,8 @@ class ShipSelectScene extends ScaledScene {
 			if( speedButton.isPressed() ) speedpoint++;
 			refreshStats();
 
-			if( shipRbutton.isPressed() ) {
-				p1index--;
-				if( p1index < 0 ) p1index = length - 1;
-				setSlider();
-			}
-
-			if( shipLbutton.isPressed() ) {
-				p1index++;
-				if( p1index == length ) p1index = 0;
-				setSlider();
-			}
+			if ( shipRbutton.isPressed() ) shipSlider.forward();
+			if ( shipLbutton.isPressed() ) shipSlider.backward();
 		}
 
 		if( Input.rightMousePressed ) {
@@ -111,18 +102,8 @@ class ShipSelectScene extends ScaledScene {
 			else speedpoints[i].graphic = nopoint;
 	}
 
-	public function initSlider() {
-		slider = new Graphiclist();
-		var tmp:Entity;
-
-		sliders[0] = new Entity(80, 80);
-		sliders[1] = new Entity(110, 80);
-		sliders[2] = new Entity(160, 80);
-		sliders[3] = new Entity(210, 80);
-		sliders[4] = new Entity(240, 80);
-
-		for (i in 0 ... sliders.length ) 
-			add(sliders[i]);
+	public function setSlider() {
+		shipSlider = new Slider(160, 80, ships, .25);
 	}
 
 	public function setButtons() {
@@ -206,88 +187,14 @@ class ShipSelectScene extends ScaledScene {
 		add(speedButton);
 	}
 
-	public function setSlider() {
-		slider.removeAll();
-
-		ships[p1index].scale = 50 / ships[p1index].height;
-
-		if(p1index >= 2 && p1index < length - 2) {
-
-			ships[p1index + 1].scale = 35 / ships[p1index + 1].height;
-			ships[p1index + 2].scale = 20 / ships[p1index + 2].height;
-			ships[p1index - 1].scale = 35 / ships[p1index - 1].height;
-			ships[p1index - 2].scale = 20 / ships[p1index - 2].height;
-
-			slider.add(ships[p1index - 2]);
-			slider.add(ships[p1index - 1]);
-			slider.add(ships[p1index]);
-			slider.add(ships[p1index + 1]);
-			slider.add(ships[p1index + 2]);
-
-		} else if (p1index == 1) {
-
-			ships[p1index + 1].scale = 35 / ships[p1index].height;
-			ships[p1index + 2].scale = 20 / ships[p1index].height;
-			ships[0].scale = 35 / ships[0].height;
-			ships[length - 1].scale = 20 / ships[length - 1].height;
-
-			slider.add(ships[length - 1]);
-			slider.add(ships[0]);
-			slider.add(ships[p1index]);
-			slider.add(ships[p1index + 1]);
-			slider.add(ships[p1index + 2]);
-
-		}else if (p1index == 0){
-
-			ships[p1index + 1].scale = 35 / ships[p1index + 1].height;
-			ships[p1index + 2].scale = 20 / ships[p1index + 2].height;
-			ships[length - 1].scale = 35 / ships[length - 1].height;
-			ships[length - 2].scale = 20 / ships[length - 2].height;
-
-			slider.add(ships[length - 2]);
-			slider.add(ships[length - 1]);
-			slider.add(ships[p1index]);
-			slider.add(ships[p1index + 1]);
-			slider.add(ships[p1index + 2]);
-
-		} else if (p1index == length - 2) {
-
-			ships[length - 1].scale = 35 / ships[length - 1].height;
-			ships[0].scale = 20 / ships[0].height;
-			ships[p1index - 1].scale = 35 / ships[p1index - 1].height;
-			ships[p1index - 2].scale = 20 / ships[p1index - 2].height;	
-
-			slider.add(ships[p1index - 2]);
-			slider.add(ships[p1index - 1]);
-			slider.add(ships[p1index]);
-			slider.add(ships[length - 1]);
-			slider.add(ships[0]);
-
-		} else if (p1index == length - 1) {
-
-			ships[0].scale = 35 / ships[0].height;
-			ships[1].scale = 20 / ships[1].height;
-			ships[p1index - 1].scale = 35 / ships[p1index - 1].height;
-			ships[p1index - 2].scale = 20 / ships[p1index - 2].height;
-
-			slider.add(ships[p1index - 2]);
-			slider.add(ships[p1index - 1]);
-			slider.add(ships[p1index]);
-			slider.add(ships[0]);
-			slider.add(ships[1]);
-		}
-
-		for (i in 0 ... sliders.length )
-			sliders[i].graphic = slider.get(i);
-	}
-
 	public function getShips() {
+		ships = new Array<Image>();
 		var tmp:Image;
 		for ( i in 0 ... length ) {
 			tmp = new Image("graphics/ships/ship" + (i + 1) + ".png");
 			tmp.centerOrigin();
 			tmp.scrollX = 0;
-			ships[i] = tmp;
+			ships.push(tmp);
 		}
 	}
 }
