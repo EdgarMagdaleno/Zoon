@@ -19,13 +19,13 @@ class ShipSelectScene extends ScaledScene {
 	private var length:Int = 6;
 	private var buttonScale:Float;
 
-	private var lifepoints = [];
+	private var lifepoints:Array<Entity>;
 	private var lifepoint:Int = 5;
 
-	private var energypoints = [];
+	private var energypoints:Array<Entity>;
 	private var energypoint:Int = 3;
 
-	private var speedpoints = [];
+	private var speedpoints:Array<Entity>;
 	private var speedpoint:Int = 0;
 
 	private var point:Image;
@@ -158,6 +158,10 @@ class ShipSelectScene extends ScaledScene {
 		nopoint.centerOrigin();
 		nopoint.scrollX = 0;
 		nopoint.scale = buttonScale;
+
+		lifepoints = new Array<Entity>();
+		energypoints = new Array<Entity>();
+		speedpoints = new Array<Entity>();
 
 		for ( i in 0 ... 10) {
 			if ( i < lifepoint ) lifepoints[i] = new Entity(80 + (i * 12), 150, point);
