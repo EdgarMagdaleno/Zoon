@@ -4,7 +4,7 @@ class Collar {
 	private var array = new Array();
 	public var index:Int;
 
-	public function new(a) {
+	public function new(a):Void {
 		array = a;
 		index = 0;
 	}
@@ -18,7 +18,7 @@ class Collar {
 		return array[index];
 	}
 
-	public function set(n) {
+	public function set(n):Void {
 		array[index] = n;
 	}
 
@@ -35,7 +35,6 @@ class Collar {
 	}
 
 	public function previousIndex(?steps:Int) {
-
 		if ( steps == null ) steps = 1;
 		if ( steps > array.length ) steps %= array.length;
 		if ( index - steps < 0 ) index = array.length - steps;

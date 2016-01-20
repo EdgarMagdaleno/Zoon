@@ -13,38 +13,32 @@ import com.haxepunk.masks.Imagemask;
 import flash.utils.Timer;
 
 class ShipSelectScene extends ScaledScene {
-	private var p1index:Int;
-	private var p2index:Int;
 	private var ships:Array<Image>;
 	private var ships2:Array<Image>;
 	private var length:Int = 6;
 	private var buttonScale:Float = 0.125;
 
 	private var lifepoints:Array<Entity>;
-	private var lifepoint:Int = 5;
+	private var lifepoints2:Array<Entity>;
+	private var lifepoint = [5, 5];
 
 	private var energypoints:Array<Entity>;
-	private var energypoint:Int = 3;
+	private var energypoints2:Array<Entity>;
+	private var energypoint = [5, 5];
 
 	private var speedpoints:Array<Entity>;
-	private var speedpoint:Int = 0;
+	private var speedpoints2:Array<Entity>;
+	private var speedpoint = [5, 5];
 
 	private var point:StaticImage;
 	private var nopoint:StaticImage;
 
-	private var lifeButton:Button;
-	private var energyButton:Button;
-	private var speedButton:Button;
-	private var shipRbutton:Button;
-	private var shipLbutton:Button;
-	private var lockButton:Button;
-
-	private var lifeButton2:Button;
-	private var energyButton2:Button;
-	private var speedButton2:Button;
-	private var shipRbutton2:Button;
-	private var shipLbutton2:Button;
-	private var lockButton2:Button;
+	private var lifeButton:Array<Button>;
+	private var energyButton:Array<Button>;
+	private var speedButton:Array<Button>;
+	private var shipRbutton:Array<Button>;
+	private var shipLbutton:Array<Button>;
+	private var lockButton:Array<Button>;
 
 	private var shipSlider:Slider;
 	private var shipSlider2:Slider;
@@ -52,7 +46,6 @@ class ShipSelectScene extends ScaledScene {
 	public override function begin() {
 		setScale();
 		setBackground();
-		p1index = 0;
 
 		setTitle();
 		getShips();
@@ -73,31 +66,52 @@ class ShipSelectScene extends ScaledScene {
 	public override function update() {
 		camera.x += 2;
 
-		if( lifeButton.isPressed() ) lifepoint++;
-		if( energyButton.isPressed() ) energypoint++;
-		if( speedButton.isPressed() ) speedpoint++;
+		if( lifeButton[0].isPressed() ) lifepoint[0]++;
+		if( energyButton[0].isPressed() ) energypoint[0]++;
+		if( speedButton[0].isPressed() ) speedpoint[0]++;
 
-		if( lifeButton.isRightPressed() ) lifepoint--;
-		if( energyButton.isRightPressed() ) energypoint--;
-		if( speedButton.isRightPressed() ) speedpoint--;
+		if( lifeButton[0].isRightPressed() ) lifepoint[0]--;
+		if( energyButton[0].isRightPressed() ) energypoint[0]--;
+		if( speedButton[0].isRightPressed() ) speedpoint[0]--;
+
+		if( lifeButton[1].isPressed() ) lifepoint[1]++;
+		if( energyButton[1].isPressed() ) energypoint[1]++;
+		if( speedButton[1].isPressed() ) speedpoint[1]++;
+
+		if( lifeButton[1].isRightPressed() ) lifepoint[1]--;
+		if( energyButton[1].isRightPressed() ) energypoint[1]--;
+		if( speedButton[1].isRightPressed() ) speedpoint[1]--;
 		refreshStats();
 
-		if ( shipRbutton.isPressed() ) shipSlider.forward();
-		if ( shipLbutton.isPressed() ) shipSlider.backward();
+		if ( shipRbutton[0].isPressed() ) shipSlider.forward();
+		if ( shipLbutton[0].isPressed() ) shipSlider.backward();
+
+		if ( shipRbutton[1].isPressed() ) shipSlider2.forward();
+		if ( shipLbutton[1].isPressed() ) shipSlider2.backward();
 	}
 
 	public function refreshStats() {
-		for ( i in 0 ... 10 )
-			if (i < lifepoint ) lifepoints[i].graphic = point;
+		for ( i in 0 ... 10 ) {
+			if (i < lifepoint[0] ) lifepoints[i].graphic = point;
 			else lifepoints[i].graphic = nopoint;
 
-		for ( i in 0 ... 10 )
-			if (i < energypoint ) energypoints[i].graphic = point;
+			if (i < energypoint[0] ) energypoints[i].graphic = point;
 			else energypoints[i].graphic = nopoint;
 
-		for ( i in 0 ... 10 )
-			if (i < speedpoint ) speedpoints[i].graphic = point;
+			if (i < speedpoint[0] ) speedpoints[i].graphic = point;
 			else speedpoints[i].graphic = nopoint;
+
+
+			if (i < lifepoint[1] ) lifepoints2[i].graphic = point;
+			else lifepoints2[i].graphic = nopoint;
+
+
+			if (i < energypoint[1] ) energypoints2[i].graphic = point;
+			else energypoints2[i].graphic = nopoint;
+
+			if (i < speedpoint[1] ) speedpoints2[i].graphic = point;
+			else speedpoints2[i].graphic = nopoint;
+		}
 	}
 
 	public function setSliders() {
@@ -106,69 +120,91 @@ class ShipSelectScene extends ScaledScene {
 	}
 
 	public function setButtons() {
-		shipRbutton = new Button(200, 120, new StaticImage("graphics/shipR.png", buttonScale));
-		shipRbutton2 = new Button(200 + 320, 120, new StaticImage("graphics/shipR.png", buttonScale));
-		add(shipRbutton);
-		add(shipRbutton2);
+		lifeButton = new Array<Button>();
+		energyButton = new Array<Button>();
+		speedButton = new Array<Button>();
+		shipRbutton = new Array<Button>();
+		shipLbutton = new Array<Button>();
+		lockButton = new Array<Button>();
 
-		shipLbutton = new Button(120, 120, new StaticImage("graphics/shipL.png", buttonScale));
-		shipLbutton2 = new Button(120 + 320, 120, new StaticImage("graphics/shipL.png", buttonScale));
-		add(shipLbutton);
-		add(shipLbutton2);
+		shipRbutton.push(new Button(200, 120, new StaticImage("graphics/shipR.png", buttonScale)));
+		shipRbutton.push(new Button(200 + 320, 120, new StaticImage("graphics/shipR.png", buttonScale)));
+		add(shipRbutton[0]);
+		add(shipRbutton[1]);
 
-		lockButton = new Button(160, 120, new StaticImage("graphics/lock.png", buttonScale));
-		lockButton2 = new Button(160 + 320, 120, new StaticImage("graphics/lock.png", buttonScale));
-		add(lockButton);
-		add(lockButton2);
+		shipLbutton.push(new Button(120, 120, new StaticImage("graphics/shipL.png", buttonScale)));
+		shipLbutton.push(new Button(120 + 320, 120, new StaticImage("graphics/shipL.png", buttonScale)));
+		add(shipLbutton[0]);
+		add(shipLbutton[1]);
 
-		lifeButton = new Button(50, 150, new StaticImage("graphics/life.png", buttonScale));
-		lifeButton2 = new Button(50 + 320, 150, new StaticImage("graphics/life.png", buttonScale));
-		add(lifeButton);
-		add(lifeButton2);
+		lockButton.push(new Button(160, 120, new StaticImage("graphics/lock.png", buttonScale)));
+		lockButton.push(new Button(160 + 320, 120, new StaticImage("graphics/lock.png", buttonScale)));
+		add(lockButton[0]);
+		add(lockButton[1]);
 
-		energyButton = new Button(50, 180, new StaticImage("graphics/energy.png", buttonScale));
-		energyButton2 = new Button(50 + 320, 180, new StaticImage("graphics/energy.png", buttonScale));
-		add(energyButton);
-		add(energyButton2);
+		lifeButton.push(new Button(50, 150, new StaticImage("graphics/life.png", buttonScale)));
+		lifeButton.push(new Button(50 + 320, 150, new StaticImage("graphics/life.png", buttonScale)));
+		add(lifeButton[0]);
+		add(lifeButton[1]);
 
-		speedButton = new Button(50, 210, new StaticImage("graphics/speed.png", buttonScale));
-		speedButton2 = new Button(50 + 320, 210, new StaticImage("graphics/speed.png", buttonScale));
-		add(speedButton);
-		add(speedButton2);
+		energyButton.push(new Button(50, 180, new StaticImage("graphics/energy.png", buttonScale)));
+		energyButton.push(new Button(50 + 320, 180, new StaticImage("graphics/energy.png", buttonScale)));
+		add(energyButton[0]);
+		add(energyButton[1]);
+
+		speedButton.push(new Button(50, 210, new StaticImage("graphics/speed.png", buttonScale)));
+		speedButton.push(new Button(50 + 320, 210, new StaticImage("graphics/speed.png", buttonScale)));
+		add(speedButton[0]);
+		add(speedButton[1]);
 	}
 
 	public function setStats() {
 		point = new StaticImage("graphics/point.png", buttonScale);
 		nopoint = new StaticImage("graphics/nopoint.png", buttonScale);
-		lifepoints = new Array<Entity>();
+		lifepoints = new Array<Entity>(); 
+		lifepoints2 = new Array<Entity>();
+
 		energypoints = new Array<Entity>();
+		energypoints2 = new Array<Entity>();
+
 		speedpoints = new Array<Entity>();
+		speedpoints2 = new Array<Entity>();
 
-		for ( i in 0 ... 10) {
-			if ( i < lifepoint ) lifepoints.push(new Entity(80 + (i * 12), 150, point));
-			else lifepoints.push(new Entity(80 + (i * 12), 150, nopoint));
+		for ( i in 0 ... 10 ) {
+			if (i < 5 ) {
+				lifepoints.push(new Entity(107 + (i * 12), 150, point));
+				lifepoints2.push(new Entity(107 + (i * 12) + 320, 150, point));
+			} else {
+				lifepoints.push(new Entity(107 + (i * 12), 150, nopoint));
+				lifepoints2.push(new Entity(107 + (i * 12) + 320, 150, nopoint));
+			}
 			add(lifepoints[i]);
-		}
+			add(lifepoints2[i]);
 
-		for ( i in 0 ... 10) {
-			if ( i < energypoint ) energypoints.push(new Entity(80 + (i * 12), 180, point));
-			else energypoints.push(new Entity(80 + (i * 12), 180, nopoint));
+			if (i < 5 ) {
+				energypoints.push(new Entity(107 + (i * 12), 180, point));
+				energypoints2.push(new Entity(107 + (i * 12) + 320, 180, point));
+			} else {
+				energypoints.push(new Entity(107 + (i * 12), 180, nopoint));
+				energypoints2.push(new Entity(107 + (i * 12) + 320, 180, nopoint));
+			}
 			add(energypoints[i]);
-		}
-
-		for ( i in 0 ... 10) {
-			if ( i < speedpoint ) speedpoints.push(new Entity(80 + (i * 12), 210, point));
-			else speedpoints.push(new Entity(80 + (i * 12), 210, nopoint));
+			add(energypoints2[i]);
+		
+			if (i < 5 ) {
+				speedpoints.push(new Entity(107 + (i * 12), 210, point));
+				speedpoints2.push(new Entity(107 + (i * 12) + 320, 210, point));
+			} else {
+				speedpoints.push(new Entity(107 + (i * 12), 210, nopoint));
+				speedpoints2.push(new Entity(107 + (i * 12) + 320, 210, nopoint));
+			}
 			add(speedpoints[i]);
+			add(speedpoints2[i]);
 		}
 	}
 
 	public function getShips() {
-		ships = new Array<Image>();
-		ships2 = new Array<Image>();
-		for ( i in 0 ... length ) {
-			ships.push(new StaticImage("graphics/ships/ship" + (i + 1) + ".png"));
-			ships2.push(new StaticImage("graphics/ships/ship" + (i + 1) + ".png"));
-		}
+		ships = [for( i in 0 ... length ) new StaticImage("graphics/ships/ship" + (i + 1) + ".png")];
+		ships2 = [for( i in 0 ... length ) new StaticImage("graphics/ships/ship" + (i + 1) + ".png")];
 	}
 }
