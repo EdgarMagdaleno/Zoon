@@ -66,21 +66,21 @@ class ShipSelectScene extends ScaledScene {
 	public override function update() {
 		camera.x += 2;
 
-		if( lifeButton[0].isPressed() ) lifepoint[0]++;
-		if( energyButton[0].isPressed() ) energypoint[0]++;
-		if( speedButton[0].isPressed() ) speedpoint[0]++;
+		if( lifeButton[0].isPressed() && lifepoint[0] < 10 ) lifepoint[0]++;
+		if( energyButton[0].isPressed() && energypoint[0] < 10 ) energypoint[0]++;
+		if( speedButton[0].isPressed() && speedpoint[0] < 10 ) speedpoint[0]++;
 
-		if( lifeButton[0].isRightPressed() ) lifepoint[0]--;
-		if( energyButton[0].isRightPressed() ) energypoint[0]--;
-		if( speedButton[0].isRightPressed() ) speedpoint[0]--;
+		if( lifeButton[0].isRightPressed() && lifepoint[0] > 0 ) lifepoint[0]--;
+		if( energyButton[0].isRightPressed() && energypoint[0] > 0 ) energypoint[0]--;
+		if( speedButton[0].isRightPressed() && speedpoint[0] > 0 ) speedpoint[0]--;
 
-		if( lifeButton[1].isPressed() ) lifepoint[1]++;
-		if( energyButton[1].isPressed() ) energypoint[1]++;
-		if( speedButton[1].isPressed() ) speedpoint[1]++;
+		if( lifeButton[1].isPressed() && lifepoint[1] < 10 ) lifepoint[1]++;
+		if( energyButton[1].isPressed() && energypoint[1] < 10 ) energypoint[1]++;
+		if( speedButton[1].isPressed() && speedpoint[1] < 10 ) speedpoint[1]++;
 
-		if( lifeButton[1].isRightPressed() ) lifepoint[1]--;
-		if( energyButton[1].isRightPressed() ) energypoint[1]--;
-		if( speedButton[1].isRightPressed() ) speedpoint[1]--;
+		if( lifeButton[1].isRightPressed() && lifepoint[1] > 0 ) lifepoint[1]--;
+		if( energyButton[1].isRightPressed() && energypoint[1] > 0 ) energypoint[1]--;
+		if( speedButton[1].isRightPressed() && speedpoint[1] > 0 ) speedpoint[1]--;
 		refreshStats();
 
 		if ( shipRbutton[0].isPressed() ) shipSlider.forward();
@@ -104,7 +104,6 @@ class ShipSelectScene extends ScaledScene {
 
 			if (i < lifepoint[1] ) lifepoints2[i].graphic = point;
 			else lifepoints2[i].graphic = nopoint;
-
 
 			if (i < energypoint[1] ) energypoints2[i].graphic = point;
 			else energypoints2[i].graphic = nopoint;
@@ -142,18 +141,18 @@ class ShipSelectScene extends ScaledScene {
 		add(lockButton[0]);
 		add(lockButton[1]);
 
-		lifeButton.push(new Button(50, 150, new StaticImage("graphics/life.png", buttonScale)));
-		lifeButton.push(new Button(50 + 320, 150, new StaticImage("graphics/life.png", buttonScale)));
+		lifeButton.push(new Button(75, 150, new StaticImage("graphics/life.png", buttonScale)));
+		lifeButton.push(new Button(75 + 320, 150, new StaticImage("graphics/life.png", buttonScale)));
 		add(lifeButton[0]);
 		add(lifeButton[1]);
 
-		energyButton.push(new Button(50, 180, new StaticImage("graphics/energy.png", buttonScale)));
-		energyButton.push(new Button(50 + 320, 180, new StaticImage("graphics/energy.png", buttonScale)));
+		energyButton.push(new Button(75, 180, new StaticImage("graphics/energy.png", buttonScale)));
+		energyButton.push(new Button(75 + 320, 180, new StaticImage("graphics/energy.png", buttonScale)));
 		add(energyButton[0]);
 		add(energyButton[1]);
 
-		speedButton.push(new Button(50, 210, new StaticImage("graphics/speed.png", buttonScale)));
-		speedButton.push(new Button(50 + 320, 210, new StaticImage("graphics/speed.png", buttonScale)));
+		speedButton.push(new Button(75, 210, new StaticImage("graphics/speed.png", buttonScale)));
+		speedButton.push(new Button(75 + 320, 210, new StaticImage("graphics/speed.png", buttonScale)));
 		add(speedButton[0]);
 		add(speedButton[1]);
 	}
