@@ -17,7 +17,7 @@ class ShipSelectScene extends ScaledScene {
 	private var p2index:Int;
 	private var ships:Array<Image>;
 	private var length:Int = 6;
-	private var buttonScale:Float;
+	private var buttonScale:Float = 0.125;
 
 	private var lifepoints:Array<Entity>;
 	private var lifepoint:Int = 5;
@@ -39,6 +39,7 @@ class ShipSelectScene extends ScaledScene {
 	private var lockButton:Button;
 
 	private var shipSlider:Slider;
+	private var shipSlider2:Slider;
 
 	public override function begin() {
 		setScale();
@@ -93,42 +94,32 @@ class ShipSelectScene extends ScaledScene {
 
 	public function setSlider() {
 		shipSlider = new Slider(160, 80, ships, .25);
+		shipSlider2 = new Slider(480, 80, ships, .25);
 	}
 
 	public function setButtons() {
-		var shipR:Image = new Image("graphics/shipR.png");
-		buttonScale = shipR.scale = 22 / shipR.height;
-		shipR.centerOrigin();
-		shipR.scale = buttonScale;
-		shipR.scrollX = 0;
-
-		var shipL:Image = new Image("graphics/shipL.png");
-		shipL.centerOrigin();
-		shipL.scale = buttonScale;
-		shipL.scrollX = 0;
-
-		var lock:Image = new Image("graphics/lock.png");
-		lock.centerOrigin();
-		lock.scale = buttonScale;
-		lock.scrollX = 0;
-
-		shipRbutton = new Button(200, 120, shipR);
+		shipRbutton = new Button(200, 120, new StaticImage("graphics/shipR.png", buttonScale));
 		add(shipRbutton);
 
-		shipLbutton = new Button(120, 120, shipL);
+		shipLbutton = new Button(120, 120, new StaticImage("graphics/shipL.png", buttonScale));
 		add(shipLbutton);
 
-		lockButton = new Button(160, 120, lock);
+		lockButton = new Button(160, 120, new StaticImage("graphics/lock.png", buttonScale));
 		add(lockButton);
+
+		lifeButton = new Button(50, 150, new StaticImage("graphics/life.png", buttonScale));
+		add(lifeButton);
+
+		energyButton = new Button(50, 180, new StaticImage("graphics/energy.png", buttonScale));
+		add(energyButton);
+
+		speedButton = new Button(50, 210, new StaticImage("graphics/speed.png", buttonScale));
+		add(speedButton);
 	}
 
 	public function setStats() {
-		var life = new StaticImage("graphics/life.png", buttonScale);
-		var energy = new StaticImage("graphics/energy.png", buttonScale);
-		var speed = new StaticImage("graphics/speed.png", buttonScale);
 		point = new StaticImage("graphics/point.png", buttonScale);
 		nopoint = new StaticImage("graphics/nopoint.png", buttonScale);
-
 		lifepoints = new Array<Entity>();
 		energypoints = new Array<Entity>();
 		speedpoints = new Array<Entity>();
@@ -150,15 +141,6 @@ class ShipSelectScene extends ScaledScene {
 			else speedpoints[i] = new Entity(80 + (i * 12), 210, nopoint);
 			add(speedpoints[i]);
 		}
-
-		lifeButton = new Button(50, 150, life);
-		add(lifeButton);
-
-		energyButton = new Button(50, 180, energy);
-		add(energyButton);
-
-		speedButton = new Button(50, 210, speed);
-		add(speedButton);
 	}
 
 	public function getShips() {
