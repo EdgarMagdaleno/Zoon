@@ -16,6 +16,7 @@ class ShipSelectScene extends ScaledScene {
 	private var p1index:Int;
 	private var p2index:Int;
 	private var ships:Array<Image>;
+	private var ships2:Array<Image>;
 	private var length:Int = 6;
 	private var buttonScale:Float = 0.125;
 
@@ -38,6 +39,13 @@ class ShipSelectScene extends ScaledScene {
 	private var shipLbutton:Button;
 	private var lockButton:Button;
 
+	private var lifeButton2:Button;
+	private var energyButton2:Button;
+	private var speedButton2:Button;
+	private var shipRbutton2:Button;
+	private var shipLbutton2:Button;
+	private var lockButton2:Button;
+
 	private var shipSlider:Slider;
 	private var shipSlider2:Slider;
 
@@ -48,7 +56,7 @@ class ShipSelectScene extends ScaledScene {
 
 		setTitle();
 		getShips();
-		setSlider();
+		setSliders();
 		setButtons();
 		setStats();
 	}
@@ -92,29 +100,41 @@ class ShipSelectScene extends ScaledScene {
 			else speedpoints[i].graphic = nopoint;
 	}
 
-	public function setSlider() {
+	public function setSliders() {
 		shipSlider = new Slider(160, 80, ships, .25);
-		shipSlider2 = new Slider(480, 80, ships, .25);
+		shipSlider2 = new Slider(480, 80, ships2, .25);
 	}
 
 	public function setButtons() {
 		shipRbutton = new Button(200, 120, new StaticImage("graphics/shipR.png", buttonScale));
+		shipRbutton2 = new Button(200 + 320, 120, new StaticImage("graphics/shipR.png", buttonScale));
 		add(shipRbutton);
+		add(shipRbutton2);
 
 		shipLbutton = new Button(120, 120, new StaticImage("graphics/shipL.png", buttonScale));
+		shipLbutton2 = new Button(120 + 320, 120, new StaticImage("graphics/shipL.png", buttonScale));
 		add(shipLbutton);
+		add(shipLbutton2);
 
 		lockButton = new Button(160, 120, new StaticImage("graphics/lock.png", buttonScale));
+		lockButton2 = new Button(160 + 320, 120, new StaticImage("graphics/lock.png", buttonScale));
 		add(lockButton);
+		add(lockButton2);
 
 		lifeButton = new Button(50, 150, new StaticImage("graphics/life.png", buttonScale));
+		lifeButton2 = new Button(50 + 320, 150, new StaticImage("graphics/life.png", buttonScale));
 		add(lifeButton);
+		add(lifeButton2);
 
 		energyButton = new Button(50, 180, new StaticImage("graphics/energy.png", buttonScale));
+		energyButton2 = new Button(50 + 320, 180, new StaticImage("graphics/energy.png", buttonScale));
 		add(energyButton);
+		add(energyButton2);
 
 		speedButton = new Button(50, 210, new StaticImage("graphics/speed.png", buttonScale));
+		speedButton2 = new Button(50 + 320, 210, new StaticImage("graphics/speed.png", buttonScale));
 		add(speedButton);
+		add(speedButton2);
 	}
 
 	public function setStats() {
@@ -125,32 +145,30 @@ class ShipSelectScene extends ScaledScene {
 		speedpoints = new Array<Entity>();
 
 		for ( i in 0 ... 10) {
-			if ( i < lifepoint ) lifepoints[i] = new Entity(80 + (i * 12), 150, point);
-			else lifepoints[i] = new Entity(80 + (i * 12), 150, nopoint);
+			if ( i < lifepoint ) lifepoints.push(new Entity(80 + (i * 12), 150, point));
+			else lifepoints.push(new Entity(80 + (i * 12), 150, nopoint));
 			add(lifepoints[i]);
 		}
 
 		for ( i in 0 ... 10) {
-			if ( i < energypoint ) energypoints[i] = new Entity(80 + (i * 12), 180, point);
-			else energypoints[i] = new Entity(80 + (i * 12), 180, nopoint);
+			if ( i < energypoint ) energypoints.push(new Entity(80 + (i * 12), 180, point));
+			else energypoints.push(new Entity(80 + (i * 12), 180, nopoint));
 			add(energypoints[i]);
 		}
 
 		for ( i in 0 ... 10) {
-			if ( i < speedpoint ) speedpoints[i] = new Entity(80 + (i * 12), 210, point);
-			else speedpoints[i] = new Entity(80 + (i * 12), 210, nopoint);
+			if ( i < speedpoint ) speedpoints.push(new Entity(80 + (i * 12), 210, point));
+			else speedpoints.push(new Entity(80 + (i * 12), 210, nopoint));
 			add(speedpoints[i]);
 		}
 	}
 
 	public function getShips() {
 		ships = new Array<Image>();
-		var tmp:Image;
+		ships2 = new Array<Image>();
 		for ( i in 0 ... length ) {
-			tmp = new Image("graphics/ships/ship" + (i + 1) + ".png");
-			tmp.centerOrigin();
-			tmp.scrollX = 0;
-			ships.push(tmp);
+			ships.push(new StaticImage("graphics/ships/ship" + (i + 1) + ".png"));
+			ships2.push(new StaticImage("graphics/ships/ship" + (i + 1) + ".png"));
 		}
 	}
 }

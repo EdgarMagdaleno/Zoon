@@ -15,12 +15,11 @@ class Slider extends Entity {
 	private var origin:Point;
 	private var collar:Collar;
 
-	public function new(x:Float, y:Float, array:Array<Image>, scale:Float) {
+	public function new(x:Float, y:Float, arr:Array<Image>, ?scale:Float = 1) {
 		super(x, y);
 		origin = new Point(x, y);
-		images = array;
-		if ( scale == null ) this.scale = 1;
-		else this.scale = scale;
+		images = arr;
+		this.scale = scale;
 
 		index = 0;
 		setUp();
@@ -32,7 +31,7 @@ class Slider extends Entity {
 			images[i].scale = scale;
 		}
 
-		collar = new Collar(images);
+		collar = new Collar(this.images);
 		entities = new Array<Entity>();
 
 		var tmp:Image;
