@@ -28,8 +28,8 @@ class ShipSelectScene extends ScaledScene {
 	private var speedpoints:Array<Entity>;
 	private var speedpoint:Int = 0;
 
-	private var point:Image;
-	private var nopoint:Image;
+	private var point:StaticImage;
+	private var nopoint:StaticImage;
 
 	private var lifeButton:Button;
 	private var energyButton:Button;
@@ -53,15 +53,9 @@ class ShipSelectScene extends ScaledScene {
 	}
 
 	public function setTitle() {
-		var red:Image = new Image("graphics/red.png");
+		var red = new StaticImage("graphics/red.png");
 		red.scale = 40 / red.height;
-		red.scrollX = 0;
-		red.centerOrigin();
-
-		var green:Image = new Image("graphics/green.png");
-		green.scale = 40 / red.height;
-		green.scrollX = 0;
-		green.centerOrigin();
+		var green = new StaticImage("graphics/green.png", 40 / red.height);
 
 		addGraphic(red, 0, 160, 30);
 		addGraphic(green, 0, 480, 30);	
@@ -70,22 +64,17 @@ class ShipSelectScene extends ScaledScene {
 	public override function update() {
 		camera.x += 2;
 
-		if( Input.mousePressed ) {
-			if( lifeButton.isPressed() ) lifepoint++;
-			if( energyButton.isPressed() ) energypoint++;
-			if( speedButton.isPressed() ) speedpoint++;
-			refreshStats();
+		if( lifeButton.isPressed() ) lifepoint++;
+		if( energyButton.isPressed() ) energypoint++;
+		if( speedButton.isPressed() ) speedpoint++;
 
-			if ( shipRbutton.isPressed() ) shipSlider.forward();
-			if ( shipLbutton.isPressed() ) shipSlider.backward();
-		}
+		if( lifeButton.isRightPressed() ) lifepoint--;
+		if( energyButton.isRightPressed() ) energypoint--;
+		if( speedButton.isRightPressed() ) speedpoint--;
+		refreshStats();
 
-		if( Input.rightMousePressed ) {
-			if( lifeButton.isPressed() ) lifepoint--;
-			if( energyButton.isPressed() ) energypoint--;
-			if( speedButton.isPressed() ) speedpoint--;
-			refreshStats();
-		}
+		if ( shipRbutton.isPressed() ) shipSlider.forward();
+		if ( shipLbutton.isPressed() ) shipSlider.backward();
 	}
 
 	public function refreshStats() {
@@ -134,30 +123,11 @@ class ShipSelectScene extends ScaledScene {
 	}
 
 	public function setStats() {
-		var life:Image = new Image("graphics/life.png");
-		life.centerOrigin();
-		life.scrollX = 0;
-		life.scale = buttonScale;
-
-		var energy:Image = new Image("graphics/energy.png");
-		energy.centerOrigin();
-		energy.scrollX = 0;
-		energy.scale = buttonScale;
-
-		var speed:Image = new Image("graphics/speed.png");
-		speed.centerOrigin();
-		speed.scrollX = 0;
-		speed.scale = buttonScale;
-
-		point = new Image("graphics/point.png");
-		point.centerOrigin();
-		point.scrollX = 0;
-		point.scale = buttonScale;
-
-		nopoint = new Image("graphics/nopoint.png");
-		nopoint.centerOrigin();
-		nopoint.scrollX = 0;
-		nopoint.scale = buttonScale;
+		var life = new StaticImage("graphics/life.png", buttonScale);
+		var energy = new StaticImage("graphics/energy.png", buttonScale);
+		var speed = new StaticImage("graphics/speed.png", buttonScale);
+		point = new StaticImage("graphics/point.png", buttonScale);
+		nopoint = new StaticImage("graphics/nopoint.png", buttonScale);
 
 		lifepoints = new Array<Entity>();
 		energypoints = new Array<Entity>();

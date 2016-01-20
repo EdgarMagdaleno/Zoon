@@ -16,7 +16,12 @@ class Button extends Entity {
 	}
 
 	public function isPressed():Bool {
-		if (distanceToRect(Input.mouseX, Input.mouseY, .1, .1) == 0) return true;
-		return false;
+		if ( distanceToRect(Input.mouseX, Input.mouseY, .1, .1) == 0 && Input.mousePressed ) return true;
+		else return false;
+	}
+
+	public function isRightPressed():Bool {
+		if ( distanceToRect(Input.mouseX, Input.mouseY, .1, .1) == 0 && Input.rightMousePressed ) return true;
+		else return false;
 	}
 }
