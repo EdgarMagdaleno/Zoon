@@ -8,9 +8,8 @@ import com.haxepunk.graphics.Graphiclist;
 
 class ScaledScene extends Scene {
 	public function setScale() {
-		HXP.screen.scaleX = HXP.screen.width / 640;
-		HXP.screen.scaleY = HXP.screen.height / 360;
-		Sys.sleep(.1);
+		HXP.screen.scaleX = 2;
+		HXP.screen.scaleY = 2;
 	}
 
 	public function setBackground() {

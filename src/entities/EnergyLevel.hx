@@ -5,14 +5,14 @@ import com.haxepunk.Entity;
 
 class EnergyLevel extends Entity {
 	private var energy:Int;
-	private var player:PlayerMain;
+	private var player:Player;
 	private var text:Text;
 
-	public override function new(x:Float, y:Float, e:PlayerMain) {
+	public override function new(x:Float, y:Float, e:Player) {
 		super(x, y);
 		player = e;
 		energy = player.energy;
-		text = new Text("Energy: " + Std.string(energy), 50, 50, {color:0x888800});
+		text = new Text("Energy: " + Std.string(energy), 2, 2, {color:0x888800});
 		graphic = text;
 	}
 

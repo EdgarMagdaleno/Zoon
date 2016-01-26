@@ -5,6 +5,7 @@ import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Ease;
 
 class Projectile extends Entity {
+	private var owner:Int;
 	private var speed:Int;
 	private var angle:Float;
 	private var abilityImage:Image;
@@ -31,13 +32,13 @@ class Projectile extends Entity {
 			moveAtAngle(angle, speed, false);
 		}
 
-		doDamage(slow, paralyze);
+		//doDamage(slow, paralyze);
 	}
 
 	public function doDamage(slow:Bool, paralyze:Bool) {
-		var e:Entity = collide("Player", x, y);
+		var e:Entity = collide("player" + owner, x, y);
 		if(e != null) {
-			var p:entities.PlayerMain = cast(e, entities.PlayerMain);
+			var p:entities.Player = cast(e, entities.Player);
 			p.takeDamage(damage);
 			if(slow) p.slow(slowDur, slowStr);
 			if(paralyze) p.paralyze(paralyzeDur);

@@ -4,10 +4,10 @@
 
  	<app file="Main" main="Main" path="bin" />
 
-	<window fps="60" background="0x333333" />
-	<window width="640" height="360" resizable="false"/>
+	<window fps="0" background="0x333333" />
+	<window width="1280" height="720" resizable="false"/>
 	<window fullscreen="true"/>
-	<window orientation="landscape" vsync="true" antialiasing="0" if="cpp" />
+	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />
 
 	<source path="src" />
 

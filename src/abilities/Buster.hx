@@ -20,7 +20,7 @@ class Buster extends Projectile {
 		sprites = new Spritemap("graphics/buster.png", 46, 46);
 		sprites.centerOrigin();
 		sprites.angle = a;
-		sprites.scale = 100 / sprites.width;
+		sprites.scale = 50 / sprites.width;
 		sprites.add("start", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 20, false);
 		sprites.add("body", [14, 15, 16, 17, 18], 20, true);
 		sprites.play("start");

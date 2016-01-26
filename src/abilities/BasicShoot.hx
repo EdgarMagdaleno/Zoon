@@ -6,21 +6,28 @@ import com.haxepunk.masks.Circle;
 
 class BasicShoot extends Projectile {
 
-	public override function new(x:Float, y:Float, a:Float, d:Int) {
+	public override function new(o:Int, x:Float, y:Float, a:Float, d:Int) {
 		super(x, y);
+		if(o == 1) owner = 2;
+		else owner = 1;
 		centerOrigin();
 		type = "Projectile";
 		name = "BasicShoot";
-		speed = 35;
+		speed = 30;
 		angle = a;
 		distanceCap = d;
 
 		abilityImage = new Image("graphics/basic.png");
 		abilityImage.centerOrigin();
 		abilityImage.angle = a;
+		abilityImage.scale = .70;
 		graphic = abilityImage;
 	
 		mask = new Circle(5, -5, -5);
+	}
+
+	public override function update() {
+		super.update();
 	}
 
 	public static function getCost() {

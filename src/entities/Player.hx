@@ -8,10 +8,13 @@ import com.haxepunk.Scene;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Text;
+import com.haxepunk.masks.Circle;
 import haxe.Timer;
 
 class Player extends Entity {
+	public var owner:Int;
 	public var energy:Int;
+	private var shipImage:Image;
 	public var life:Int;
 	public var speed:Int;
 	public var oSpeed:Int;
@@ -49,6 +52,15 @@ class Player extends Entity {
 		}
 	}
 
+	public function setGraphic(ship:Int) {
+		centerOrigin();
+		shipImage = new Image("graphics/ships/ship" + ship + ".png");
+		shipImage.scale = 40 / shipImage.width;
+		shipImage.centerOrigin();
+		graphic = shipImage;
+		mask = new Circle(40, -40, -40);
+	}
+
 	public function abilityBasic() {
 		if(energy >= 5) {
 			useAbility(0);
@@ -79,13 +91,13 @@ class Player extends Entity {
 
 	public function useAbility(n:Int) {
 		switch (n) {
-			case 0: HXP.scene.add(new abilities.BasicShoot(x, y, angle, 0));
+			case 0: HXP.scene.add(new abilities.BasicShoot(owner, x, y, angle, 0));
 			case 1: HXP.scene.add(new abilities.Blizzard(Input.mouseX, Input.mouseY));
-			case 2: new abilities.Shotgun(x, y, angle);
-			case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
+			case 2: new abilities.Shotgun(owner, x, y, angle);
+			/*case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
 			case 4: HXP.scene.add(new abilities.Paralyzer(x, y, this));
 			case 5: HXP.scene.add(new abilities.Buster(x, y, angle));
-			case 6: HXP.scene.add(new abilities.Snowball(x, y, angle));
+			case 6: HXP.scene.add(new abilities.Snowball(x, y, angle));*/
 		}
 	}
 
@@ -107,10 +119,11 @@ class Player extends Entity {
 
 	public function takeDamage(n:Int) {
 		life -= n;
+		trace("hola");
 	}
 
-	public function setRegen(er:Int) {
-		regenEnergy = new Timer(er);
+	public function setRegen() {
+		regenEnergy = new Timer(100);
 		regenEnergy.run = function():Void { 
 			if(energy < 100) energy += 1; 
 		};	

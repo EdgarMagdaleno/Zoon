@@ -11,7 +11,7 @@ class Slider extends Entity {
 	private var images:Array<Image>;
 	private var entities:Array<Entity>;
 	private var scale:Float;
-	private var index:Int;
+	public var index:Int;
 	private var origin:Point;
 	private var collar:Collar;
 

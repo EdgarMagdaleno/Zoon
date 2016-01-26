@@ -1,5 +1,0 @@
-package abilities;
-
-class EnergyField {
-	
-}

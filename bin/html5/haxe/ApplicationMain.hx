@@ -275,7 +275,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "1411",
+			build: "1571",
 			company: "Edgar Magdaleno",
 			file: "Main",
 			fps: 60,
@@ -293,13 +293,13 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: true,
 					hardware: false,
-					height: 360,
+					height: 720,
 					parameters: "{}",
 					resizable: false,
 					stencilBuffer: true,
 					title: "Zoon",
 					vsync: false,
-					width: 640,
+					width: 1280,
 					x: null,
 					y: null
 				},
@@ -317,7 +317,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 640, 360, "333333");
+		openfl.Lib.embed (null, 1280, 720, "333333");
 		#end
 		#else
 		create ();

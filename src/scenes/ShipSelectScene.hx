@@ -52,6 +52,8 @@ class ShipSelectScene extends ScaledScene {
 		setSliders();
 		setButtons();
 		setStats();
+
+		Input.define("enter", [Key.ENTER]);
 	}
 
 	public function setTitle() {
@@ -88,6 +90,10 @@ class ShipSelectScene extends ScaledScene {
 
 		if ( shipRbutton[1].isPressed() ) shipSlider2.forward();
 		if ( shipLbutton[1].isPressed() ) shipSlider2.backward();
+
+		if(Input.check("enter")) {
+			HXP.scene = new scenes.BattleScene(shipSlider.index, shipSlider2.index);
+		}
 	}
 
 	public function refreshStats() {
