@@ -125,7 +125,7 @@ class ApplicationMain {
 				
 			},
 			1280, 720, 
-			0, 
+			60, 
 			3355443,
 			(true ? flash.Lib.HARDWARE : 0) |
 			(false ? flash.Lib.ALLOW_SHADERS : 0) |
@@ -532,10 +532,10 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "1640",
+			build: "1671",
 			company: "Edgar Magdaleno",
 			file: "Main",
-			fps: 0,
+			fps: 60,
 			name: "Zoon",
 			orientation: "",
 			packageName: "com.edgarmagdaleno.zoon",

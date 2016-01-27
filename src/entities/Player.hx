@@ -12,7 +12,7 @@ import com.haxepunk.masks.Circle;
 import haxe.Timer;
 
 class Player extends Entity {
-	public var owner:Int;
+	public var target:Int;
 	public var energy:Int;
 	private var shipImage:Image;
 	public var life:Int;
@@ -91,9 +91,9 @@ class Player extends Entity {
 
 	public function useAbility(n:Int) {
 		switch (n) {
-			case 0: HXP.scene.add(new abilities.BasicShoot(owner, x, y, angle, 0));
+			case 0: HXP.scene.add(new abilities.BasicShoot(target, x, y, angle, 0));
 			case 1: HXP.scene.add(new abilities.Blizzard(Input.mouseX, Input.mouseY));
-			case 2: new abilities.Shotgun(owner, x, y, angle);
+			case 2: new abilities.Shotgun(target, x, y, angle);
 			/*case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
 			case 4: HXP.scene.add(new abilities.Paralyzer(x, y, this));
 			case 5: HXP.scene.add(new abilities.Buster(x, y, angle));
@@ -119,7 +119,7 @@ class Player extends Entity {
 
 	public function takeDamage(n:Int) {
 		life -= n;
-		trace("hola");
+		trace("hit");
 	}
 
 	public function setRegen() {
@@ -155,13 +155,5 @@ class Player extends Entity {
 		speedUpTimer.run = function():Void {
 			speed -= n;
 		};	
-	}
-
-	public function inmune() {
-		life = 100;
-	}
-
-	public function heal(n:Int) {
-		life += 100 - life;
 	}
 }

@@ -137,7 +137,7 @@ ApplicationMain.init = function() {
 	if(total == 0) ApplicationMain.start();
 };
 ApplicationMain.main = function() {
-	ApplicationMain.config = { build : "1571", company : "Edgar Magdaleno", file : "Main", fps : 60, name : "Zoon", orientation : "", packageName : "com.edgarmagdaleno.zoon", version : "1.0.0", windows : [{ antialiasing : 0, background : 3355443, borderless : false, depthBuffer : false, display : 0, fullscreen : true, hardware : false, height : 720, parameters : "{}", resizable : false, stencilBuffer : true, title : "Zoon", vsync : false, width : 1280, x : null, y : null}]};
+	ApplicationMain.config = { build : "1672", company : "Edgar Magdaleno", file : "Main", fps : 60, name : "Zoon", orientation : "", packageName : "com.edgarmagdaleno.zoon", version : "1.0.0", windows : [{ antialiasing : 0, background : 3355443, borderless : false, depthBuffer : false, display : 0, fullscreen : true, hardware : false, height : 720, parameters : "{}", resizable : false, stencilBuffer : true, title : "Zoon", vsync : false, width : 1280, x : null, y : null}]};
 };
 ApplicationMain.start = function() {
 	var hasMain = false;
@@ -5896,7 +5896,8 @@ $hxClasses["abilities.Projectile"] = abilities_Projectile;
 abilities_Projectile.__name__ = ["abilities","Projectile"];
 abilities_Projectile.__super__ = com_haxepunk_Entity;
 abilities_Projectile.prototype = $extend(com_haxepunk_Entity.prototype,{
-	speed: null
+	target: null
+	,speed: null
 	,angle: null
 	,abilityImage: null
 	,distance: null
@@ -5918,10 +5919,10 @@ abilities_Projectile.prototype = $extend(com_haxepunk_Entity.prototype,{
 		this.doDamage(this.slow,this.paralyze);
 	}
 	,doDamage: function(slow,paralyze) {
-		var e = this.collide("Player",this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y);
+		var e = this.collide("player" + this.target,this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y);
 		if(e != null) {
 			var p;
-			p = js_Boot.__cast(e , entities_PlayerMain);
+			p = js_Boot.__cast(e , entities_Player);
 			p.takeDamage(this.damage);
 			if(slow) p.slow(this.slowDur,this.slowStr);
 			if(paralyze) p.paralyze(this.paralyzeDur);
@@ -5929,13 +5930,15 @@ abilities_Projectile.prototype = $extend(com_haxepunk_Entity.prototype,{
 	}
 	,__class__: abilities_Projectile
 });
-var abilities_BasicShoot = function(x,y,a,d) {
+var abilities_BasicShoot = function(t,x,y,a,d) {
 	abilities_Projectile.call(this,x,y);
+	this.target = t;
+	this.damage = 10;
 	this.originX = this.width / 2 | 0;
 	this.originY = this.height / 2 | 0;
 	this.set_type("Projectile");
 	this.set_name("BasicShoot");
-	this.speed = 35;
+	this.speed = 30;
 	this.angle = a;
 	this.distanceCap = d;
 	this.abilityImage = new com_haxepunk_graphics_Image(com_haxepunk_HXP.renderMode == com_haxepunk_RenderMode.HARDWARE?(function($this) {
@@ -5956,6 +5959,7 @@ var abilities_BasicShoot = function(x,y,a,d) {
 	}(this)));
 	this.abilityImage.centerOrigin();
 	this.abilityImage.angle = a;
+	this.abilityImage._scale = .70;
 	this.set_graphic(this.abilityImage);
 	this.set_mask(new com_haxepunk_masks_Circle(5,-5,-5));
 };
@@ -5966,7 +5970,10 @@ abilities_BasicShoot.getCost = function() {
 };
 abilities_BasicShoot.__super__ = abilities_Projectile;
 abilities_BasicShoot.prototype = $extend(abilities_Projectile.prototype,{
-	__class__: abilities_BasicShoot
+	update: function() {
+		abilities_Projectile.prototype.update.call(this);
+	}
+	,__class__: abilities_BasicShoot
 });
 var abilities_Blizzard = function(x,y) {
 	abilities_AreaOfEffect.call(this,x,y);
@@ -6010,100 +6017,6 @@ abilities_Blizzard.prototype = $extend(abilities_AreaOfEffect.prototype,{
 	}
 	,__class__: abilities_Blizzard
 });
-var abilities_Buster = function(x,y,a) {
-	abilities_Projectile.call(this,x,y);
-	this.originX = this.width / 2 | 0;
-	this.originY = this.height / 2 | 0;
-	this.set_type("Projectile");
-	this.set_name("Buster");
-	this.speed = 25;
-	this.angle = a;
-	this.distanceCap = 0;
-	this.sprites = new com_haxepunk_graphics_Spritemap(com_haxepunk_HXP.renderMode == com_haxepunk_RenderMode.HARDWARE?(function($this) {
-		var $r;
-		var e = com_haxepunk_ds_Either.Right(new com_haxepunk_graphics_atlas_TileAtlas((function($this) {
-			var $r;
-			var data = com_haxepunk_graphics_atlas_AtlasData.getAtlasDataByName("graphics/buster.png",true);
-			$r = data;
-			return $r;
-		}($this))));
-		$r = e;
-		return $r;
-	}(this)):(function($this) {
-		var $r;
-		var e1 = com_haxepunk_ds_Either.Left(com_haxepunk_HXP.getBitmap("graphics/buster.png"));
-		$r = e1;
-		return $r;
-	}(this)),46,46);
-	this.sprites.centerOrigin();
-	this.sprites.angle = a;
-	this.sprites.set_scale(100 / this.sprites.get_width());
-	this.sprites.add("start",[0,1,2,3,4,5,6,7,8,9,10,11,12,13],20,false);
-	this.sprites.add("body",[14,15,16,17,18],20,true);
-	this.sprites.play("start");
-	this.set_graphic(this.sprites);
-};
-$hxClasses["abilities.Buster"] = abilities_Buster;
-abilities_Buster.__name__ = ["abilities","Buster"];
-abilities_Buster.__super__ = abilities_Projectile;
-abilities_Buster.prototype = $extend(abilities_Projectile.prototype,{
-	sprites: null
-	,update: function() {
-		abilities_Projectile.prototype.update.call(this);
-		if(this.sprites.get_currentAnim() == "start" && this.sprites.get_index() == 12) this.sprites.play("body");
-	}
-	,__class__: abilities_Buster
-});
-var abilities_Field = function(x,y,graphic,mask) {
-	com_haxepunk_Entity.call(this,x,y,graphic,mask);
-};
-$hxClasses["abilities.Field"] = abilities_Field;
-abilities_Field.__name__ = ["abilities","Field"];
-abilities_Field.__super__ = com_haxepunk_Entity;
-abilities_Field.prototype = $extend(com_haxepunk_Entity.prototype,{
-	player: null
-	,update: function() {
-		this.set_x(this.player.get_x());
-		this.set_y(this.player.get_y());
-	}
-	,__class__: abilities_Field
-});
-var abilities_Paralyzer = function(x,y,e) {
-	abilities_Field.call(this,x,y);
-	this.player = e;
-	this.sprites = new com_haxepunk_graphics_Spritemap(com_haxepunk_HXP.renderMode == com_haxepunk_RenderMode.HARDWARE?(function($this) {
-		var $r;
-		var e1 = com_haxepunk_ds_Either.Right(new com_haxepunk_graphics_atlas_TileAtlas((function($this) {
-			var $r;
-			var data = com_haxepunk_graphics_atlas_AtlasData.getAtlasDataByName("graphics/Paralyzer.png",true);
-			$r = data;
-			return $r;
-		}($this))));
-		$r = e1;
-		return $r;
-	}(this)):(function($this) {
-		var $r;
-		var e2 = com_haxepunk_ds_Either.Left(com_haxepunk_HXP.getBitmap("graphics/Paralyzer.png"));
-		$r = e2;
-		return $r;
-	}(this)),130,124);
-	this.sprites.centerOrigin();
-	this.sprites.set_scale(180 / this.sprites.get_width());
-	this.sprites.add("body",[0,1,2,3,4,5,6,7,8,9],40,false);
-	this.sprites.play("body");
-	this.set_graphic(this.sprites);
-};
-$hxClasses["abilities.Paralyzer"] = abilities_Paralyzer;
-abilities_Paralyzer.__name__ = ["abilities","Paralyzer"];
-abilities_Paralyzer.__super__ = abilities_Field;
-abilities_Paralyzer.prototype = $extend(abilities_Field.prototype,{
-	sprites: null
-	,update: function() {
-		if(this.sprites.complete) this._scene.remove(this);
-		abilities_Field.prototype.update.call(this);
-	}
-	,__class__: abilities_Paralyzer
-});
 var abilities_Reflector = function(x,y,a) {
 	abilities_Projectile.call(this,x,y);
 	this.distanceCap = 200;
@@ -6127,12 +6040,12 @@ abilities_Reflector.__super__ = abilities_Projectile;
 abilities_Reflector.prototype = $extend(abilities_Projectile.prototype,{
 	__class__: abilities_Reflector
 });
-var abilities_Shotgun = function(x,y,a) {
-	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(x,y,a,300));
-	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(x,y,a + 6,300));
-	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(x,y,a - 6,300));
-	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(x,y,a - 12,300));
-	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(x,y,a + 12,300));
+var abilities_Shotgun = function(o,x,y,a) {
+	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(o,x,y,a,300));
+	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(o,x,y,a + 6,300));
+	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(o,x,y,a - 6,300));
+	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(o,x,y,a - 12,300));
+	com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(o,x,y,a + 12,300));
 };
 $hxClasses["abilities.Shotgun"] = abilities_Shotgun;
 abilities_Shotgun.__name__ = ["abilities","Shotgun"];
@@ -6142,44 +6055,6 @@ abilities_Shotgun.getCost = function() {
 abilities_Shotgun.prototype = {
 	__class__: abilities_Shotgun
 };
-var abilities_Snowball = function(x,y,a) {
-	abilities_Projectile.call(this,x,y);
-	this.speed = 27;
-	this.angle = a;
-	this.distanceCap = 0;
-	this.damage = 5;
-	this.slow = true;
-	this.slowDur = 500;
-	this.slowStr = 5;
-	this.abilityImage = new com_haxepunk_graphics_Image(com_haxepunk_HXP.renderMode == com_haxepunk_RenderMode.HARDWARE?(function($this) {
-		var $r;
-		var e = com_haxepunk_ds_Either.Right(com_haxepunk_graphics_atlas_Atlas.loadImageAsRegion((function($this) {
-			var $r;
-			var data = com_haxepunk_graphics_atlas_AtlasData.getAtlasDataByName("graphics/snowball.png",true);
-			$r = data;
-			return $r;
-		}($this))));
-		$r = e;
-		return $r;
-	}(this)):(function($this) {
-		var $r;
-		var e1 = com_haxepunk_ds_Either.Left(com_haxepunk_HXP.getBitmap("graphics/snowball.png"));
-		$r = e1;
-		return $r;
-	}(this)));
-	this.abilityImage.centerOrigin();
-	this.abilityImage.angle = a;
-	this.set_graphic(this.abilityImage);
-};
-$hxClasses["abilities.Snowball"] = abilities_Snowball;
-abilities_Snowball.__name__ = ["abilities","Snowball"];
-abilities_Snowball.__super__ = abilities_Projectile;
-abilities_Snowball.prototype = $extend(abilities_Projectile.prototype,{
-	update: function() {
-		abilities_Projectile.prototype.update.call(this);
-	}
-	,__class__: abilities_Snowball
-});
 var com_haxepunk__$Entity_SolidType_$Impl_$ = {};
 $hxClasses["com.haxepunk._Entity.SolidType_Impl_"] = com_haxepunk__$Entity_SolidType_$Impl_$;
 com_haxepunk__$Entity_SolidType_$Impl_$.__name__ = ["com","haxepunk","_Entity","SolidType_Impl_"];
@@ -8555,38 +8430,6 @@ com_haxepunk_debug_LayerList.prototype = $extend(openfl_display_Sprite.prototype
 var com_haxepunk_ds_Either = $hxClasses["com.haxepunk.ds.Either"] = { __ename__ : true, __constructs__ : ["Left","Right"] };
 com_haxepunk_ds_Either.Left = function(v) { var $x = ["Left",0,v]; $x.__enum__ = com_haxepunk_ds_Either; $x.toString = $estr; return $x; };
 com_haxepunk_ds_Either.Right = function(v) { var $x = ["Right",1,v]; $x.__enum__ = com_haxepunk_ds_Either; $x.toString = $estr; return $x; };
-var com_haxepunk_graphics_Animation = function(name,frames,frameRate,loop,parent) {
-	if(loop == null) loop = true;
-	if(frameRate == null) frameRate = 0;
-	this.name = name;
-	this.frames = frames;
-	if(frameRate == 0) this.frameRate = com_haxepunk_HXP.assignedFrameRate; else this.frameRate = frameRate;
-	this.loop = loop;
-	this.frameCount = frames.length;
-	this.set_parent(parent);
-};
-$hxClasses["com.haxepunk.graphics.Animation"] = com_haxepunk_graphics_Animation;
-com_haxepunk_graphics_Animation.__name__ = ["com","haxepunk","graphics","Animation"];
-com_haxepunk_graphics_Animation.prototype = {
-	play: function(reset,reverse) {
-		if(reverse == null) reverse = false;
-		if(reset == null) reset = false;
-		if(this.name == null) this._parent.playAnimation(this,reset,reverse); else this._parent.play(this.name,reset,reverse);
-	}
-	,parent: null
-	,set_parent: function(value) {
-		this._parent = value;
-		return this._parent;
-	}
-	,name: null
-	,frames: null
-	,frameRate: null
-	,frameCount: null
-	,loop: null
-	,_parent: null
-	,__class__: com_haxepunk_graphics_Animation
-	,__properties__: {set_parent:"set_parent"}
-};
 var com_haxepunk_graphics_Canvas = function(width,height) {
 	this._maxHeight = 4000;
 	this._maxWidth = 4000;
@@ -9131,263 +8974,6 @@ com_haxepunk_graphics_Graphiclist.prototype = $extend(com_haxepunk_Graphic.proto
 	,_camera: null
 	,__class__: com_haxepunk_graphics_Graphiclist
 	,__properties__: $extend(com_haxepunk_Graphic.prototype.__properties__,{get_count:"get_count",get_children:"get_children"})
-});
-var com_haxepunk_graphics_Spritemap = function(source,frameWidth,frameHeight,cbFunc) {
-	if(frameHeight == null) frameHeight = 0;
-	if(frameWidth == null) frameWidth = 0;
-	this.complete = true;
-	this.rate = 1;
-	this._anims = new haxe_ds_StringMap();
-	this._timer = this._frame = 0;
-	this._rect = new openfl_geom_Rectangle(0,0,frameWidth,frameHeight);
-	{
-		var _g = source;
-		switch(_g[1]) {
-		case 0:
-			var bd = _g[2];
-			com_haxepunk_graphics_Image.call(this,com_haxepunk_HXP.renderMode == com_haxepunk_RenderMode.HARDWARE?(function($this) {
-				var $r;
-				var e = com_haxepunk_ds_Either.Right(com_haxepunk_graphics_atlas_Atlas.loadImageAsRegion((function($this) {
-					var $r;
-					var data = new com_haxepunk_graphics_atlas_AtlasData(bd);
-					$r = data;
-					return $r;
-				}($this))));
-				$r = e;
-				return $r;
-			}(this)):(function($this) {
-				var $r;
-				var e1 = com_haxepunk_ds_Either.Left(bd);
-				$r = e1;
-				return $r;
-			}(this)),this._rect);
-			break;
-		case 1:
-			var atlas = _g[2];
-			this._atlas = atlas;
-			if(frameWidth > this._atlas.get_width() || frameHeight > this._atlas.get_height()) throw new js__$Boot_HaxeError("Frame width and height can't be bigger than the source image dimension.");
-			this._atlas.prepare(frameWidth == 0?Std["int"](this._atlas.get_width()):frameWidth,frameHeight == 0?Std["int"](this._atlas.get_height()):frameHeight);
-			com_haxepunk_graphics_Image.call(this,(function($this) {
-				var $r;
-				var region = atlas.getRegion($this._frame);
-				$r = (function($this) {
-					var $r;
-					var e2 = com_haxepunk_ds_Either.Right(region);
-					$r = e2;
-					return $r;
-				}($this));
-				return $r;
-			}(this)),this._rect);
-			break;
-		}
-	}
-	if(this.blit) {
-		this._width = this._source.width;
-		this._height = this._source.height;
-	} else {
-		this._width = Std["int"](this._atlas.get_width());
-		this._height = Std["int"](this._atlas.get_height());
-	}
-	if(frameWidth == 0) this._rect.width = this._width;
-	if(frameHeight == 0) this._rect.height = this._height;
-	if(this._width % this._rect.width != 0 || this._height % this._rect.height != 0) throw new js__$Boot_HaxeError("Source image width and height should be multiples of the frame width and height.");
-	this._columns = Math.ceil(this._width / this._rect.width);
-	this._rows = Math.ceil(this._height / this._rect.height);
-	this._frameCount = this._columns * this._rows;
-	this.callbackFunc = cbFunc;
-	this.updateBuffer();
-	this.active = true;
-};
-$hxClasses["com.haxepunk.graphics.Spritemap"] = com_haxepunk_graphics_Spritemap;
-com_haxepunk_graphics_Spritemap.__name__ = ["com","haxepunk","graphics","Spritemap"];
-com_haxepunk_graphics_Spritemap.__super__ = com_haxepunk_graphics_Image;
-com_haxepunk_graphics_Spritemap.prototype = $extend(com_haxepunk_graphics_Image.prototype,{
-	complete: null
-	,callbackFunc: null
-	,rate: null
-	,updateBuffer: function(clearBefore) {
-		if(clearBefore == null) clearBefore = false;
-		if(this.blit) {
-			if(this._width > 0 && this._height > 0) {
-				this._rect.x = this._rect.width * (this._frame % this._columns);
-				this._rect.y = this._rect.height * (this._frame / this._columns | 0);
-				if(this._flipped) this._rect.x = this._width - this._rect.width - this._rect.x;
-			}
-			com_haxepunk_graphics_Image.prototype.updateBuffer.call(this,clearBefore);
-		} else this._region = this._atlas.getRegion(this._frame);
-	}
-	,update: function() {
-		if(this._anim != null && !this.complete) {
-			this._timer += (com_haxepunk_HXP.fixed?this._anim.frameRate / com_haxepunk_HXP.assignedFrameRate:this._anim.frameRate * com_haxepunk_HXP.elapsed) * this.rate;
-			if(this._timer >= 1) {
-				while(this._timer >= 1) {
-					this._timer--;
-					if(this.reverse) this._index += -1; else this._index += 1;
-					if(this.reverse && this._index == -1 || !this.reverse && this._index == this._anim.frameCount) {
-						if(this._anim.loop) {
-							if(this.reverse) this._index = this._anim.frameCount - 1; else this._index = 0;
-							if(this.callbackFunc != null) this.callbackFunc();
-						} else {
-							if(this.reverse) this._index = 0; else this._index = this._anim.frameCount - 1;
-							this.complete = true;
-							if(this.callbackFunc != null) this.callbackFunc();
-							break;
-						}
-					}
-				}
-				if(this._anim != null) this._frame = this._anim.frames[this._index] | 0;
-				this.updateBuffer();
-			}
-		}
-	}
-	,add: function(name,frames,frameRate,loop) {
-		if(loop == null) loop = true;
-		if(frameRate == null) frameRate = 0;
-		if(this._anims.get(name) != null) throw new js__$Boot_HaxeError("Cannot have multiple animations with the same name");
-		var _g1 = 0;
-		var _g = frames.length;
-		while(_g1 < _g) {
-			var i = _g1++;
-			frames[i] %= this._frameCount;
-			if(frames[i] < 0) frames[i] += this._frameCount;
-		}
-		var anim = new com_haxepunk_graphics_Animation(name,frames,frameRate,loop);
-		this._anims.set(name,anim);
-		anim.set_parent(this);
-		return anim;
-	}
-	,play: function(name,reset,reverse) {
-		if(reverse == null) reverse = false;
-		if(reset == null) reset = false;
-		if(name == null) name = "";
-		if(!reset && this._anim != null && this._anim.name == name) return this._anim;
-		if(!this._anims.exists(name)) {
-			this.stop(reset);
-			return null;
-		}
-		this._anim = this._anims.get(name);
-		this.reverse = reverse;
-		this.restart();
-		return this._anim;
-	}
-	,playFrames: function(frames,frameRate,loop,reset,reverse) {
-		if(reverse == null) reverse = false;
-		if(reset == null) reset = false;
-		if(loop == null) loop = true;
-		if(frameRate == null) frameRate = 0;
-		if(frames == null || frames.length == 0) {
-			this.stop(reset);
-			return null;
-		}
-		if(reset == false && this._anim != null && this._anim.frames == frames) return this._anim;
-		return this.playAnimation(new com_haxepunk_graphics_Animation(null,frames,frameRate,loop),reset,reverse);
-	}
-	,playAnimation: function(anim,reset,reverse) {
-		if(reverse == null) reverse = false;
-		if(reset == null) reset = false;
-		if(anim == null) throw new js__$Boot_HaxeError("No animation supplied");
-		if(reset == false && this._anim == anim) return anim;
-		this._anim = anim;
-		this.reverse = reverse;
-		this.restart();
-		return anim;
-	}
-	,restart: function() {
-		this._timer = this.reverse?this._index = this._anim.frames.length - 1:this._index = 0;
-		this._frame = this._anim.frames[this._index];
-		this.complete = false;
-		this.updateBuffer();
-	}
-	,stop: function(reset) {
-		if(reset == null) reset = false;
-		if(reset) this._frame = this.reverse?this._index = this._anim.frames.length - 1:this._index = 0;
-		this._anim = null;
-		this.complete = true;
-		this.updateBuffer();
-	}
-	,getFrame: function(column,row) {
-		if(row == null) row = 0;
-		if(column == null) column = 0;
-		return row % this._rows * this._columns + column % this._columns;
-	}
-	,setFrame: function(column,row) {
-		if(row == null) row = 0;
-		if(column == null) column = 0;
-		this._anim = null;
-		var frame = row % this._rows * this._columns + column % this._columns;
-		if(this._frame == frame) return;
-		this._frame = frame;
-		this.updateBuffer();
-	}
-	,randFrame: function() {
-		this.set_frame((function($this) {
-			var $r;
-			com_haxepunk_HXP._seed = com_haxepunk_HXP._seed * 16807.0 % 2147483647 | 0;
-			$r = com_haxepunk_HXP._seed / 2147483647 * $this._frameCount | 0;
-			return $r;
-		}(this)));
-	}
-	,setAnimFrame: function(name,index) {
-		var frames = this._anims.get(name).frames;
-		index = index % frames.length;
-		if(index < 0) index += frames.length;
-		this.set_frame(frames[index]);
-	}
-	,get_frame: function() {
-		return this._frame;
-	}
-	,set_frame: function(value) {
-		this._anim = null;
-		value %= this._frameCount;
-		if(value < 0) value = this._frameCount + value;
-		if(this._frame == value) return this._frame;
-		this._frame = value;
-		this.updateBuffer();
-		return this._frame;
-	}
-	,get_index: function() {
-		if(this._anim != null) return this._index; else return 0;
-	}
-	,set_index: function(value) {
-		if(this._anim == null) return 0;
-		value %= this._anim.frameCount;
-		if(this._index == value) return this._index;
-		this._index = value;
-		this._frame = this._anim.frames[this._index];
-		this.updateBuffer();
-		return this._index;
-	}
-	,reverse: null
-	,frameCount: null
-	,get_frameCount: function() {
-		return this._frameCount;
-	}
-	,columns: null
-	,get_columns: function() {
-		return this._columns;
-	}
-	,rows: null
-	,get_rows: function() {
-		return this._rows;
-	}
-	,currentAnim: null
-	,get_currentAnim: function() {
-		if(this._anim != null) return this._anim.name; else return "";
-	}
-	,_rect: null
-	,_width: null
-	,_height: null
-	,_columns: null
-	,_rows: null
-	,_frameCount: null
-	,_anims: null
-	,_anim: null
-	,_index: null
-	,_frame: null
-	,_timer: null
-	,_atlas: null
-	,__class__: com_haxepunk_graphics_Spritemap
-	,__properties__: $extend(com_haxepunk_graphics_Image.prototype.__properties__,{get_currentAnim:"get_currentAnim",get_rows:"get_rows",get_columns:"get_columns",get_frameCount:"get_frameCount",set_index:"set_index",get_index:"get_index",set_frame:"set_frame",get_frame:"get_frame"})
 });
 var com_haxepunk_graphics__$Text_StyleType_$Impl_$ = {};
 $hxClasses["com.haxepunk.graphics._Text.StyleType_Impl_"] = com_haxepunk_graphics__$Text_StyleType_$Impl_$;
@@ -12827,7 +12413,7 @@ var entities_EnergyLevel = function(x,y,e) {
 	com_haxepunk_Entity.call(this,x,y);
 	this.player = e;
 	this.energy = this.player.energy;
-	this.text = new com_haxepunk_graphics_Text("Energy: " + Std.string(this.energy),50,50,null,null,{ color : 8947712});
+	this.text = new com_haxepunk_graphics_Text("Energy: " + Std.string(this.energy),2,2,null,null,{ color : 8947712});
 	this.set_graphic(this.text);
 };
 $hxClasses["entities.EnergyLevel"] = entities_EnergyLevel;
@@ -12850,7 +12436,9 @@ $hxClasses["entities.Player"] = entities_Player;
 entities_Player.__name__ = ["entities","Player"];
 entities_Player.__super__ = com_haxepunk_Entity;
 entities_Player.prototype = $extend(com_haxepunk_Entity.prototype,{
-	energy: null
+	target: null
+	,energy: null
+	,shipImage: null
 	,life: null
 	,speed: null
 	,oSpeed: null
@@ -12889,6 +12477,35 @@ entities_Player.prototype = $extend(com_haxepunk_Entity.prototype,{
 			}
 		}
 	}
+	,setGraphic: function(ship) {
+		this.originX = this.width / 2 | 0;
+		this.originY = this.height / 2 | 0;
+		this.shipImage = new com_haxepunk_graphics_Image((function($this) {
+			var $r;
+			var s = "graphics/ships/ship" + ship + ".png";
+			$r = com_haxepunk_HXP.renderMode == com_haxepunk_RenderMode.HARDWARE?(function($this) {
+				var $r;
+				var e = com_haxepunk_ds_Either.Right(com_haxepunk_graphics_atlas_Atlas.loadImageAsRegion((function($this) {
+					var $r;
+					var data = com_haxepunk_graphics_atlas_AtlasData.getAtlasDataByName(s,true);
+					$r = data;
+					return $r;
+				}($this))));
+				$r = e;
+				return $r;
+			}($this)):(function($this) {
+				var $r;
+				var e1 = com_haxepunk_ds_Either.Left(com_haxepunk_HXP.getBitmap(s));
+				$r = e1;
+				return $r;
+			}($this));
+			return $r;
+		}(this)));
+		this.shipImage.set_scale(40 / this.shipImage.get_width());
+		this.shipImage.centerOrigin();
+		this.set_graphic(this.shipImage);
+		this.set_mask(new com_haxepunk_masks_Circle(40,-40,-40));
+	}
 	,abilityBasic: function() {
 		if(this.energy >= 5) {
 			this.useAbility(0);
@@ -12916,25 +12533,13 @@ entities_Player.prototype = $extend(com_haxepunk_Entity.prototype,{
 	,useAbility: function(n) {
 		switch(n) {
 		case 0:
-			com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y,this.angle,0));
+			com_haxepunk_HXP.engine._scene.add(new abilities_BasicShoot(this.target,this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y,this.angle,0));
 			break;
 		case 1:
 			com_haxepunk_HXP.engine._scene.add(new abilities_Blizzard(com_haxepunk_utils_Input.get_mouseX(),com_haxepunk_utils_Input.get_mouseY()));
 			break;
 		case 2:
-			new abilities_Shotgun(this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y,this.angle);
-			break;
-		case 3:
-			com_haxepunk_HXP.engine._scene.add(new abilities_Reflector(this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y,this.angle));
-			break;
-		case 4:
-			com_haxepunk_HXP.engine._scene.add(new abilities_Paralyzer(this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y,this));
-			break;
-		case 5:
-			com_haxepunk_HXP.engine._scene.add(new abilities_Buster(this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y,this.angle));
-			break;
-		case 6:
-			com_haxepunk_HXP.engine._scene.add(new abilities_Snowball(this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y,this.angle));
+			new abilities_Shotgun(this.target,this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y,this.angle);
 			break;
 		}
 	}
@@ -12946,10 +12551,11 @@ entities_Player.prototype = $extend(com_haxepunk_Entity.prototype,{
 	}
 	,takeDamage: function(n) {
 		this.life -= n;
+		haxe_Log.trace("hit",{ fileName : "Player.hx", lineNumber : 122, className : "entities.Player", methodName : "takeDamage"});
 	}
-	,setRegen: function(er) {
+	,setRegen: function() {
 		var _g = this;
-		this.regenEnergy = new haxe_Timer(er);
+		this.regenEnergy = new haxe_Timer(100);
 		this.regenEnergy.run = function() {
 			if(_g.energy < 100) _g.energy += 1;
 		};
@@ -12982,90 +12588,110 @@ entities_Player.prototype = $extend(com_haxepunk_Entity.prototype,{
 			_g.speed -= n;
 		};
 	}
-	,inmune: function() {
-		this.life = 100;
-	}
-	,heal: function(n) {
-		this.life += 100 - this.life;
-	}
 	,__class__: entities_Player
 });
-var entities_PlayerMain = function(x,y,ship,n,s1,s2,s3,er) {
+var entities_Player1 = function(x,y,ship,s1,s2,s3) {
 	entities_Player.call(this,x,y);
-	this.speed = 20;
+	this.target = 2;
+	this.life = 100;
+	this.speed = 5;
 	this.oSpeed = this.speed;
 	this.energy = 100;
 	this.delay = 200;
 	this.a1 = 1;
-	this.a2 = 2;
-	this.a3 = 6;
-	this.setRegen(er);
+	this.a2 = 1;
+	this.a3 = 1;
+	this.setRegen();
 	this.setCostList();
 	this.setGraphic(s1);
-	this.defineInputs();
-	this.initialize(n);
+	this.initialize();
 };
-$hxClasses["entities.PlayerMain"] = entities_PlayerMain;
-entities_PlayerMain.__name__ = ["entities","PlayerMain"];
-entities_PlayerMain.__super__ = entities_Player;
-entities_PlayerMain.prototype = $extend(entities_Player.prototype,{
-	shipImage: null
-	,setGraphic: function(ship) {
-		this.originX = this.width / 2 | 0;
-		this.originY = this.height / 2 | 0;
-		this.shipImage = new com_haxepunk_graphics_Image((function($this) {
-			var $r;
-			var s = "graphics/ships/ship" + ship + ".png";
-			$r = com_haxepunk_HXP.renderMode == com_haxepunk_RenderMode.HARDWARE?(function($this) {
-				var $r;
-				var e = com_haxepunk_ds_Either.Right(com_haxepunk_graphics_atlas_Atlas.loadImageAsRegion((function($this) {
-					var $r;
-					var data = com_haxepunk_graphics_atlas_AtlasData.getAtlasDataByName(s,true);
-					$r = data;
-					return $r;
-				}($this))));
-				$r = e;
-				return $r;
-			}($this)):(function($this) {
-				var $r;
-				var e1 = com_haxepunk_ds_Either.Left(com_haxepunk_HXP.getBitmap(s));
-				$r = e1;
-				return $r;
-			}($this));
-			return $r;
-		}(this)));
-		this.shipImage.set_scale(70 / this.shipImage.get_width());
-		this.shipImage.centerOrigin();
-		this.set_graphic(this.shipImage);
-		this.set_mask(new com_haxepunk_masks_Circle(40,-40,-40));
-	}
-	,defineInputs: function() {
-		com_haxepunk_utils_Input.define("a1",[81]);
-		com_haxepunk_utils_Input.define("a2",[87]);
-		com_haxepunk_utils_Input.define("a3",[69]);
-	}
-	,initialize: function(n) {
-		this.set_type("player" + n);
-		this.set_name("player" + n);
+$hxClasses["entities.Player1"] = entities_Player1;
+entities_Player1.__name__ = ["entities","Player1"];
+entities_Player1.__super__ = entities_Player;
+entities_Player1.prototype = $extend(entities_Player.prototype,{
+	initialize: function() {
+		this.set_type("player1");
+		this.set_name("player1");
 		this.originX = this.width / 2 | 0;
 		this.originY = this.height / 2 | 0;
 		this.angle = 0;
 		this.lastTime = 0;
 		this.paralyzed = false;
 		this.slowed = false;
-		com_haxepunk_HXP.engine._scene.add(new entities_EnergyLevel(20,20,this));
+		com_haxepunk_HXP.engine._scene.add(new entities_EnergyLevel(5,5,this));
 	}
 	,update: function() {
-		this.angle = com_haxepunk_HXP.angle(this.followCamera?this.x + com_haxepunk_HXP.camera.x:this.x,this.followCamera?this.y + com_haxepunk_HXP.camera.y:this.y,com_haxepunk_utils_Input.get_mouseX(),com_haxepunk_utils_Input.get_mouseY());
+		if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("w"))) this.moveAtAngle(90,this.speed,null,null);
+		if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("s"))) this.moveAtAngle(270,this.speed,null,null);
+		if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a"))) this.moveAtAngle(180,this.speed,null,null);
+		if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("d"))) this.moveAtAngle(0,this.speed,null,null);
 		if(!this.paralyzed) {
-			this.shipImage.angle = this.angle;
-			if(com_haxepunk_utils_Input.mouseDown) this.action(0);
-			if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a1"))) this.action(this.a1);
-			if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a2"))) this.action(this.a2);
-			if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a3"))) this.action(this.a3);
+			if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a1"))) this.action(0);
+			if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a2"))) this.action(0);
+			if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a3"))) this.action(0);
 		}
+		entities_Player.prototype.update.call(this);
 	}
-	,__class__: entities_PlayerMain
+	,__class__: entities_Player1
+});
+var entities_Player2 = function(x,y,ship,s1,s2,s3) {
+	entities_Player.call(this,x,y);
+	this.target = 1;
+	this.life = 100;
+	this.speed = 5;
+	this.oSpeed = this.speed;
+	this.energy = 100;
+	this.delay = 200;
+	this.a1 = 1;
+	this.a2 = 1;
+	this.a3 = 1;
+	this.setRegen();
+	this.setCostList();
+	this.setGraphic(s1);
+	this.initialize();
+};
+$hxClasses["entities.Player2"] = entities_Player2;
+entities_Player2.__name__ = ["entities","Player2"];
+entities_Player2.__super__ = entities_Player;
+entities_Player2.prototype = $extend(entities_Player.prototype,{
+	initialize: function() {
+		this.set_type("player2");
+		this.set_name("player2");
+		this.originX = this.width / 2 | 0;
+		this.originY = this.height / 2 | 0;
+		this.angle = 0;
+		this.lastTime = 0;
+		this.paralyzed = false;
+		this.slowed = false;
+		com_haxepunk_HXP.engine._scene.add(new entities_EnergyLevel(500,5,this));
+	}
+	,update: function() {
+		if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("up"))) {
+			this.moveAtAngle(90,this.speed,null,null);
+			this.angle = 90;
+		}
+		if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("down"))) {
+			this.moveAtAngle(270,this.speed,null,null);
+			this.angle = 270;
+		}
+		if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("left"))) {
+			this.moveAtAngle(180,this.speed,null,null);
+			this.angle = 180;
+		}
+		if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("right"))) {
+			this.moveAtAngle(0,this.speed,null,null);
+			this.angle = 0;
+		}
+		if(!this.paralyzed) {
+			if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a 1"))) this.action(0);
+			if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a 2"))) this.action(0);
+			if(com_haxepunk_utils_Input.check(com_haxepunk_utils__$Input_InputType_$Impl_$.fromLeft("a 3"))) this.action(0);
+		}
+		this.shipImage.angle = this.angle;
+		entities_Player.prototype.update.call(this);
+	}
+	,__class__: entities_Player2
 });
 var haxe_StackItem = $hxClasses["haxe.StackItem"] = { __ename__ : true, __constructs__ : ["CFunction","Module","FilePos","Method","LocalFunction"] };
 haxe_StackItem.CFunction = ["CFunction",0];
@@ -47427,6 +47053,7 @@ scenes_ScaledScene.prototype = $extend(com_haxepunk_Scene.prototype,{
 });
 var scenes_BattleScene = function(s1,s2) {
 	scenes_ScaledScene.call(this);
+	this.defineInputs();
 	this.s1 = s1;
 	this.s2 = s2;
 };
@@ -47438,7 +47065,25 @@ scenes_BattleScene.prototype = $extend(scenes_ScaledScene.prototype,{
 	,s2: null
 	,begin: function() {
 		this.setScale();
-		this.add(new entities_PlayerMain(100,100,this.s1,1,1,2,3,100));
+		this.setBackground();
+		this.add(new entities_Player1(100,100,1,1,1,1));
+		this.add(new entities_Player2(200,200,2,1,1,1));
+	}
+	,defineInputs: function() {
+		com_haxepunk_utils_Input.define("a1",[89]);
+		com_haxepunk_utils_Input.define("a2",[85]);
+		com_haxepunk_utils_Input.define("a3",[73]);
+		com_haxepunk_utils_Input.define("w",[87]);
+		com_haxepunk_utils_Input.define("a",[65]);
+		com_haxepunk_utils_Input.define("s",[83]);
+		com_haxepunk_utils_Input.define("d",[68]);
+		com_haxepunk_utils_Input.define("a 1",[97]);
+		com_haxepunk_utils_Input.define("a 2",[98]);
+		com_haxepunk_utils_Input.define("a 3",[99]);
+		com_haxepunk_utils_Input.define("up",[38]);
+		com_haxepunk_utils_Input.define("left",[37]);
+		com_haxepunk_utils_Input.define("down",[40]);
+		com_haxepunk_utils_Input.define("right",[39]);
 	}
 	,__class__: scenes_BattleScene
 });

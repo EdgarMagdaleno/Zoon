@@ -14,6 +14,8 @@ class Player1 extends Player {
 
 	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int) {
 		super(x, y);
+		target = 2;
+		life = 100;
 		speed = 5;
 		oSpeed = speed;
 		energy = 100;
@@ -23,6 +25,7 @@ class Player1 extends Player {
 		a2 = 1;
 		a3 = 1;
 
+		setRegen();
 		setCostList();
 		setGraphic(s1);
 		initialize();
@@ -50,5 +53,7 @@ class Player1 extends Player {
 			if(Input.check("a2")) action(0);
 			if(Input.check("a3")) action(0);
 		}
+
+		super.update();
 	}
 }
