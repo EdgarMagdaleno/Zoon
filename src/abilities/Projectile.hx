@@ -40,6 +40,7 @@ class Projectile extends Entity {
 		if(e != null) {
 			var p:entities.Player = cast(e, entities.Player);
 			p.takeDamage(damage);
+			scene.remove(this);
 			if(slow) p.slow(slowDur, slowStr);
 			if(paralyze) p.paralyze(paralyzeDur);
 		}	

@@ -35,7 +35,6 @@ class Player2 extends Player {
 	public function initialize() {
 		type = "player2";
 		name = "player2";
-		centerOrigin();
 		angle = 0;
 		lastTime = 0;
 		paralyzed = false;

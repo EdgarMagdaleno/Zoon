@@ -54,9 +54,10 @@ class Player extends Entity {
 
 	public function setGraphic(ship:Int) {
 		centerOrigin();
+		followCamera = false;
 		shipImage = new Image("graphics/ships/ship" + ship + ".png");
-		shipImage.scale = 40 / shipImage.width;
 		shipImage.centerOrigin();
+		shipImage.scale = 40 / shipImage.width;
 		graphic = shipImage;
 		mask = new Circle(40, -40, -40);
 	}

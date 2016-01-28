@@ -12,7 +12,8 @@ class EnergyLevel extends Entity {
 		super(x, y);
 		player = e;
 		energy = player.energy;
-		text = new Text("Energy: " + Std.string(energy), 2, 2, {color:0x888800});
+		text = new Text("Energy: " + Std.string(energy), {color:0x888800});
+		text.scale = .5;
 		graphic = text;
 	}
 

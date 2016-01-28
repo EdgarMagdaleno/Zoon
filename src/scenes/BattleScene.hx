@@ -25,6 +25,11 @@ class BattleScene extends ScaledScene {
 		add(new entities.Player2(200, 200, 2, 1, 1, 1));
 	}
 
+	public override function update() {
+		camera.x += 2;
+		super.update();
+	}
+
 	public function defineInputs() {
 		Input.define("a1", [Key.Y]);
 		Input.define("a2", [Key.U]);

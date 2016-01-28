@@ -34,19 +34,35 @@ class Player1 extends Player {
 	public function initialize() {
 		type = "player1";
 		name = "player1";
-		centerOrigin();
 		angle = 0;
 		lastTime = 0;
 		paralyzed = false;
 		slowed = false;
-		HXP.scene.add(new entities.EnergyLevel(5, 5, this));
+
+		HXP.scene.add(new entities.Life(5, 5, this));
+		HXP.scene.add(new entities.EnergyLevel(5, 15, this));
 	}
 
 	public override function update() {
-		if(Input.check("w")) this.moveAtAngle(90, speed);
-		if(Input.check("s")) this.moveAtAngle(270, speed);
-		if(Input.check("a")) this.moveAtAngle(180, speed);
-		if(Input.check("d")) this.moveAtAngle(0, speed);
+		if(Input.check("w")) {
+			moveAtAngle(90, speed);
+			angle = 90;
+		}
+
+		if(Input.check("s")) {
+			moveAtAngle(270, speed);
+			angle = 270;
+		}
+
+		if(Input.check("a")) {
+			moveAtAngle(180, speed);
+			angle = 180;
+		}
+
+		if(Input.check("d")) {
+			moveAtAngle(0, speed);
+			angle = 0;
+		}
 
 		if(!paralyzed) {
 			if(Input.check("a1")) action(0);
@@ -54,6 +70,7 @@ class Player1 extends Player {
 			if(Input.check("a3")) action(0);
 		}
 
+		shipImage.angle = angle;
 		super.update();
 	}
 }
