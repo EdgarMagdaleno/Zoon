@@ -13,7 +13,7 @@ class Slider extends Entity {
 	private var scale:Float;
 	public var index:Int;
 	private var origin:Point;
-	private var collar:Collar;
+	public var collar:Collar;
 
 	public function new(x:Float, y:Float, arr:Array<Image>, ?scale:Float = 1) {
 		super(x, y);

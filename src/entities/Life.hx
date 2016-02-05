@@ -7,11 +7,15 @@ import com.haxepunk.graphics.Image;
 class Life extends Entity {
 	private var player:Player;
 	private var rect:Image;
-	public function new(x:Float, y:Float, e:Player) {
+	public function new(x:Float, y:Float, e:Player, ?reverse = false) {
 		super(x, y);
 		player = e;
-
-		rect = createRect(player.life * 3, 5, 0x00FF00);
+		
+		rect = createRect(Std.int(player.life * 6.7), 10, 0x00FF00);
+		if( reverse ) {
+			rect.angle = 180;
+			rect.y += 10;
+		}
 		graphic = rect;
 	}
 

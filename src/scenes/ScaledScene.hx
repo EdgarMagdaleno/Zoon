@@ -8,8 +8,7 @@ import com.haxepunk.graphics.Graphiclist;
 
 class ScaledScene extends Scene {
 	public function setScale() {
-		HXP.screen.scaleX = 2;
-		HXP.screen.scaleY = 2;
+
 	}
 
 	public function setBackground() {
@@ -21,9 +20,11 @@ class ScaledScene extends Scene {
 
 		b1 = new Backdrop("graphics/stars1.png", true);
 		b1.scrollX = 0.4;
+		b1.scale = 1.2;
 
 		b2 = new Backdrop("graphics/stars2.png", true);
 		b2.scrollX = 0.6;
+		b2.scale = 1.2;
 
 		background = new Entity(0, 0, new Graphiclist([b1, b2]));
 		background.followCamera = true;

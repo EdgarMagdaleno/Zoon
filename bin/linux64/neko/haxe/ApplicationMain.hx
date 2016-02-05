@@ -432,27 +432,19 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("graphics/debug/console_debug.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/debug/console_output.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("graphics/debug/console_play.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("graphics/debug/console_visible.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/debug/console_pause.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/debug/console_debug.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/debug/console_step.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/debug/console_output.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -464,12 +456,20 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("font/04B_03__.ttf.png");
+		urls.push ("graphics/debug/console_step.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/debug/console_pause.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("04b03");
 		types.push (lime.Assets.AssetType.FONT);
+		
+		
+		urls.push ("font/04B_03__.ttf.png");
+		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		
@@ -532,7 +532,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "1712",
+			build: "1792",
 			company: "Edgar Magdaleno",
 			file: "Main",
 			fps: 60,

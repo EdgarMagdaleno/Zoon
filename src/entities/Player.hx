@@ -54,12 +54,10 @@ class Player extends Entity {
 
 	public function setGraphic(ship:Int) {
 		centerOrigin();
-		followCamera = false;
-		shipImage = new Image("graphics/ships/ship" + ship + ".png");
-		shipImage.centerOrigin();
-		shipImage.scale = 40 / shipImage.width;
+		followCamera = true;
+		shipImage = new StaticImage("graphics/ships/ship" + ship + ".png", .50);
 		graphic = shipImage;
-		mask = new Circle(40, -40, -40);
+		mask = new Circle(20, -20, -20);
 	}
 
 	public function abilityBasic() {
@@ -120,7 +118,6 @@ class Player extends Entity {
 
 	public function takeDamage(n:Int) {
 		life -= n;
-		trace("hit");
 	}
 
 	public function setRegen() {

@@ -21,12 +21,11 @@ class BattleScene extends ScaledScene {
 	public override function begin() {
 		setScale();
 		setBackground();
-		add(new entities.Player1(100, 100, 1, 1, 1, 1));
-		add(new entities.Player2(200, 200, 2, 1, 1, 1));
+		add(new entities.Player1(100, 100, s1 + 1, 1, 1, 1));
+		add(new entities.Player2(200, 200, s2 + 1, 1, 1, 1));
 	}
 
 	public override function update() {
-		camera.x += 2;
 		super.update();
 	}
 

@@ -16,7 +16,7 @@ class ShipSelectScene extends ScaledScene {
 	private var ships:Array<Image>;
 	private var ships2:Array<Image>;
 	private var length:Int = 6;
-	private var buttonScale:Float = 0.125;
+	private var buttonScale:Float = 0.25;
 
 	private var lifepoints:Array<Entity>;
 	private var lifepoints2:Array<Entity>;
@@ -58,11 +58,11 @@ class ShipSelectScene extends ScaledScene {
 
 	public function setTitle() {
 		var red = new StaticImage("graphics/red.png");
-		red.scale = 40 / red.height;
-		var green = new StaticImage("graphics/green.png", 40 / red.height);
+		red.scale = 80 / red.height;
+		var green = new StaticImage("graphics/green.png", 80 / red.height);
 
-		addGraphic(red, 0, 160, 30);
-		addGraphic(green, 0, 480, 30);	
+		addGraphic(red, 0, 320, 60);
+		addGraphic(green, 0, 960, 60);	
 	}
 
 	public override function update() {
@@ -92,7 +92,7 @@ class ShipSelectScene extends ScaledScene {
 		if ( shipLbutton[1].isPressed() ) shipSlider2.backward();
 
 		if(Input.check("enter")) {
-			HXP.scene = new scenes.BattleScene(shipSlider.index, shipSlider2.index);
+			HXP.scene = new scenes.BattleScene(shipSlider.collar.index, shipSlider2.collar.index);
 		}
 	}
 
@@ -120,8 +120,8 @@ class ShipSelectScene extends ScaledScene {
 	}
 
 	public function setSliders() {
-		shipSlider = new Slider(160, 80, ships, .25);
-		shipSlider2 = new Slider(480, 80, ships2, .25);
+		shipSlider = new Slider(320, 160, ships, .5);
+		shipSlider2 = new Slider(320 + 640, 160, ships2, .5);
 	}
 
 	public function setButtons() {
@@ -132,33 +132,33 @@ class ShipSelectScene extends ScaledScene {
 		shipLbutton = new Array<Button>();
 		lockButton = new Array<Button>();
 
-		shipRbutton.push(new Button(200, 120, new StaticImage("graphics/shipR.png", buttonScale)));
-		shipRbutton.push(new Button(200 + 320, 120, new StaticImage("graphics/shipR.png", buttonScale)));
+		shipRbutton.push(new Button(400, 240, new StaticImage("graphics/shipR.png", buttonScale)));
+		shipRbutton.push(new Button(400 + 640, 240, new StaticImage("graphics/shipR.png", buttonScale)));
 		add(shipRbutton[0]);
 		add(shipRbutton[1]);
 
-		shipLbutton.push(new Button(120, 120, new StaticImage("graphics/shipL.png", buttonScale)));
-		shipLbutton.push(new Button(120 + 320, 120, new StaticImage("graphics/shipL.png", buttonScale)));
+		shipLbutton.push(new Button(240, 240, new StaticImage("graphics/shipL.png", buttonScale)));
+		shipLbutton.push(new Button(240 + 640, 240, new StaticImage("graphics/shipL.png", buttonScale)));
 		add(shipLbutton[0]);
 		add(shipLbutton[1]);
 
-		lockButton.push(new Button(160, 120, new StaticImage("graphics/lock.png", buttonScale)));
-		lockButton.push(new Button(160 + 320, 120, new StaticImage("graphics/lock.png", buttonScale)));
+		lockButton.push(new Button(320, 240, new StaticImage("graphics/lock.png", buttonScale)));
+		lockButton.push(new Button(320 + 640, 240, new StaticImage("graphics/lock.png", buttonScale)));
 		add(lockButton[0]);
 		add(lockButton[1]);
 
-		lifeButton.push(new Button(75, 150, new StaticImage("graphics/life.png", buttonScale)));
-		lifeButton.push(new Button(75 + 320, 150, new StaticImage("graphics/life.png", buttonScale)));
+		lifeButton.push(new Button(150, 300, new StaticImage("graphics/life.png", buttonScale)));
+		lifeButton.push(new Button(150+ 640, 300, new StaticImage("graphics/life.png", buttonScale)));
 		add(lifeButton[0]);
 		add(lifeButton[1]);
 
-		energyButton.push(new Button(75, 180, new StaticImage("graphics/energy.png", buttonScale)));
-		energyButton.push(new Button(75 + 320, 180, new StaticImage("graphics/energy.png", buttonScale)));
+		energyButton.push(new Button(150, 360, new StaticImage("graphics/energy.png", buttonScale)));
+		energyButton.push(new Button(150 + 640, 360, new StaticImage("graphics/energy.png", buttonScale)));
 		add(energyButton[0]);
 		add(energyButton[1]);
 
-		speedButton.push(new Button(75, 210, new StaticImage("graphics/speed.png", buttonScale)));
-		speedButton.push(new Button(75 + 320, 210, new StaticImage("graphics/speed.png", buttonScale)));
+		speedButton.push(new Button(150, 420, new StaticImage("graphics/speed.png", buttonScale)));
+		speedButton.push(new Button(150 + 640, 420, new StaticImage("graphics/speed.png", buttonScale)));
 		add(speedButton[0]);
 		add(speedButton[1]);
 	}
@@ -177,31 +177,31 @@ class ShipSelectScene extends ScaledScene {
 
 		for ( i in 0 ... 10 ) {
 			if (i < 5 ) {
-				lifepoints.push(new Entity(107 + (i * 12), 150, point));
-				lifepoints2.push(new Entity(107 + (i * 12) + 320, 150, point));
+				lifepoints.push(new Entity(214 + (i * 24), 300, point));
+				lifepoints2.push(new Entity(214 + (i * 24) + 640, 300, point));
 			} else {
-				lifepoints.push(new Entity(107 + (i * 12), 150, nopoint));
-				lifepoints2.push(new Entity(107 + (i * 12) + 320, 150, nopoint));
+				lifepoints.push(new Entity(214 + (i * 24), 300, nopoint));
+				lifepoints2.push(new Entity(214 + (i * 24) + 640, 300, nopoint));
 			}
 			add(lifepoints[i]);
 			add(lifepoints2[i]);
 
 			if (i < 5 ) {
-				energypoints.push(new Entity(107 + (i * 12), 180, point));
-				energypoints2.push(new Entity(107 + (i * 12) + 320, 180, point));
+				energypoints.push(new Entity(214 + (i * 24), 360, point));
+				energypoints2.push(new Entity(214 + (i * 24) + 640, 360, point));
 			} else {
-				energypoints.push(new Entity(107 + (i * 12), 180, nopoint));
-				energypoints2.push(new Entity(107 + (i * 12) + 320, 180, nopoint));
+				energypoints.push(new Entity(214 + (i * 24), 360, nopoint));
+				energypoints2.push(new Entity(214 + (i * 24) + 640, 360, nopoint));
 			}
 			add(energypoints[i]);
 			add(energypoints2[i]);
 		
 			if (i < 5 ) {
-				speedpoints.push(new Entity(107 + (i * 12), 210, point));
-				speedpoints2.push(new Entity(107 + (i * 12) + 320, 210, point));
+				speedpoints.push(new Entity(214 + (i * 24), 420, point));
+				speedpoints2.push(new Entity(214 + (i * 24) + 640, 420, point));
 			} else {
-				speedpoints.push(new Entity(107 + (i * 12), 210, nopoint));
-				speedpoints2.push(new Entity(107 + (i * 12) + 320, 210, nopoint));
+				speedpoints.push(new Entity(214 + (i * 24), 420, nopoint));
+				speedpoints2.push(new Entity(214 + (i * 24) + 640, 420, nopoint));
 			}
 			add(speedpoints[i]);
 			add(speedpoints2[i]);

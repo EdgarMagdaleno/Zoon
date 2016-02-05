@@ -9,7 +9,7 @@ class BasicShoot extends Projectile {
 	public override function new(t:Int, x:Float, y:Float, a:Float, d:Int) {
 		super(x, y);
 		target = t;
-		damage = 10;
+		damage = 3;
 		centerOrigin();
 		type = "Projectile";
 		name = "BasicShoot";

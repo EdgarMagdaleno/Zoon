@@ -17,7 +17,7 @@ class Player2 extends Player {
 		super(x, y);
 		target = 1;
 		life = 100;
-		speed = 5;
+		speed = 10;
 		oSpeed = speed;
 		energy = 100;
 		delay = 200;
@@ -28,7 +28,7 @@ class Player2 extends Player {
 
 		setRegen();
 		setCostList();
-		setGraphic(s1);
+		setGraphic(ship);
 		initialize();
 	}
 
@@ -39,7 +39,7 @@ class Player2 extends Player {
 		lastTime = 0;
 		paralyzed = false;
 		slowed = false;
-		HXP.scene.add(new entities.EnergyLevel(500, 5, this));
+		HXP.scene.add(new entities.Life(1350, 5, this, true));
 	}
 
 	public override function update() {
