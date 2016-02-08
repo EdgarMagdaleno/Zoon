@@ -9,21 +9,27 @@ import com.haxepunk.utils.Input;
 import com.haxepunk.graphics.Text;
 import haxe.Timer;
 import com.haxepunk.masks.Circle;
+import com.haxepunk.utils.Joystick;
 
 class Player1 extends Player {
+
+	private var gamepad:Joystick;
+	private var xspeed:Float;
+	private var yspeed:Float;
+	private var dist:Float;
 
 	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int) {
 		super(x, y);
 		target = 2;
 		life = 100;
-		speed = 10;
+		speed = 7;
 		oSpeed = speed;
 		energy = 100;
 		delay = 200;
 
 		a1 = 1;
-		a2 = 1;
-		a3 = 1;
+		a2 = 2;
+		a3 = 4;
 
 		setRegen();
 		setCostList();
@@ -38,38 +44,39 @@ class Player1 extends Player {
 		lastTime = 0;
 		paralyzed = false;
 		slowed = false;
+		gamepad = Input.joystick(0);
+		xspeed = 0;
+		yspeed = 0;
 
 		HXP.scene.add(new entities.Life(5, 5, this));
 	}
 
 	public override function update() {
-		if(Input.check("w")) {
-			moveAtAngle(90, speed);
-			angle = 90;
-		}
-
-		if(Input.check("s")) {
-			moveAtAngle(270, speed);
-			angle = 270;
-		}
-
-		if(Input.check("a")) {
-			moveAtAngle(180, speed);
-			angle = 180;
-		}
-
-		if(Input.check("d")) {
-			moveAtAngle(0, speed);
-			angle = 0;
-		}
+		super.update();
+		handleMovement();
+		angle = HXP.angle(0, 0, xspeed, yspeed);
+		shipImage.angle = angle;
+		dist = HXP.distance(0, 0, xspeed, yspeed);
+		moveAtAngle(angle, speed * dist);
 
 		if(!paralyzed) {
-			if(Input.check("a1")) action(0);
-			if(Input.check("a2")) action(0);
-			if(Input.check("a3")) action(0);
-		}
+			if(Input.joystick(0).check(XBOX_GAMEPAD.A_BUTTON)) action(0);
+			if(Input.joystick(0).check(XBOX_GAMEPAD.X_BUTTON)) action(1);
+			if(Input.joystick(0).check(XBOX_GAMEPAD.Y_BUTTON)) action(2);
+			if(Input.joystick(0).check(XBOX_GAMEPAD.B_BUTTON)) {
+				action(3);
 
-		shipImage.angle = angle;
-		super.update();
+			}	
+		}
+	}
+
+	public function handleMovement():Void {
+		if ( gamepad.getAxis( XBOX_GAMEPAD.LEFT_ANALOGUE_X ) != 0 )
+			xspeed = gamepad.getAxis(XBOX_GAMEPAD.LEFT_ANALOGUE_X);
+		else xspeed *= .5;
+
+		if ( gamepad.getAxis( XBOX_GAMEPAD.LEFT_ANALOGUE_Y ) != 0 )
+			yspeed = gamepad.getAxis(XBOX_GAMEPAD.LEFT_ANALOGUE_Y);
+		else yspeed *= .5;
 	}
 }

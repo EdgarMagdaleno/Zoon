@@ -6,9 +6,11 @@ import com.haxepunk.graphics.Spritemap;
 
 class Paralyzer extends Field {
 	private var sprites:Spritemap;
-
-	public function new(x:Float, y:Float, e:Entity) {
+	private var target:Int;
+	public function new(target:Int, x:Float, y:Float, e:Entity) {
 		super(x, y);
+		trace(target);
+		this.target = target;
 		player = e;
 
 		sprites = new Spritemap("graphics/Paralyzer.png", 130, 124);
@@ -22,6 +24,13 @@ class Paralyzer extends Field {
 
 	public override function update() {
 		if(sprites.complete) scene.remove(this);
+
+		var e:Entity = collide("player"+ target, x, y);
+		if ( e != null ) {
+			trace("hola");
+			var p:entities.Player = cast(e, entities.Player);
+			p.paralyze(50);
+		}
 		super.update();
 	}
 

@@ -60,28 +60,28 @@ class Player extends Entity {
 		mask = new Circle(20, -20, -20);
 	}
 
-	public function abilityBasic() {
+	public function abilityBasic():Void {
 		if(energy >= 5) {
 			useAbility(0);
 			energy -= 5;
 		}	
 	}
 
-	public function ability1() {
+	public function ability1():Void {
 		if(energy >= cost1) {
 			useAbility(a1);
 			energy -= cost1;
 		}
 	}
 
-	public function ability2() {
+	public function ability2():Void {
 		if(energy >= cost2) {
 			useAbility(a2);
 			energy -= cost2;
 		}
 	}
 
-	public function ability3() {
+	public function ability3():Void {
 		if(energy >= cost3) {
 			useAbility(a3);
 			energy -= cost3;
@@ -91,21 +91,19 @@ class Player extends Entity {
 	public function useAbility(n:Int) {
 		switch (n) {
 			case 0: HXP.scene.add(new abilities.BasicShoot(target, x, y, angle, 0));
-			case 1: HXP.scene.add(new abilities.Blizzard(Input.mouseX, Input.mouseY));
 			case 2: new abilities.Shotgun(target, x, y, angle);
-			/*case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
-			case 4: HXP.scene.add(new abilities.Paralyzer(x, y, this));
+			case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
+			case 4: HXP.scene.add(new abilities.Paralyzer(target, x, y, this));
 			case 5: HXP.scene.add(new abilities.Buster(x, y, angle));
-			case 6: HXP.scene.add(new abilities.Snowball(x, y, angle));*/
+			case 6: HXP.scene.add(new abilities.Snowball(x, y, angle));
 		}
 	}
 
 	public function setCostList() {
 		var costs = [
-			abilities.BasicShoot.getCost(),
-			abilities.Blizzard.getCost(),
-			abilities.Shotgun.getCost(),
-			abilities.Reflector.getCost(),
+			0,
+			0,
+			0,
 			0,
 			0,
 			0

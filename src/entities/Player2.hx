@@ -23,7 +23,7 @@ class Player2 extends Player {
 		delay = 200;
 
 		a1 = 1;
-		a2 = 1;
+		a2 = 4;
 		a3 = 1;
 
 		setRegen();
