@@ -8,6 +8,7 @@ class Main extends Engine {
 		HXP.console.enable();
 #end
 		HXP.scene = new scenes.ShipSelectScene();
+		HXP.fullscreen = true;
 	}
 
 	public static function main() { 

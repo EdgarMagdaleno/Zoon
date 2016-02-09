@@ -22,10 +22,10 @@ class Projectile extends Entity {
 
 	public override function update() {
 		distance += speed;
-		if(distance < distanceCap || distanceCap == 0) 
+		if(distance < distanceCap || distanceCap == 0)
 			moveAtAngle(angle, speed, false);
 		else scene.remove(this);
-		
+
 		if(collide("Reflector", x, y) != null) {
 			angle += 170 + Math.random() * 40;
 			abilityImage.angle = angle;
@@ -37,13 +37,12 @@ class Projectile extends Entity {
 
 	public function doDamage(slow:Bool, paralyze:Bool) {
 		var e:Entity = collide("player" + target, x, y);
-		trace("algo bien " + e);
 		if(e != null) {
 			var p:entities.Player = cast(e, entities.Player);
 			p.takeDamage(damage);
 			scene.remove(this);
 			if(slow) p.slow(slowDur, slowStr);
 			if(paralyze) p.paralyze(paralyzeDur);
-		}	
+		}
 	}
 }

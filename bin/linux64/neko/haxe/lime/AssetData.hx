@@ -60,6 +60,8 @@ class AssetData {
 			type.set ("graphics/life.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/energy.png", "graphics/energy.png");
 			type.set ("graphics/energy.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/winner.png", "graphics/winner.png");
+			type.set ("graphics/winner.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/playl.png", "graphics/playl.png");
 			type.set ("graphics/playl.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/exit.png", "graphics/exit.png");
@@ -98,6 +100,8 @@ class AssetData {
 			type.set ("graphics/shipR.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/basicMask.png", "graphics/basicMask.png");
 			type.set ("graphics/basicMask.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("graphics/explosion.png", "graphics/explosion.png");
+			type.set ("graphics/explosion.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/join.png", "graphics/join.png");
 			type.set ("graphics/join.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("graphics/speed.png", "graphics/speed.png");

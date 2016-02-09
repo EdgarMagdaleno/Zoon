@@ -12,6 +12,7 @@ import com.haxepunk.masks.Circle;
 import haxe.Timer;
 
 class Player extends Entity {
+	private var owner:Int;
 	public var target:Int;
 	public var energy:Int;
 	private var shipImage:Image;
@@ -155,5 +156,12 @@ class Player extends Entity {
 		speedUpTimer.run = function():Void {
 			speed -= n;
 		};	
+	}
+
+	public override function update():Void {
+		if ( life <= 0 ) {
+			HXP.scene.add(new Explosion(x, y));
+			HXP.scene.remove(this);
+		}
 	}
 }

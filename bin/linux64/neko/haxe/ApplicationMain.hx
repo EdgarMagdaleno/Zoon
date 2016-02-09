@@ -135,7 +135,7 @@ class ApplicationMain {
 			(false ? flash.Lib.RESIZABLE : 0) |
 			(false ? flash.Lib.BORDERLESS : 0) |
 			(false ? flash.Lib.VSYNC : 0) |
-			(true ? flash.Lib.FULLSCREEN : 0) |
+			(false ? flash.Lib.FULLSCREEN : 0) |
 			(0 == 4 ? flash.Lib.HW_AA_HIRES : 0) |
 			(0 == 2 ? flash.Lib.HW_AA : 0),
 			"Zoon",
@@ -532,7 +532,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "1936",
+			build: "1961",
 			company: "Edgar Magdaleno",
 			file: "Main",
 			fps: 60,
@@ -548,7 +548,7 @@ class ApplicationMain {
 					borderless: false,
 					depthBuffer: false,
 					display: 0,
-					fullscreen: true,
+					fullscreen: false,
 					hardware: true,
 					height: 720,
 					parameters: "{}",

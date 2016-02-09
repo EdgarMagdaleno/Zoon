@@ -20,6 +20,7 @@ class Player1 extends Player {
 
 	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int) {
 		super(x, y);
+		owner = 1;
 		target = 2;
 		life = 100;
 		speed = 7;
@@ -66,8 +67,7 @@ class Player1 extends Player {
 			if(Input.joystick(0).check(XBOX_GAMEPAD.Y_BUTTON)) action(2);
 			if(Input.joystick(0).check(XBOX_GAMEPAD.B_BUTTON)) {
 				action(3);
-
-			}	
+			}
 		}
 	}
 

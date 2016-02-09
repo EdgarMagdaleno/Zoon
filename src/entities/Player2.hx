@@ -21,6 +21,7 @@ class Player2 extends Player {
 
 	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int) {
 		super(x, y);
+		owner = 2;
 		target = 1;
 		life = 100;
 		speed = 10;
@@ -49,8 +50,8 @@ class Player2 extends Player {
 		xspeed = 0;
 		yspeed = 0;
 
-		HXP.scene.add(new entities.Life(1350, 5, this, true));
-		HXP.scene.add(new entities.EnergyLevel(1350, 16, this, true));
+		HXP.scene.add(new entities.Life(1275, 5, this, true));
+		HXP.scene.add(new entities.EnergyLevel(1275, 16, this, true));
 	}
 
 	public override function update() {
