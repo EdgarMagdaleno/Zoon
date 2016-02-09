@@ -28,7 +28,7 @@ class Player1 extends Player {
 		delay = 200;
 
 		a1 = 1;
-		a2 = 2;
+		a2 = 6;
 		a3 = 4;
 
 		setRegen();
@@ -49,6 +49,7 @@ class Player1 extends Player {
 		yspeed = 0;
 
 		HXP.scene.add(new entities.Life(5, 5, this));
+		HXP.scene.add(new entities.EnergyLevel(5, 16, this));
 	}
 
 	public override function update() {

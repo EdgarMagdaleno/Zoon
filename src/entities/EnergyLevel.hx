@@ -1,24 +1,27 @@
 package entities;
 
-import com.haxepunk.graphics.Text;
 import com.haxepunk.Entity;
+import com.haxepunk.graphics.Image.createRect;
+import com.haxepunk.graphics.Image;
 
 class EnergyLevel extends Entity {
-	private var energy:Int;
 	private var player:Player;
-	private var text:Text;
+	private var rect:Image;
 
-	public override function new(x:Float, y:Float, e:Player) {
+	public override function new(x:Float, y:Float, e:Player, ?reverse:Bool= false) {
 		super(x, y);
 		player = e;
-		energy = player.energy;
-		text = new Text("Energy: " + Std.string(energy), {color:0x888800});
-		text.scale = .5;
-		graphic = text;
+		
+		rect = createRect(Std.int(player.energy * 5), 6, 0xFFFF00);
+		if( reverse ) {
+			rect.angle = 180;
+			rect.y += 6;
+		}
+		graphic = rect;
 	}
 
 	public override function update() {
-		energy = player.energy;
-		text.text = "Energy: " + Std.string(energy);
+		rect.scaleX = player.energy / 100;
+		super.update();
 	}
 }

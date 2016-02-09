@@ -11,6 +11,7 @@ import com.haxepunk.masks.Circle;
 import com.haxepunk.masks.Hitbox;
 import com.haxepunk.masks.Imagemask;
 import flash.utils.Timer;
+import flash.geom.Point;
 
 class ShipSelectScene extends ScaledScene {
 	private var ships:Array<Image>;
@@ -42,6 +43,8 @@ class ShipSelectScene extends ScaledScene {
 
 	private var shipSlider:Slider;
 	private var shipSlider2:Slider;
+
+	private var points:Colar<Point>;
 
 	public override function begin() {
 		setScale();
@@ -125,6 +128,7 @@ class ShipSelectScene extends ScaledScene {
 	}
 
 	public function setButtons() {
+		points = new Colar<Point>();
 		lifeButton = new Array<Button>();
 		energyButton = new Array<Button>();
 		speedButton = new Array<Button>();
@@ -161,6 +165,11 @@ class ShipSelectScene extends ScaledScene {
 		speedButton.push(new Button(150 + 640, 420, new StaticImage("graphics/speed.png", buttonScale)));
 		add(speedButton[0]);
 		add(speedButton[1]);
+
+		points.push(new Point(lifeButton[0].x, lifeButton[0].y));
+		points.push(new Point(lifeButton[0].x, lifeButton[0].y));
+		points.push(new Point(lifeButton[0].x, lifeButton[0].y));
+		points.push(new Point(lifeButton[0].x, lifeButton[0].y));
 	}
 
 	public function setStats() {

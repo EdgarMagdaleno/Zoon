@@ -36,7 +36,8 @@ class Projectile extends Entity {
 	}
 
 	public function doDamage(slow:Bool, paralyze:Bool) {
-		var e:Entity = collide("player"+target, x, y);
+		var e:Entity = collide("player" + target, x, y);
+		trace("algo bien " + e);
 		if(e != null) {
 			var p:entities.Player = cast(e, entities.Player);
 			p.takeDamage(damage);

@@ -7,13 +7,14 @@ import com.haxepunk.graphics.Spritemap;
 class Buster extends Projectile {
 	private var sprites:Spritemap;
 
-	public override function new(x:Float, y:Float, a:Float) {
+	public override function new(target:Int, x:Float, y:Float, a:Float) {
 		super(x, y);
+		this.target = target;
 		centerOrigin();
 		type = "Projectile";
 		name = "Buster";
-
-		speed = 25;
+		damage = 15;
+		speed = 19;
 		angle = a;
 		distanceCap = 0;
 
@@ -30,5 +31,9 @@ class Buster extends Projectile {
 	public override function update() {
 		super.update();
 		if(sprites.currentAnim == "start" && sprites.index == 12) sprites.play("body");
+	}
+
+	public static function getCost():Int {
+		return 12;
 	}
 }

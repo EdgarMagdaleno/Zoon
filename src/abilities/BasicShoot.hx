@@ -6,7 +6,7 @@ import com.haxepunk.masks.Circle;
 
 class BasicShoot extends Projectile {
 
-	public override function new(t:Int, x:Float, y:Float, a:Float, d:Int) {
+	public override function new(t:Int, x:Float, y:Float, a:Float, ?d:Int = 0) {
 		super(x, y);
 		target = t;
 		damage = 3;

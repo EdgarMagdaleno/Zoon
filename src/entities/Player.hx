@@ -91,22 +91,24 @@ class Player extends Entity {
 	public function useAbility(n:Int) {
 		switch (n) {
 			case 0: HXP.scene.add(new abilities.BasicShoot(target, x, y, angle, 0));
-			case 2: new abilities.Shotgun(target, x, y, angle);
-			case 3: HXP.scene.add(new abilities.Reflector(x, y, angle));
-			case 4: HXP.scene.add(new abilities.Paralyzer(target, x, y, this));
-			case 5: HXP.scene.add(new abilities.Buster(x, y, angle));
-			case 6: HXP.scene.add(new abilities.Snowball(x, y, angle));
+			case 1: new abilities.Shotgun(target, x, y, angle);
+			case 2: HXP.scene.add(new abilities.Reflector(x, y, angle));
+			case 3: HXP.scene.add(new abilities.Paralyzer(target, x, y, this));
+			case 4: HXP.scene.add(new abilities.Buster(target, x, y, angle));
+			case 5: HXP.scene.add(new abilities.Snowball(target, x, y, angle));
+			case 6: new abilities.Avalanche(target, x, y , angle);
 		}
 	}
 
 	public function setCostList() {
 		var costs = [
-			0,
-			0,
-			0,
-			0,
-			0,
-			0
+			5,
+			abilities.Shotgun.getCost(),
+			abilities.Reflector.getCost(),
+			abilities.Paralyzer.getCost(),
+			abilities.Buster.getCost(),
+			abilities.Snowball.getCost(),
+			abilities.Avalanche.getCost()
 		];
 
 		cost1 = costs[a1];
@@ -126,11 +128,13 @@ class Player extends Entity {
 	}
 
 	public function paralyze(n:Int) {
-		paralyzed = true;
-		timerParalyze = new Timer(n);
-		timerParalyze.run = function():Void { 
-			paralyzed = false;
-		};	
+		if ( !paralyzed ) {
+			paralyzed = true;
+			timerParalyze = new Timer(n);
+			timerParalyze.run = function():Void { 
+				paralyzed = false;
+			};
+		}
 	}
 
 	public function slow(n:Int, s:Int) {
