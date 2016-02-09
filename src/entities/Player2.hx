@@ -10,8 +10,14 @@ import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Text;
 import haxe.Timer;
 import com.haxepunk.masks.Circle;
+import com.haxepunk.utils.Joystick;
 
 class Player2 extends Player {
+
+	private var gamepad:Joystick;
+	private var xspeed:Float;
+	private var yspeed:Float;
+	private var dist:Float;
 
 	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int) {
 		super(x, y);
@@ -39,38 +45,40 @@ class Player2 extends Player {
 		lastTime = 0;
 		paralyzed = false;
 		slowed = false;
+		gamepad = Input.joystick(1);
+		xspeed = 0;
+		yspeed = 0;
+
 		HXP.scene.add(new entities.Life(1350, 5, this, true));
 		HXP.scene.add(new entities.EnergyLevel(1350, 16, this, true));
 	}
 
 	public override function update() {
+		handleMovement();
+		angle = HXP.angle(0, 0, xspeed, yspeed);
+		shipImage.angle = angle;
+		dist = HXP.distance(0, 0, xspeed, yspeed);
+		moveAtAngle(angle, speed * dist);
 		if(!paralyzed) {
-			if(Input.check("up")) {
-				moveAtAngle(90, speed);
-				angle = 90;
-			}
-
-			if(Input.check("down")) {
-				moveAtAngle(270, speed);
-				angle = 270;
-			}
-
-			if(Input.check("left")) {
-				moveAtAngle(180, speed);
-				angle = 180;
-			}
-
-			if(Input.check("right")) {
-				moveAtAngle(0, speed);
-				angle = 0;
-			}
-		
-			if(Input.check("a 1")) action(0);
-			if(Input.check("a 2")) action(0);
-			if(Input.check("a 3")) action(0);
+			if(Input.joystick(1).check(XBOX_GAMEPAD.A_BUTTON)) action(0);
+			if(Input.joystick(1).check(XBOX_GAMEPAD.X_BUTTON)) action(1);
+			if(Input.joystick(1).check(XBOX_GAMEPAD.Y_BUTTON)) action(2);
+			if(Input.joystick(1).check(XBOX_GAMEPAD.B_BUTTON)) {
+				action(3);
 		}
+	}
 
 		shipImage.angle = angle;
 		super.update();
+	}
+
+	public function handleMovement():Void {
+		if ( gamepad.getAxis( XBOX_GAMEPAD.LEFT_ANALOGUE_X ) != 0 )
+			xspeed = gamepad.getAxis(XBOX_GAMEPAD.LEFT_ANALOGUE_X);
+		else xspeed *= .5;
+
+		if ( gamepad.getAxis( XBOX_GAMEPAD.LEFT_ANALOGUE_Y ) != 0 )
+			yspeed = gamepad.getAxis(XBOX_GAMEPAD.LEFT_ANALOGUE_Y);
+		else yspeed *= .5;
 	}
 }
