@@ -10,8 +10,9 @@ class BattleScene extends ScaledScene {
 
 	private var s1:Int;
 	private var s2:Int;
+	private var scene:ScaledScene;
 
-	public function new(s1:Int, s2:Int) {
+	public function new(s1:Int, s2:Int, scene:ScaledScene) {
 		super();
 		defineInputs();
 		this.s1 = s1;
@@ -21,8 +22,8 @@ class BattleScene extends ScaledScene {
 	public override function begin() {
 		setScale();
 		setBackground();
-		add(new entities.Player1(100, 100, s1 + 1, 1, 1, 1));
-		add(new entities.Player2(200, 200, s2 + 1, 1, 1, 1));
+		add(new entities.Player1(100, 100, s1 + 1, 1, 1, 1, 100, 100, 10));
+		add(new entities.Player2(200, 200, s2 + 1, 1, 1, 1, 100, 100, 10));
 	}
 
 	public override function update() {

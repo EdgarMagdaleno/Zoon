@@ -18,8 +18,8 @@ class Player extends Entity {
 	public var energy:Int;
 	private var shipImage:StaticImage;
 	public var life:Int;
-	public var speed:Int;
-	public var oSpeed:Int;
+	public var speed:Float;
+	public var oSpeed:Float;
 
 	private var regenEnergy:Timer;
 	private var delay:Int;
@@ -141,7 +141,7 @@ class Player extends Entity {
 		}
 	}
 
-	public function slow(n:Int, s:Int) {
+	public function slow(n:Int, s:Float) {
 		if(!slowed) {
 			slowed = true;
 			speed -= s;
@@ -171,5 +171,6 @@ class Player extends Entity {
 		if( y - 19 < 0 ) y = 19;
 		if( x - 19 < 0 ) x = 19;
 		if( x + 19 > 1280 ) x = 1261;
+		super.update();
 	}
 }

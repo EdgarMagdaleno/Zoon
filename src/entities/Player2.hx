@@ -19,7 +19,7 @@ class Player2 extends Player {
 	private var yspeed:Float;
 	private var dist:Float;
 
-	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int) {
+	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int, life:Int, speed:Int, energy:Int) {
 		super(x, y);
 		owner = 2;
 		target = 1;
@@ -31,7 +31,7 @@ class Player2 extends Player {
 
 		a1 = 1;
 		a2 = 4;
-		a3 = 1;
+		a3 = 6;
 
 		setRegen();
 		setCostList();

@@ -97,7 +97,7 @@ class ShipSelectScene extends ScaledScene {
 		if ( shipLbutton[1].isPressed() ) shipSlider2.backward();
 
 		if(Input.check("enter")) {
-			HXP.scene = new scenes.BattleScene(shipSlider.collar.index, shipSlider2.collar.index);
+			HXP.scene = new scenes.BattleScene(shipSlider.collar.index, shipSlider2.collar.index, this);
 		}
 	}
 

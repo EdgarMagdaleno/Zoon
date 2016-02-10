@@ -15,8 +15,8 @@ class Snowball extends Projectile {
 		distanceCap = d;
 		damage = 7;
 		slow = true;
-		slowDur = 1750;
-		slowStr = 5;
+		slowDur = 2300;
+		slowStr = 9;
 
 		abilityImage = new Image("graphics/snowball.png");
 		abilityImage.centerOrigin();

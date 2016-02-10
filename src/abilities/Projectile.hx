@@ -15,7 +15,7 @@ class Projectile extends Entity {
 
 	private var slow:Bool = false;
 	private var slowDur:Int;
-	private var slowStr:Int;
+	private var slowStr:Float;
 
 	private var paralyze:Bool = false;
 	private var paralyzeDur:Int;

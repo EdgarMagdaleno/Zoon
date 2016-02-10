@@ -18,12 +18,12 @@ class Player1 extends Player {
 	private var yspeed:Float;
 	private var dist:Float;
 
-	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int) {
+	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int, life:Int, speed:Int, energy:Int) {
 		super(x, y);
 		owner = 1;
 		target = 2;
-		life = 180;
-		speed = 7;
+		life = 100;
+		speed = 10;
 		oSpeed = speed;
 		energy = 100;
 		delay = 200;
