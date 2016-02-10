@@ -10,7 +10,7 @@ class Projectile extends Entity {
 	private var angle:Float;
 	private var abilityImage:Image;
 	private var distance:Int = 0;
-	private var distanceCap:Int;
+	private var distanceCap:Int = 0;
 	private var damage:Int;
 
 	private var slow:Bool = false;
@@ -44,5 +44,10 @@ class Projectile extends Entity {
 			if(slow) p.slow(slowDur, slowStr);
 			if(paralyze) p.paralyze(paralyzeDur);
 		}
+	}
+
+	public function outOfBounds():Bool {
+		if( x < 20 || x > 1300 || y < 20 || y > 740) return true;
+		return false;
 	}
 }

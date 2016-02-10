@@ -3,6 +3,7 @@ package abilities;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Spritemap;
+import com.haxepunk.masks.Circle;
 
 class Buster extends Projectile {
 	private var sprites:Spritemap;
@@ -25,6 +26,8 @@ class Buster extends Projectile {
 		sprites.add("start", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 20, false);
 		sprites.add("body", [14, 15, 16, 17, 18], 20, true);
 		sprites.play("start");
+
+		mask = new Circle(20, -20, -20);
 		graphic = sprites;
 	}
 

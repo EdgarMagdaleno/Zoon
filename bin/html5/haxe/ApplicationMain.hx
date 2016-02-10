@@ -78,6 +78,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("graphics/winner.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("graphics/snow.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -126,7 +130,15 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("graphics/explosion.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("graphics/red.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/bbutton.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -190,6 +202,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("graphics/xbutton.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("graphics/playb.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -199,6 +215,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("graphics/nopoint.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/ybutton.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -275,7 +295,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "1822",
+			build: "1980",
 			company: "Edgar Magdaleno",
 			file: "Main",
 			fps: 60,
@@ -291,7 +311,7 @@ class ApplicationMain {
 					borderless: false,
 					depthBuffer: false,
 					display: 0,
-					fullscreen: true,
+					fullscreen: false,
 					hardware: false,
 					height: 720,
 					parameters: "{}",

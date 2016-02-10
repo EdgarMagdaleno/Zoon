@@ -14,6 +14,8 @@ import flash.utils.Timer;
 import flash.geom.Point;
 
 class ShipSelectScene extends ScaledScene {
+	private var selector:Entity;
+	private var selector2:Entity;
 	private var ships:Array<Image>;
 	private var ships2:Array<Image>;
 	private var length:Int = 6;
@@ -166,10 +168,11 @@ class ShipSelectScene extends ScaledScene {
 		add(speedButton[0]);
 		add(speedButton[1]);
 
-		points.push(new Point(lifeButton[0].x, lifeButton[0].y));
-		points.push(new Point(lifeButton[0].x, lifeButton[0].y));
-		points.push(new Point(lifeButton[0].x, lifeButton[0].y));
-		points.push(new Point(lifeButton[0].x, lifeButton[0].y));
+		points.push(new Point(shipLbutton[0].x, shipLbutton[0].y));
+		points.push(new Point(lockButton[0].x, lockButton[0].y));
+		points.push(new Point(shipRbutton[0].x, shipRbutton[0].y));
+
+		
 	}
 
 	public function setStats() {

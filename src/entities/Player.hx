@@ -10,12 +10,13 @@ import com.haxepunk.utils.Key;
 import com.haxepunk.graphics.Text;
 import com.haxepunk.masks.Circle;
 import haxe.Timer;
+import com.haxepunk.graphics.Particle;
 
 class Player extends Entity {
 	private var owner:Int;
 	public var target:Int;
 	public var energy:Int;
-	private var shipImage:Image;
+	private var shipImage:StaticImage;
 	public var life:Int;
 	public var speed:Int;
 	public var oSpeed:Int;
@@ -58,7 +59,7 @@ class Player extends Entity {
 		followCamera = true;
 		shipImage = new StaticImage("graphics/ships/ship" + ship + ".png", .50);
 		graphic = shipImage;
-		mask = new Circle(20, -20, -20);
+		mask = new Circle(30, -30, -30);
 	}
 
 	public function abilityBasic():Void {
@@ -98,6 +99,7 @@ class Player extends Entity {
 			case 4: HXP.scene.add(new abilities.Buster(target, x, y, angle));
 			case 5: HXP.scene.add(new abilities.Snowball(target, x, y, angle));
 			case 6: new abilities.Avalanche(target, x, y , angle);
+			case 7: HXP.scene.add(new abilities.FireTackle(target, x, y, angle, this));
 		}
 	}
 
@@ -109,7 +111,8 @@ class Player extends Entity {
 			abilities.Paralyzer.getCost(),
 			abilities.Buster.getCost(),
 			abilities.Snowball.getCost(),
-			abilities.Avalanche.getCost()
+			abilities.Avalanche.getCost(),
+			abilities.FireTackle.getCost()
 		];
 
 		cost1 = costs[a1];
@@ -160,8 +163,13 @@ class Player extends Entity {
 
 	public override function update():Void {
 		if ( life <= 0 ) {
-			HXP.scene.add(new Explosion(x, y));
+			HXP.scene.add(new Explosion(target, x, y));
 			HXP.scene.remove(this);
 		}
+
+		if( y + 19 > 720 ) y = 700;
+		if( y - 19 < 0 ) y = 19;
+		if( x - 19 < 0 ) x = 19;
+		if( x + 19 > 1280 ) x = 1261;
 	}
 }

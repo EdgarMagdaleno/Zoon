@@ -98,6 +98,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
 		#end
 		
 		#if flash
@@ -126,6 +131,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("font/04B_03__.ttf.png", AssetType.IMAGE);
 		className.set ("graphics/life.png", __ASSET__graphics_life_png);
 		type.set ("graphics/life.png", AssetType.IMAGE);
+		className.set ("graphics/winner.png", __ASSET__graphics_winner_png);
+		type.set ("graphics/winner.png", AssetType.IMAGE);
 		className.set ("graphics/snow.png", __ASSET__graphics_snow_png);
 		type.set ("graphics/snow.png", AssetType.IMAGE);
 		className.set ("graphics/basica.png", __ASSET__graphics_basica_png);
@@ -150,8 +157,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("graphics/exit.png", AssetType.IMAGE);
 		className.set ("graphics/snowball.png", __ASSET__graphics_snowball_png);
 		type.set ("graphics/snowball.png", AssetType.IMAGE);
+		className.set ("graphics/explosion.png", __ASSET__graphics_explosion_png);
+		type.set ("graphics/explosion.png", AssetType.IMAGE);
 		className.set ("graphics/red.png", __ASSET__graphics_red_png);
 		type.set ("graphics/red.png", AssetType.IMAGE);
+		className.set ("graphics/bbutton.png", __ASSET__graphics_bbutton_png);
+		type.set ("graphics/bbutton.png", AssetType.IMAGE);
 		className.set ("graphics/speed.png", __ASSET__graphics_speed_png);
 		type.set ("graphics/speed.png", AssetType.IMAGE);
 		className.set ("graphics/lockS.png", __ASSET__graphics_locks_png);
@@ -182,12 +193,16 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("graphics/shipL.png", AssetType.IMAGE);
 		className.set ("graphics/energy.png", __ASSET__graphics_energy_png);
 		type.set ("graphics/energy.png", AssetType.IMAGE);
+		className.set ("graphics/xbutton.png", __ASSET__graphics_xbutton_png);
+		type.set ("graphics/xbutton.png", AssetType.IMAGE);
 		className.set ("graphics/playb.png", __ASSET__graphics_playb_png);
 		type.set ("graphics/playb.png", AssetType.IMAGE);
 		className.set ("graphics/basicMask.png", __ASSET__graphics_basicmask_png);
 		type.set ("graphics/basicMask.png", AssetType.IMAGE);
 		className.set ("graphics/nopoint.png", __ASSET__graphics_nopoint_png);
 		type.set ("graphics/nopoint.png", AssetType.IMAGE);
+		className.set ("graphics/ybutton.png", __ASSET__graphics_ybutton_png);
+		type.set ("graphics/ybutton.png", AssetType.IMAGE);
 		className.set ("graphics/entity.png", __ASSET__graphics_entity_png);
 		type.set ("graphics/entity.png", AssetType.IMAGE);
 		className.set ("graphics/green.png", __ASSET__graphics_green_png);
@@ -247,6 +262,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "graphics/winner.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "graphics/snow.png";
 		path.set (id, id);
 		
@@ -295,7 +314,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "graphics/explosion.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "graphics/red.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "graphics/bbutton.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -359,6 +386,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "graphics/xbutton.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "graphics/playb.png";
 		path.set (id, id);
 		
@@ -368,6 +399,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "graphics/nopoint.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "graphics/ybutton.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -437,6 +472,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("graphics/life.png", __ASSET__graphics_life_png);
 		type.set ("graphics/life.png", AssetType.IMAGE);
 		
+		className.set ("graphics/winner.png", __ASSET__graphics_winner_png);
+		type.set ("graphics/winner.png", AssetType.IMAGE);
+		
 		className.set ("graphics/snow.png", __ASSET__graphics_snow_png);
 		type.set ("graphics/snow.png", AssetType.IMAGE);
 		
@@ -473,8 +511,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("graphics/snowball.png", __ASSET__graphics_snowball_png);
 		type.set ("graphics/snowball.png", AssetType.IMAGE);
 		
+		className.set ("graphics/explosion.png", __ASSET__graphics_explosion_png);
+		type.set ("graphics/explosion.png", AssetType.IMAGE);
+		
 		className.set ("graphics/red.png", __ASSET__graphics_red_png);
 		type.set ("graphics/red.png", AssetType.IMAGE);
+		
+		className.set ("graphics/bbutton.png", __ASSET__graphics_bbutton_png);
+		type.set ("graphics/bbutton.png", AssetType.IMAGE);
 		
 		className.set ("graphics/speed.png", __ASSET__graphics_speed_png);
 		type.set ("graphics/speed.png", AssetType.IMAGE);
@@ -521,6 +565,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("graphics/energy.png", __ASSET__graphics_energy_png);
 		type.set ("graphics/energy.png", AssetType.IMAGE);
 		
+		className.set ("graphics/xbutton.png", __ASSET__graphics_xbutton_png);
+		type.set ("graphics/xbutton.png", AssetType.IMAGE);
+		
 		className.set ("graphics/playb.png", __ASSET__graphics_playb_png);
 		type.set ("graphics/playb.png", AssetType.IMAGE);
 		
@@ -529,6 +576,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("graphics/nopoint.png", __ASSET__graphics_nopoint_png);
 		type.set ("graphics/nopoint.png", AssetType.IMAGE);
+		
+		className.set ("graphics/ybutton.png", __ASSET__graphics_ybutton_png);
+		type.set ("graphics/ybutton.png", AssetType.IMAGE);
 		
 		className.set ("graphics/entity.png", __ASSET__graphics_entity_png);
 		type.set ("graphics/entity.png", AssetType.IMAGE);
@@ -1194,6 +1244,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__font_04b_03___ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__font_04b_03___ttf_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_life_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__graphics_winner_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_snow_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_basica_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_lock_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1206,7 +1257,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__graphics_join_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_exit_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_snowball_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__graphics_explosion_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_red_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__graphics_bbutton_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_speed_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_locks_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_create_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1222,9 +1275,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__graphics_paralyzer_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_shipl_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_energy_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__graphics_xbutton_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_playb_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_basicmask_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_nopoint_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__graphics_ybutton_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_entity_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_green_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__graphics_back_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1242,6 +1297,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:keep #if display private #end class __ASSET__font_04b_03___ttf extends lime.text.Font { public function new () { super (); name = "04b03"; } } 
+
+
+
+
+
 
 
 
@@ -1299,6 +1359,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:font("/usr/lib/haxe/lib/HaxePunk/2,5,6/assets/font/04B_03__.ttf") #if display private #end class __ASSET__font_04b_03___ttf extends lime.text.Font {}
 @:image("/usr/lib/haxe/lib/HaxePunk/2,5,6/assets/font/04B_03__.ttf.png") #if display private #end class __ASSET__font_04b_03___ttf_png extends lime.graphics.Image {}
 @:image("assets/graphics/life.png") #if display private #end class __ASSET__graphics_life_png extends lime.graphics.Image {}
+@:image("assets/graphics/winner.png") #if display private #end class __ASSET__graphics_winner_png extends lime.graphics.Image {}
 @:image("assets/graphics/snow.png") #if display private #end class __ASSET__graphics_snow_png extends lime.graphics.Image {}
 @:image("assets/graphics/basica.png") #if display private #end class __ASSET__graphics_basica_png extends lime.graphics.Image {}
 @:image("assets/graphics/lock.png") #if display private #end class __ASSET__graphics_lock_png extends lime.graphics.Image {}
@@ -1311,7 +1372,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/graphics/join.png") #if display private #end class __ASSET__graphics_join_png extends lime.graphics.Image {}
 @:image("assets/graphics/exit.png") #if display private #end class __ASSET__graphics_exit_png extends lime.graphics.Image {}
 @:image("assets/graphics/snowball.png") #if display private #end class __ASSET__graphics_snowball_png extends lime.graphics.Image {}
+@:image("assets/graphics/explosion.png") #if display private #end class __ASSET__graphics_explosion_png extends lime.graphics.Image {}
 @:image("assets/graphics/red.png") #if display private #end class __ASSET__graphics_red_png extends lime.graphics.Image {}
+@:image("assets/graphics/bbutton.png") #if display private #end class __ASSET__graphics_bbutton_png extends lime.graphics.Image {}
 @:image("assets/graphics/speed.png") #if display private #end class __ASSET__graphics_speed_png extends lime.graphics.Image {}
 @:image("assets/graphics/lockS.png") #if display private #end class __ASSET__graphics_locks_png extends lime.graphics.Image {}
 @:image("assets/graphics/create.png") #if display private #end class __ASSET__graphics_create_png extends lime.graphics.Image {}
@@ -1327,9 +1390,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/graphics/Paralyzer.png") #if display private #end class __ASSET__graphics_paralyzer_png extends lime.graphics.Image {}
 @:image("assets/graphics/shipL.png") #if display private #end class __ASSET__graphics_shipl_png extends lime.graphics.Image {}
 @:image("assets/graphics/energy.png") #if display private #end class __ASSET__graphics_energy_png extends lime.graphics.Image {}
+@:image("assets/graphics/xbutton.png") #if display private #end class __ASSET__graphics_xbutton_png extends lime.graphics.Image {}
 @:image("assets/graphics/playb.png") #if display private #end class __ASSET__graphics_playb_png extends lime.graphics.Image {}
 @:image("assets/graphics/basicMask.png") #if display private #end class __ASSET__graphics_basicmask_png extends lime.graphics.Image {}
 @:image("assets/graphics/nopoint.png") #if display private #end class __ASSET__graphics_nopoint_png extends lime.graphics.Image {}
+@:image("assets/graphics/ybutton.png") #if display private #end class __ASSET__graphics_ybutton_png extends lime.graphics.Image {}
 @:image("assets/graphics/entity.png") #if display private #end class __ASSET__graphics_entity_png extends lime.graphics.Image {}
 @:image("assets/graphics/green.png") #if display private #end class __ASSET__graphics_green_png extends lime.graphics.Image {}
 @:image("assets/graphics/back.png") #if display private #end class __ASSET__graphics_back_png extends lime.graphics.Image {}

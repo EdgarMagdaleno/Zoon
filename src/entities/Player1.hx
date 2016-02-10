@@ -22,7 +22,7 @@ class Player1 extends Player {
 		super(x, y);
 		owner = 1;
 		target = 2;
-		life = 100;
+		life = 180;
 		speed = 7;
 		oSpeed = speed;
 		energy = 100;
@@ -30,7 +30,7 @@ class Player1 extends Player {
 
 		a1 = 1;
 		a2 = 6;
-		a3 = 4;
+		a3 = 7;
 
 		setRegen();
 		setCostList();
@@ -49,8 +49,8 @@ class Player1 extends Player {
 		xspeed = 0;
 		yspeed = 0;
 
-		HXP.scene.add(new entities.Life(5, 5, this));
-		HXP.scene.add(new entities.EnergyLevel(5, 16, this));
+		HXP.scene.add(new entities.Life(5, 6, this));
+		HXP.scene.add(new entities.EnergyLevel(5, 17, this));
 	}
 
 	public override function update() {
