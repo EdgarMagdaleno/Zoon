@@ -16,7 +16,8 @@ class Player extends Entity {
 	private var owner:Int;
 	public var target:Int;
 	public var energy:Int;
-	private var shipImage:StaticImage;
+	public var oenergy:Int;
+	public var shipImage:StaticImage;
 	public var life:Int;
 	public var speed:Float;
 	public var oSpeed:Float;
@@ -63,9 +64,9 @@ class Player extends Entity {
 	}
 
 	public function abilityBasic():Void {
-		if(energy >= 5) {
+		if(energy >= 4) {
 			useAbility(0);
-			energy -= 5;
+			energy -= 4;
 		}	
 	}
 
@@ -105,7 +106,7 @@ class Player extends Entity {
 
 	public function setCostList() {
 		var costs = [
-			5,
+			4,
 			abilities.Shotgun.getCost(),
 			abilities.Reflector.getCost(),
 			abilities.Paralyzer.getCost(),
@@ -127,7 +128,7 @@ class Player extends Entity {
 	public function setRegen() {
 		regenEnergy = new Timer(100);
 		regenEnergy.run = function():Void { 
-			if(energy < 100) energy += 1; 
+			if(energy < oenergy) energy += 1; 
 		};	
 	}
 
@@ -145,6 +146,7 @@ class Player extends Entity {
 		if(!slowed) {
 			slowed = true;
 			speed -= s;
+			if(speed < 0) speed = .5;
 			timerSlow = new Timer(n);
 			timerSlow.run = function():Void {
 				speed = oSpeed;
@@ -163,7 +165,7 @@ class Player extends Entity {
 
 	public override function update():Void {
 		if ( life <= 0 ) {
-			HXP.scene.add(new Explosion(target, x, y));
+			HXP.scene.add(new Explosion(target, x, y, HXP.scene.getInstance("player" + target)));
 			HXP.scene.remove(this);
 		}
 

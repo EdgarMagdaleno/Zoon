@@ -19,19 +19,20 @@ class Player2 extends Player {
 	private var yspeed:Float;
 	private var dist:Float;
 
-	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int, life:Int, speed:Int, energy:Int) {
+	public override function new(x:Int, y:Int, ship:Int, s1:Int, s2:Int, s3:Int, l:Int, e:Int, s:Int) {
 		super(x, y);
 		owner = 2;
 		target = 1;
-		life = 100;
-		speed = 10;
+		life = l * 20;
+		speed = s * 2;
 		oSpeed = speed;
-		energy = 100;
+		energy = e * 20;
+		oenergy = energy;
 		delay = 200;
 
-		a1 = 1;
-		a2 = 4;
-		a3 = 6;
+		a1 = s1;
+		a2 = s2;
+		a3 = s3;
 
 		setRegen();
 		setCostList();

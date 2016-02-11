@@ -7,10 +7,11 @@ import com.haxepunk.HXP;
 class Explosion extends Entity {
 	private var animation:Spritemap;
 	private var winner:Int;
-
-	public override function new(winner:Int, x:Float, y:Float):Void {
+	private var e:Player;
+	public override function new(winner:Int, x:Float, y:Float, e:Entity):Void {
 		super(x, y);
 		this.winner = winner;
+		this.e = cast(e, Player);
 		animation = new Spritemap("graphics/explosion.png", 128, 128);
 		animation.add("core", [for(i in 0 ... 16) i], 20, false);
 		animation.play("core");
@@ -22,6 +23,6 @@ class Explosion extends Entity {
 	public override function update():Void {
 		super.update();
 		Sys.sleep(.1);
-		if( animation.complete ) HXP.scene = new scenes.GameOver(winner);
+		if( animation.complete ) HXP.scene = new scenes.GameOver(e);
 	}
 }

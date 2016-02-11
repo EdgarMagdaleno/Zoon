@@ -6,9 +6,11 @@ import com.haxepunk.graphics.Image;
 
 class Button extends Entity {
 	private var image:Image;
+	private var e:Entity;
 
-	public override function new(x:Float, y:Float, i:Image) {
+	public override function new(x:Float, y:Float, i:Image, e:Entity) {
 		super(x, y);
+		this.e = e;
 		image = i;
 		setHitbox(Std.int(image.scaledWidth), Std.int(image.scaledHeight), 0, 0);
 		centerOrigin();
@@ -16,13 +18,7 @@ class Button extends Entity {
 	}
 
 	public function isPressed():Bool {
-		if ( distanceToRect(Input.mouseX, Input.mouseY, .1, .1) == 0 && Input.mousePressed ) return true;
-		else return false;
-	}
-
-	public function isRightPressed():Bool {
-		//if ( distanceToRect(Input.mouseX, Input.mouseY, .1, .1) == 0 && Input.rightMousePressed ) return true;
-		//else return false;
+		if ( distanceFrom(e) == 0) return true;
 		return false;
 	}
 }

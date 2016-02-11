@@ -10,7 +10,6 @@ class Paralyzer extends Field {
 	private var target:Int;
 	public function new(target:Int, x:Float, y:Float, e:Entity) {
 		super(x, y);
-		trace(target);
 		this.target = target;
 		player = e;
 

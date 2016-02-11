@@ -34,27 +34,19 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("graphics/debug/console_debug.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/debug/console_output.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("graphics/debug/console_play.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
 		urls.push ("graphics/debug/console_visible.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/debug/console_pause.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/debug/console_debug.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/debug/console_step.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/debug/console_output.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -66,7 +58,11 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("font/04B_03__.ttf.png");
+		urls.push ("graphics/debug/console_step.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/debug/console_pause.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -74,71 +70,7 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.FONT);
 		
 		
-		urls.push ("graphics/basicMask.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/snow.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/point.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/lockS.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/entity.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/basic.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/back.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/nopoint.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/playb.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/energy.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/buster.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/stars2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/lock.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/snowball.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/fireTackle.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/red.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/create.png");
+		urls.push ("font/04B_03__.ttf.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -146,7 +78,31 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("graphics/selector.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/winner.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/snow.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("graphics/basica.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/lock.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/basicb.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/fireTackle.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -154,55 +110,15 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("graphics/basic.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("graphics/stars1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("graphics/shipL.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/shipR.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/green.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/Paralyzer.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/exit.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/speed.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/ships/ship4.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/ships/ship5.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/ships/ship2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/ships/ship1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/ships/ship3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/ships/ship6.png");
+		urls.push ("graphics/buster.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -210,7 +126,143 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("graphics/basicb.png");
+		urls.push ("graphics/exit.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/snowball.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/explosion.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/red.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/bbutton.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/speed.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/lockS.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/create.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/shipR.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/ships/ship6.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/ships/ship1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/ships/ship4.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/ships/ship2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/ships/ship3.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/ships/ship5.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/icons/avalanche.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/icons/buster.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/icons/snowball.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/icons/reflector.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/icons/firetackle.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/icons/paralyzer.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/icons/shotgun.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/point.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/stars2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/Paralyzer.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/shipL.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/energy.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/xbutton.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/playb.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/basicMask.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/nopoint.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/ybutton.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/entity.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/green.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/back.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -275,7 +327,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "1179",
+			build: "2297",
 			company: "Edgar Magdaleno",
 			file: "Main",
 			fps: 60,
@@ -291,15 +343,15 @@ class ApplicationMain {
 					borderless: false,
 					depthBuffer: false,
 					display: 0,
-					fullscreen: true,
+					fullscreen: false,
 					hardware: true,
-					height: 360,
+					height: 720,
 					parameters: "{}",
 					resizable: false,
 					stencilBuffer: true,
 					title: "Zoon",
 					vsync: false,
-					width: 640,
+					width: 1280,
 					x: null,
 					y: null
 				},
@@ -317,7 +369,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 640, 360, "333333");
+		openfl.Lib.embed (null, 1280, 720, "333333");
 		#end
 		#else
 		create ();

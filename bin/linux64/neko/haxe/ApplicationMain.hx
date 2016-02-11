@@ -428,7 +428,7 @@ class ApplicationMain {
 		var types = [];
 		
 		
-		urls.push ("graphics/debug/console_step.png");
+		urls.push ("graphics/preloader/haxepunk.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -436,15 +436,7 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("graphics/debug/console_visible.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
 		urls.push ("graphics/debug/console_output.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("graphics/debug/console_logo.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -452,7 +444,11 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("graphics/debug/console_pause.png");
+		urls.push ("graphics/debug/console_visible.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/debug/console_logo.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -460,7 +456,11 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("graphics/preloader/haxepunk.png");
+		urls.push ("graphics/debug/console_step.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("graphics/debug/console_pause.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -532,7 +532,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "2139",
+			build: "2379",
 			company: "Edgar Magdaleno",
 			file: "Main",
 			fps: 60,
