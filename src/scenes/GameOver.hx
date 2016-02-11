@@ -5,6 +5,8 @@ import com.haxepunk.Scene;
 import com.haxepunk.Entity;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Text;
+import com.haxepunk.utils.Joystick;
+import com.haxepunk.utils.Input;
 
 class GameOver extends ScaledScene {
 	private var winner:entities.Player;
@@ -29,5 +31,8 @@ class GameOver extends ScaledScene {
 	public override function update():Void {
 		super.update();
 		camera.x += 2;
+		if(Input.joystick(0).pressed(XBOX_GAMEPAD.START_BUTTON) || 
+			Input.joystick(1).pressed(XBOX_GAMEPAD.START_BUTTON))
+		HXP.scene = new scenes.ShipSelectScene();
 	}
 }
